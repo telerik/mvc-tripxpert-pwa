@@ -1,0 +1,74 @@
+
+<div class="jumbotron jumbotron-fluid jumbotron-home d-flex align-items-center bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
+                @(Html.Kendo().ComboBox()
+                    .Name("Destinations") //The name of the ComboBox is mandatory. It specifies the "id" attribute of the widget.
+                    .Placeholder("All types")
+                    .DataTextField("Title") //Specify which property of the Product to be used by the ComboBox as a text.
+                    .Filter("contains")
+                    .HtmlAttributes(new { style = "width: 100%" })
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetDestinations", "Home"); //Set the Action and Controller names.
+                        });
+                    })
+                    .Events(ev => ev.Select("destinationsSelect").Change("destinationsChange"))
+                    .Height(442)
+                    .Template(@"
+                        <div class='destination-combo-template clearfix'>
+                        <span></span><img src='#=data.DefaultImage#' title='#=data.Title#' /><h4>#=data.Title#</h4>
+                        <span>#=getRating(data.Rating)#</span>
+                        <span class='info'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                        </div>
+                    ")
+                )
+            </div>
+            <div class="col-md-2">
+                @(Html.Kendo().DropDownList()
+                    .Name("OfferType")
+                    .OptionLabel("Select offer type")
+                    .DataTextField("Text")
+                    .DataValueField("Value")
+                    .BindTo(new List<SelectListItem>() {
+                        new SelectListItem() { Text = "All types", Value = "All" },
+                        new SelectListItem() { Text = "Special offers", Value = "Special" },
+                        new SelectListItem() { Text = "Regular offers", Value = "Regular" }
+                    })
+                    .HtmlAttributes(new { style = "width:100%;" })
+                    .Height(150)
+                )
+            </div>
+            <div class="col-md-2">
+                @(Html.Kendo().DropDownList()
+                    .Name("PriceRangeDropDown")
+                    .OptionLabel("Select price range")
+                    .DataTextField("Text")
+                    .DataValueField("Value")
+                    .BindTo(new List<SelectListItem>() {
+                        new SelectListItem() { Text = "Any price range", Value = "0" },
+                        new SelectListItem() { Text = "from $0 to $999", Value = "0-999" },
+                        new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
+                        new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
+                    })
+                    .HtmlAttributes(new { style = "width:100%;" })
+                    .Height(150)
+                    .Events(x => x.Change("priceRangeDropDownChange"))
+                    .Deferred()
+                )
+            </div>
+            <div class="col-md-2">
+                @(Html.Kendo().Button()
+                    .Name("SearchButton")
+                    .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary" })
+                    .Content("Search")
+                    .Events(ev => ev.Click("searchClick"))
+                )
+            </div>
+        </div>
+    </div>
+</div>

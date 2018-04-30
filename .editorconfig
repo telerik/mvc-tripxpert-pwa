@@ -1,0 +1,27 @@
+# what's this?
+# - http://editorconfig.org
+
+root = true
+
+[*]
+trim_trailing_whitespace = true
+max_line_length = off
+indent_size = 4
+end_of_line = lf
+indent_style = space
+
+[*.{css,scss}]
+insert_final_newline = true
+
+[*.{html,cshtml}]
+insert_final_newline = false
+
+[*.js]
+insert_final_newline = false
+
+[*.cs]
+insert_final_newline = false
+
+[*.json]
+indent_size = 2
+insert_final_newline = false
