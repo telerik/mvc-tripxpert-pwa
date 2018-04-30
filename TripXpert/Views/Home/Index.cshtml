@@ -1,0 +1,187 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+@Html.Partial("Search")
+
+<div class="bg-light">
+    <div class="container">
+
+        <div class="text-center">
+            <h2 class="k-h1">Tripxpert Recommends</h2>
+            <p class="text-muted">Explore top destinations and attractions</p>
+        </div>
+        @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
+            .Name("listView")
+            .TagName("div")
+            .ClientTemplateId("kendo-card-template")
+            .DataSource(dataSource =>
+            {
+                dataSource.Read(read => read.Action("Destinations_Read", "Destinations"));
+                dataSource.PageSize(3);
+            })
+            .HtmlAttributes(new { @class = "border-0 k-card-deck" })
+        )
+
+    </div>
+</div>
+
+<script type="text/x-kendo-tmpl" id="kendo-card-template">
+    <div class="k-card">
+        <img src="#:DefaultImage#" class="k-card-image" />
+        <div class="k-card-body">
+            <h5 class="k-card-title">#:Title#</h5>
+            <h6 class="k-card-subtitle">
+                # for (var i=0; i < data.ShortDescription.length; i++) {#
+                    # if (i > 0) { #
+                        <span style="display: inline-block"></span>
+                    #}#
+                    #:data.ShortDescription[i]#
+                #}#
+            </h6>
+        </div>
+        <div class="k-card-actions">
+            <a class="k-button k-flat k-primary" href='/Destination/#:DestinationID#'">View Details</a>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-kendo-tmpl" id="bootstrap-card-template">
+    <div class="card" style="width: 35rem; height: 35rem;">
+        <div class="image-container" style="background-image:url('#:DetailImage.replace(/ /g , `%20`)#')">
+            @*<img class="card-img-top" src="#:DefaultImage#" alt="#:Title#">*@
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">#:Title#</h5>
+            <p class="card-text">
+                # for (var i=0; i < data.ShortDescription.length; i++) {#
+                # if (i > 0) { #
+                <span style="display: inline-block"></span>
+                #}#
+                #:data.ShortDescription[i]#
+                #}#
+            </p>
+            <div class="card-actions">
+                <label class="price">from #:kendo.toString(data.LowestPrice, "c", "en-US")#</label>
+                <a href="/Destination/#:DestinationID#" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<div id="example" style="height: 100%">
+    <div class="responsive-message"></div>
+</div>
+<script>
+
+    var selectedID = "";
+    var offerType = "";
+    var priceRange = "";
+    var ids = "1";
+
+    function getRating(rating) {
+        var count = Math.floor(rating);
+        var result = "";
+        for (var i = 0; i < count; i++) {
+            result += "<span class='k-icon k-i-star'></span>";
+        }
+        return result;
+    }
+    function destinationsSelect(e) {
+        selectedID = e.dataItem.DestinationID;
+    }
+
+    function destinationsChange(e) {
+        if (e.sender.select() < 0) {
+            selectedID = "";
+        }
+    }
+
+    function searchClick() {
+        $.ajax({
+            url: '@Url.Action("GetDestinationsQuery","Home")',
+            type: 'GET',
+            data: {
+                priceRange:  $("#PriceRange").val(),
+                offerType: $("#OfferType").data("kendoDropDownList").value()
+            },
+            success: function (data) {
+                data ? ids = data : ids = "1";
+                ids = ids.split(',');
+                if (selectedID != "") {
+                    ids = selectedID;
+                }
+                if (ids.length > 1) {
+                    window.location.href = '@Url.Action("Destinations","Destinations")' + "?Ids=" + ids.toString();
+                }
+                else {
+                    window.location.href = '@Url.Action("DestinationDetails", "Destinations")' + "/" + ids.toString();;
+                }
+            }
+        });
+
+    }
+
+    function priceRangeDropDownChange() {
+        $("#PriceRange").val(this.value());
+    }
+
+    function priceRangeSliderChange(e) {
+        $("#PriceRange").val(e.values.toString().replace(",", "-"));
+    }
+
+    $(function () {
+         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
+            $('.k-price-range-slider-wrapper').show();
+        } else {
+            @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
+            $('.k-price-range-drop-down-wrapper').show();
+        }
+
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: ('@Url.Action("GetSpecialDestinations")'),
+                    dataType: "json"
+                }
+            }
+        });
+    });
+
+    //Open on focus logic
+    $(function () {
+        $("[data-role=combobox]").each(function () {
+            var widget = $(this).getKendoComboBox();
+            widget.input.on("focus", function () {
+                widget.open();
+            });
+        });
+    });
+
+    $(window).resize(function () {
+        var destinationCombo = $("#Destinations").data("kendoComboBox");
+        var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
+        var offerDropDown = $("#OfferType").data("kendoDropDownList");
+
+        destinationCombo.close();
+        priceDropDown? priceDropDown.close():'';
+        offerDropDown.close();
+
+        updateImage();
+    });
+
+    function updateImage() {
+        var img = $(".image-wrapper img");
+        var contHeight = img.closest(".image-wrapper").height();
+        var contWidth = img.closest(".image-wrapper").width();
+        var ratio1 = contWidth / contHeight;
+        var ratio2 = 1.777;
+        if (ratio2 > ratio1) {
+            img.height(contHeight);
+        }
+        else {
+            img.height( contWidth / ratio2);
+        }
+    }
+</script>

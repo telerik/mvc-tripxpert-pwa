@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TripXpertModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TripXpertModelStoreContainer">
+          <EntitySet Name="Attractions" EntityType="TripXpertModel.Store.Attractions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DestinationMarkers" EntityType="TripXpertModel.Store.DestinationMarkers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Destinations" EntityType="TripXpertModel.Store.Destinations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="TripXpertModel.Store.Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="TripXpertModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Testimonials" EntityType="TripXpertModel.Store.Testimonials" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TourInfos" EntityType="TripXpertModel.Store.TourInfos" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Attractions_Destinations" Association="TripXpertModel.Store.FK_Attractions_Destinations">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="Attractions" EntitySet="Attractions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destinations_Testimonials" Association="TripXpertModel.Store.FK_Destinations_Testimonials">
+            <End Role="Testimonials" EntitySet="Testimonials" />
+            <End Role="Destinations" EntitySet="Destinations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DestonationMarkers_Destinations" Association="TripXpertModel.Store.FK_DestonationMarkers_Destinations">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="DestinationMarkers" EntitySet="DestinationMarkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Attractions" Association="TripXpertModel.Store.FK_Images_Attractions">
+            <End Role="Attractions" EntitySet="Attractions" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Destinations2" Association="TripXpertModel.Store.FK_Images_Destinations2">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourInfos_Destinations" Association="TripXpertModel.Store.FK_TourInfos_Destinations">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="TourInfos" EntitySet="TourInfos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attractions">
+          <Key>
+            <PropertyRef Name="AttractionID" />
+          </Key>
+          <Property Name="AttractionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DestinationID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="DestinationMarkers">
+          <Key>
+            <PropertyRef Name="MarkerID" />
+          </Key>
+          <Property Name="MarkerID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DestinationID" Type="int" Nullable="false" />
+          <Property Name="Latitude" Type="decimal" Nullable="false" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Nullable="false" Scale="6" />
+        </EntityType>
+        <EntityType Name="Destinations">
+          <Key>
+            <PropertyRef Name="DestinationID" />
+          </Key>
+          <Property Name="DestinationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TestimonialID" Type="int" Nullable="false" />
+          <Property Name="IsSpecial" Type="bit" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="FullDescription" Type="text" />
+          <Property Name="Duration" Type="smallint" />
+          <Property Name="VideoURL" Type="nvarchar" MaxLength="255" />
+          <Property Name="Rating" Type="decimal" Precision="2" Scale="1" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AttractionID" Type="int" />
+          <Property Name="DestinationID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Author" Type="nvarchar" MaxLength="255" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+          <Property Name="FolderName" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Testimonials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TestimonialContent" Type="text" />
+          <Property Name="Author" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TourInfos">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" />
+          <Property Name="DestinationID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="PerPersonSharing" Type="int" />
+          <Property Name="PerSingleOccupancy" Type="int" />
+          <Property Name="PerChild" Type="int" />
+          <Property Name="Duration" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_Attractions_Destinations">
+          <End Role="Destinations" Type="TripXpertModel.Store.Destinations" Multiplicity="1" />
+          <End Role="Attractions" Type="TripXpertModel.Store.Attractions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="Attractions">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destinations_Testimonials">
+          <End Role="Testimonials" Type="TripXpertModel.Store.Testimonials" Multiplicity="1" />
+          <End Role="Destinations" Type="TripXpertModel.Store.Destinations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Testimonials">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Destinations">
+              <PropertyRef Name="TestimonialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DestonationMarkers_Destinations">
+          <End Role="Destinations" Type="TripXpertModel.Store.Destinations" Multiplicity="1" />
+          <End Role="DestinationMarkers" Type="TripXpertModel.Store.DestinationMarkers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="DestinationMarkers">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Attractions">
+          <End Role="Attractions" Type="TripXpertModel.Store.Attractions" Multiplicity="0..1" />
+          <End Role="Images" Type="TripXpertModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attractions">
+              <PropertyRef Name="AttractionID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="AttractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Destinations2">
+          <End Role="Destinations" Type="TripXpertModel.Store.Destinations" Multiplicity="1" />
+          <End Role="Images" Type="TripXpertModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourInfos_Destinations">
+          <End Role="Destinations" Type="TripXpertModel.Store.Destinations" Multiplicity="1" />
+          <End Role="TourInfos" Type="TripXpertModel.Store.TourInfos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="TourInfos">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TripXpertModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TripXpertEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Attractions" EntityType="TripXpertModel.Attraction" />
+          <EntitySet Name="Destinations" EntityType="TripXpertModel.Destination" />
+          <EntitySet Name="sysdiagrams" EntityType="TripXpertModel.sysdiagram" />
+          <EntitySet Name="Testimonials" EntityType="TripXpertModel.Testimonial" />
+          <EntitySet Name="TourInfos" EntityType="TripXpertModel.TourInfo" />
+          <AssociationSet Name="FK_Attractions_Destinations" Association="TripXpertModel.FK_Attractions_Destinations">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="Attractions" EntitySet="Attractions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Destinations_Testimonials" Association="TripXpertModel.FK_Destinations_Testimonials">
+            <End Role="Testimonials" EntitySet="Testimonials" />
+            <End Role="Destinations" EntitySet="Destinations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourInfos_Destinations" Association="TripXpertModel.FK_TourInfos_Destinations">
+            <End Role="Destinations" EntitySet="Destinations" />
+            <End Role="TourInfos" EntitySet="TourInfos" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TripXpertModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TripXpertModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="DestinationMarkers" EntityType="TripXpertModel.DestinationMarker" />
+          <AssociationSet Name="FK_DestonationMarkers_Destinations1" Association="TripXpertModel.FK_DestonationMarkers_Destinations1">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="DestinationMarker" EntitySet="DestinationMarkers" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="TripXpertModel.Image" />
+          <AssociationSet Name="FK_Images_Attractions" Association="TripXpertModel.FK_Images_Attractions">
+            <End Role="Attraction" EntitySet="Attractions" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Destinations2" Association="TripXpertModel.FK_Images_Destinations2">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Attraction">
+          <Key>
+            <PropertyRef Name="AttractionID" />
+          </Key>
+          <Property Name="AttractionID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DestinationID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Location" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Destination" Relationship="TripXpertModel.FK_Attractions_Destinations" FromRole="Attractions" ToRole="Destinations" />
+          <NavigationProperty Name="Images" Relationship="TripXpertModel.FK_Images_Attractions" FromRole="Attraction" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="DestinationID" />
+          </Key>
+          <Property Name="DestinationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TestimonialID" Type="Int32" Nullable="false" />
+          <Property Name="IsSpecial" Type="Boolean" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="FullDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Duration" Type="Int16" />
+          <Property Name="VideoURL" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Rating" Type="Decimal" Precision="2" Scale="1" />
+          <NavigationProperty Name="Attractions" Relationship="TripXpertModel.FK_Attractions_Destinations" FromRole="Destinations" ToRole="Attractions" />
+          <NavigationProperty Name="Testimonial" Relationship="TripXpertModel.FK_Destinations_Testimonials" FromRole="Destinations" ToRole="Testimonials" />
+          <NavigationProperty Name="TourInfos" Relationship="TripXpertModel.FK_TourInfos_Destinations" FromRole="Destinations" ToRole="TourInfos" />
+          <NavigationProperty Name="DestinationMarkers" Relationship="TripXpertModel.FK_DestonationMarkers_Destinations1" FromRole="Destination" ToRole="DestinationMarker" />
+          <NavigationProperty Name="Images" Relationship="TripXpertModel.FK_Images_Destinations2" FromRole="Destination" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="TestimonialContent" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Author" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Destinations" Relationship="TripXpertModel.FK_Destinations_Testimonials" FromRole="Testimonials" ToRole="Destinations" />
+        </EntityType>
+        <EntityType Name="TourInfo">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="Int32" Nullable="false" />
+          <Property Name="DestinationID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="PerPersonSharing" Type="Int32" />
+          <Property Name="PerSingleOccupancy" Type="Int32" />
+          <Property Name="PerChild" Type="Int32" />
+          <Property Name="Duration" Type="Int16" />
+          <NavigationProperty Name="Destination" Relationship="TripXpertModel.FK_TourInfos_Destinations" FromRole="TourInfos" ToRole="Destinations" />
+        </EntityType>
+        <Association Name="FK_Attractions_Destinations">
+          <End Role="Destinations" Type="TripXpertModel.Destination" Multiplicity="1" />
+          <End Role="Attractions" Type="TripXpertModel.Attraction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="Attractions">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Destinations_Testimonials">
+          <End Role="Testimonials" Type="TripXpertModel.Testimonial" Multiplicity="1" />
+          <End Role="Destinations" Type="TripXpertModel.Destination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Testimonials">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Destinations">
+              <PropertyRef Name="TestimonialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourInfos_Destinations">
+          <End Role="Destinations" Type="TripXpertModel.Destination" Multiplicity="1" />
+          <End Role="TourInfos" Type="TripXpertModel.TourInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destinations">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="TourInfos">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="DestinationMarker">
+          <Key>
+            <PropertyRef Name="MarkerID" />
+          </Key>
+          <Property Type="Int32" Name="MarkerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DestinationID" Nullable="false" />
+          <Property Type="Decimal" Name="Latitude" Nullable="false" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="Longitude" Nullable="false" Precision="18" Scale="6" />
+          <NavigationProperty Name="Destination" Relationship="TripXpertModel.FK_DestonationMarkers_Destinations1" FromRole="DestinationMarker" ToRole="Destination" />
+        </EntityType>
+        <Association Name="FK_DestonationMarkers_Destinations1">
+          <End Type="TripXpertModel.Destination" Role="Destination" Multiplicity="1" />
+          <End Type="TripXpertModel.DestinationMarker" Role="DestinationMarker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="DestinationMarker">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AttractionID" />
+          <Property Type="Int32" Name="DestinationID" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Author" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageURL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FolderName" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Attraction" Relationship="TripXpertModel.FK_Images_Attractions" FromRole="Image" ToRole="Attraction" />
+          <NavigationProperty Name="Destination" Relationship="TripXpertModel.FK_Images_Destinations2" FromRole="Image" ToRole="Destination" />
+        </EntityType>
+        <Association Name="FK_Images_Attractions">
+          <End Type="TripXpertModel.Attraction" Role="Attraction" Multiplicity="0..1" />
+          <End Type="TripXpertModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attraction">
+              <PropertyRef Name="AttractionID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="AttractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Destinations2">
+          <End Type="TripXpertModel.Destination" Role="Destination" Multiplicity="1" />
+          <End Type="TripXpertModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="DestinationID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="DestinationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TripXpertModelStoreContainer" CdmEntityContainer="TripXpertEntities">
+          <EntitySetMapping Name="Attractions">
+            <EntityTypeMapping TypeName="TripXpertModel.Attraction">
+              <MappingFragment StoreEntitySet="Attractions">
+                <ScalarProperty Name="AttractionID" ColumnName="AttractionID" />
+                <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destinations">
+            <EntityTypeMapping TypeName="TripXpertModel.Destination">
+              <MappingFragment StoreEntitySet="Destinations">
+                <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+                <ScalarProperty Name="TestimonialID" ColumnName="TestimonialID" />
+                <ScalarProperty Name="IsSpecial" ColumnName="IsSpecial" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TripXpertModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonials">
+            <EntityTypeMapping TypeName="TripXpertModel.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonials">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TestimonialContent" ColumnName="TestimonialContent" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourInfos">
+            <EntityTypeMapping TypeName="TripXpertModel.TourInfo">
+              <MappingFragment StoreEntitySet="TourInfos">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="PerPersonSharing" ColumnName="PerPersonSharing" />
+                <ScalarProperty Name="PerSingleOccupancy" ColumnName="PerSingleOccupancy" />
+                <ScalarProperty Name="PerChild" ColumnName="PerChild" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TripXpertModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TripXpertModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TripXpertModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TripXpertModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TripXpertModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TripXpertModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TripXpertModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TripXpertModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TripXpertModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="DestinationMarkers">
+            <EntityTypeMapping TypeName="TripXpertModel.DestinationMarker">
+              <MappingFragment StoreEntitySet="DestinationMarkers">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+                <ScalarProperty Name="MarkerID" ColumnName="MarkerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="TripXpertModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DestinationID" ColumnName="DestinationID" />
+                <ScalarProperty Name="AttractionID" ColumnName="AttractionID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

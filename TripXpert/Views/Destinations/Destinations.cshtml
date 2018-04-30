@@ -1,0 +1,52 @@
+@{
+    ViewBag.Title = "Destinations";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="k-h1">Available Destinations</h2>
+        </div>
+    </div>
+
+@(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
+    .Name("listView")
+    .TagName("div")
+    .ClientTemplateId("bootstrap-card-template")
+    .DataSource(dataSource =>
+    {
+        dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
+        dataSource.PageSize(21);
+    })
+)
+
+</div>
+
+<script>
+    function getRating(rating) {
+        var count = Math.floor(rating);
+        var result = "";
+        for (var i = 0; i < count; i++) {
+            result += "<span class='k-icon k-i-star'></span>";
+        }
+        return result;
+    }
+
+    function getIds() {
+        var urlParams = getQueryString("Ids");
+        var idList;
+
+        if (urlParams) {
+            idList = urlParams.split(",").map(Number);
+        }
+
+        return { ids: idList };
+    }
+
+    var getQueryString = function (field, url) {
+        var href = url ? url : window.location.href;
+        var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
+        var string = reg.exec(href);
+        return string ? string[1] : null;
+    };
+</script>

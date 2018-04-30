@@ -1,0 +1,15 @@
+{
+  "name": "tripxpert_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@progress/kendo-theme-bootstrap": "^2.12.0",
+    "bootstrap": "^4.1.0"
+  }
+}
