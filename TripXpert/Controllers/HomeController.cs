@@ -44,7 +44,7 @@ namespace TripXpert.Controllers
             var rootDirecory = System.AppDomain.CurrentDomain.BaseDirectory;
 
                 new WebImage(rootDirecory+path)
-                    .Resize(width, height, false, true) 
+                    .Resize(width, height, true, true) 
                     .Crop(1, 1)
                     .Write();
         }
