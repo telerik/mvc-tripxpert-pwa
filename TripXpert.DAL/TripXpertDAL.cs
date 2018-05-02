@@ -87,7 +87,7 @@ namespace TripXpert.DAL
         #endregion
 
         #region DestinationsImages
-        public const string domainURL = @"/images/gallery/";
+        public const string domainURL = @"/Images/Gallery/";
         public static string GetDestinationsQueryString(string title, string typeOfOffer, string priceRange)
         {
 
