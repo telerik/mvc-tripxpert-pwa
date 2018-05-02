@@ -78,7 +78,7 @@
             url: '@Url.Action("GetDestinationsQuery","Home")',
             type: 'GET',
             data: {
-                priceRange:  $("#PriceRange").val(),
+                priceRange:  $("#PriceRange").val() || "",
                 offerType: $("#OfferType").data("kendoDropDownList").value()
             },
             success: function (data) {
@@ -95,7 +95,6 @@
                 }
             }
         });
-
     }
 
     function priceRangeDropDownChange() {
