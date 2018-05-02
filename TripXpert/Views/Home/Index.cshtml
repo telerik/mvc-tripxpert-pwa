@@ -45,30 +45,6 @@
     </div>
 </script>
 
-<script type="text/x-kendo-tmpl" id="bootstrap-card-template">
-    <div class="card" style="width: 35rem; height: 35rem;">
-        <div class="image-container" style="background-image:url('#:DetailImage.replace(/ /g , `%20`)#')">
-            @*<img class="card-img-top" src="#:DefaultImage#" alt="#:Title#">*@
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">#:Title#</h5>
-            <p class="card-text">
-                # for (var i=0; i < data.ShortDescription.length; i++) {#
-                # if (i > 0) { #
-                <span style="display: inline-block"></span>
-                #}#
-                #:data.ShortDescription[i]#
-                #}#
-            </p>
-            <div class="card-actions">
-                <label class="price">from #:kendo.toString(data.LowestPrice, "c", "en-US")#</label>
-                <a href="/Destination/#:DestinationID#" class="btn btn-primary">View Details</a>
-            </div>
-        </div>
-    </div>
-</script>
-
-
 <div id="example" style="height: 100%">
     <div class="responsive-message"></div>
 </div>
