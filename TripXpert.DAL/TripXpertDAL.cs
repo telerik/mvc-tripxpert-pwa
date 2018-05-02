@@ -198,7 +198,7 @@ namespace TripXpert.DAL
             using (entity)
             {
                 Image defaultImage = (from image in entity.Images
-                                      where image.DestinationID == id && image.AttractionID != null
+                                      where image.DestinationID == id
                                       select image).ToList().First();
 
                 return String.Format("{0}{1}/{2}", domainURL,defaultImage.FolderName.Trim(), defaultImage.ImageURL);
