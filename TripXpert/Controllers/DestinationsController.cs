@@ -22,8 +22,8 @@ namespace TripXpert.Controllers
             DestinationViewModel destination = TripXpertDAL.GetAllDestinations().Where(x=>x.DestinationID == id).Select(s => new DestinationViewModel()
             {
                 DestinationID = s.DestinationID,
-                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID, 'M'),
-                DetailImage = TripXpertDAL.GetDestinationDetailImage(s.DestinationID, 'L'),
+                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
+                DetailImage = TripXpertDAL.GetDestinationDetailImage(s.DestinationID),
                 LowestPrice = TripXpertDAL.GetLowestPriceForDestination(s.DestinationID, null, null),
                 TestimonialID = s.TestimonialID,
                 IsSpecial = s.IsSpecial,
@@ -93,7 +93,7 @@ namespace TripXpert.Controllers
             IEnumerable<DestinationViewModel> data = TripXpertDAL.GetAllDestinations().Select(s => new DestinationViewModel()
             {
                 DestinationID = s.DestinationID,
-                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID, 'M'),
+                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
                 LowestPrice = TripXpertDAL.GetLowestPriceForDestination(s.DestinationID, null, null),
                 TestimonialID = s.TestimonialID,
                 IsSpecial = s.IsSpecial,
@@ -103,7 +103,7 @@ namespace TripXpert.Controllers
                 Duration = s.Duration,
                 VideoURL = s.VideoURL,
                 Rating = s.Rating,
-                DetailImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID, 'L'),
+                DetailImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
             });
 
             if (ids != null)
@@ -124,7 +124,7 @@ namespace TripXpert.Controllers
             var data = TripXpertDAL.GetAllDestinations().Select(s => new DestinationViewModel()
             {
                 DestinationID = s.DestinationID,
-                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID, 'M'),
+                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
                 LowestPrice = TripXpertDAL.GetLowestPriceForDestination(s.DestinationID, null, null),
                 TestimonialID = s.TestimonialID,
                 IsSpecial = s.IsSpecial,

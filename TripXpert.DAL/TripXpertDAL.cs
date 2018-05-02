@@ -191,24 +191,9 @@ namespace TripXpert.DAL
             }
         }
 
-        public static string GetDestinationDefaultImage(int id, char size)
+        public static string GetDestinationDefaultImage(int id)
         {
             TripXpertEntities entity = new TripXpertEntities();
-            string sizeString = "138x138";
-            switch (size)
-            {
-                case 'M':
-                    sizeString = "/320x320/";
-                    break;
-                case 'S':
-                    sizeString = "/138x138/";
-                    break;
-                case 'L':
-                    sizeString = "/2000x1125/";
-                    break;
-                default:
-                    break;
-            }
 
             using (entity)
             {
@@ -216,28 +201,13 @@ namespace TripXpert.DAL
                                       where image.DestinationID == id && image.AttractionID != null
                                       select image).ToList().First();
 
-                return String.Format("{0}{1}{2}{3}", domainURL,defaultImage.FolderName.Trim(), sizeString, defaultImage.ImageURL);
+                return String.Format("{0}{1}/{2}", domainURL,defaultImage.FolderName.Trim(), defaultImage.ImageURL);
             }
         }
 
-        public static string GetDestinationDetailImage(int id, char size)
+        public static string GetDestinationDetailImage(int id)
         {
             TripXpertEntities entity = new TripXpertEntities();
-            string sizeString = "138x138";
-            switch (size)
-            {
-                case 'M':
-                    sizeString = "/320x320/";
-                    break;
-                case 'S':
-                    sizeString = "/138x138/";
-                    break;
-                case 'L':
-                    sizeString = "/2000x1125/";
-                    break;
-                default:
-                    break;
-            }
 
             using (entity)
             {
@@ -248,7 +218,7 @@ namespace TripXpert.DAL
                 int randomIndex = rnd.Next(detailImages.Count);
                 var detailImage = detailImages[randomIndex];
 
-                return String.Format("{0}{1}{2}{3}", domainURL, detailImage.FolderName.Trim(), sizeString, detailImage.ImageURL);
+                return String.Format("{0}{1}{2}", domainURL, detailImage.FolderName.Trim(), detailImage.ImageURL);
             }
         }
 
