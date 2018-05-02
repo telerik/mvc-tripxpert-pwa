@@ -5,9 +5,10 @@
             <div class="col-md-6">
                 @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                 @(Html.Kendo().ComboBox()
-                    .Name("Destinations") //The name of the ComboBox is mandatory. It specifies the "id" attribute of the widget.
+                    .Name("Destinations")
                     .Placeholder("All types")
-                    .DataTextField("Title") //Specify which property of the Product to be used by the ComboBox as a text.
+                    .DataTextField("Title")
+                    .DataValueField("DestinationID")
                     .Filter("contains")
                     .HtmlAttributes(new { style = "width: 100%" })
                     .DataSource(source =>
