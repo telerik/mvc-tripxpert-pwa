@@ -22,7 +22,7 @@ namespace TripXpert.Controllers
             List<Destination> data = TripXpertDAL.GetAllDestinations();
             foreach (Destination item in data)
             {
-                item.DefaultImage = TripXpertDAL.GetDestinationDefaultImage(item.DestinationID, 'S');
+                item.DefaultImage = TripXpertDAL.GetDestinationDefaultImage(item.DestinationID);
                 item.LowestPrice = TripXpertDAL.GetLowestPriceForDestination(item.DestinationID, null, null);
             }
             return Json(data, JsonRequestBehavior.AllowGet);
