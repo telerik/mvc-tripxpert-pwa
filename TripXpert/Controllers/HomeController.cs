@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using TripXpert.DAL;
 
@@ -31,11 +32,21 @@ namespace TripXpert.Controllers
         {
             return Json(TripXpertDAL.GetSpecialDestinations(), JsonRequestBehavior.AllowGet);
         }
-
+        
         public ActionResult GetDestinationsQuery(string priceRange, string offerType)
         {
             var result = TripXpertDAL.GetDestinationsQueryString(String.Empty, offerType == "" ? "All" : offerType, priceRange);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public void GetPhotoInCertainSize(string path, int width, int height)
+        {
+            var rootDirecory = System.AppDomain.CurrentDomain.BaseDirectory;
+
+                new WebImage(rootDirecory+path)
+                    .Resize(width, height, false, true) 
+                    .Crop(1, 1)
+                    .Write();
         }
     }
 }
