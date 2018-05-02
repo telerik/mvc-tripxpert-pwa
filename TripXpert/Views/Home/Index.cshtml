@@ -40,7 +40,7 @@
             </h6>
         </div>
         <div class="k-card-actions">
-            <a class="k-button k-flat k-primary" href='/Destination/#:DestinationID#'">View Details</a>
+            <a class="k-button k-flat k-primary" href="/Destination/#:DestinationID#">View Details</a>
         </div>
     </div>
 </script>
@@ -143,21 +143,5 @@
         destinationCombo.close();
         priceDropDown? priceDropDown.close():'';
         offerDropDown.close();
-
-        updateImage();
     });
-
-    function updateImage() {
-        var img = $(".image-wrapper img");
-        var contHeight = img.closest(".image-wrapper").height();
-        var contWidth = img.closest(".image-wrapper").width();
-        var ratio1 = contWidth / contHeight;
-        var ratio2 = 1.777;
-        if (ratio2 > ratio1) {
-            img.height(contHeight);
-        }
-        else {
-            img.height( contWidth / ratio2);
-        }
-    }
 </script>
