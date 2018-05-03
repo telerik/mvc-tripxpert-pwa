@@ -11,6 +11,7 @@
                     .DataValueField("DestinationID")
                     .Filter("contains")
                     .HtmlAttributes(new { style = "width: 100%" })
+                    .AutoBind(false)
                     .DataSource(source =>
                     {
                         source.Read(read =>

@@ -31,10 +31,6 @@
     }
   ],
   "splash_pages": null,
-  "serviceworker": {
-    "src": "service-worker.js",
-    "scope": "/"
-  },
   "screenshots": [
     {
       "src": "/Images/Gallery/France/Eiffel-Tower_Attraction.jpg",

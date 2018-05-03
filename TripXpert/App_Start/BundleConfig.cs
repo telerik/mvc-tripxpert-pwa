@@ -1,4 +1,3 @@
-using System.Web;
 using System.Web.Optimization;
 
 namespace TripXpert
@@ -11,8 +10,8 @@ namespace TripXpert
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                 "~/Scripts/jquery-3.1.1.min.js",
-                "~/Scripts/kendo/2018.1.221/kendo.custom.min.js",
-                "~/Scripts/tripxpert.js"
+                "~/Scripts/tripxpert.js",
+                "~/Scripts/service-worker.js"
             ));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
