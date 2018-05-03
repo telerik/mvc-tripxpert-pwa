@@ -218,7 +218,7 @@ namespace TripXpert.DAL
                 int randomIndex = rnd.Next(detailImages.Count);
                 var detailImage = detailImages[randomIndex];
 
-                return String.Format("{0}{1}{2}", domainURL, detailImage.FolderName.Trim(), detailImage.ImageURL);
+                return String.Format("{0}{1}/{2}", domainURL, detailImage.FolderName.Trim(), detailImage.ImageURL);
             }
         }
 
@@ -290,7 +290,7 @@ namespace TripXpert.DAL
                         {
                             Title = image.Title,
                             ImageID = image.ImageID,
-                            ImageURL = domainURL + image.FolderName.Trim() + "/138x138/" + image.ImageURL
+                            ImageURL = domainURL + image.FolderName.Trim() + "/" + image.ImageURL
                         }).ToList();
             }
         }
@@ -303,7 +303,7 @@ namespace TripXpert.DAL
                 Image attractionImage = (from image in entity.Images
                                          where image.AttractionID == attractionID
                                          select image).ToList().First();
-                attractionImage.ImageURL = String.Format("{0}{1}/320x320/{2}", domainURL, attractionImage.FolderName.Trim(), attractionImage.ImageURL);
+                attractionImage.ImageURL = String.Format("{0}{1}/{2}", domainURL, attractionImage.FolderName.Trim(), attractionImage.ImageURL);
 
                 return attractionImage;
             }
@@ -331,7 +331,7 @@ namespace TripXpert.DAL
                             select new
                             {
                                 DestinationTitle = destination.Title,
-                                ImageURL =  domainURL+attractionImage.FolderName.Trim() + "/320x320/" + attractionImage.ImageURL,
+                                ImageURL =  domainURL+attractionImage.FolderName.Trim() + "/" + attractionImage.ImageURL,
                                 ImageTitle = attractionImage.Title,
                                 Location = attraction.Location,
                                 Description = attraction.Description,
