@@ -53,12 +53,12 @@
     <form id="feedbackForm">
         <div class="row">
             <div class="form-group col-md-6">
-                <label>First Name*</label>
-                <input type="text" class="form-control k-textbox" required />
+                <label for="firstname">First Name*</label>
+                <input id="firstname" name="firstname" type="text" class="form-control k-textbox" required />
             </div>
             <div class="form-group col-md-6">
-                <label>Last Name *</label>
-                <input type="text" class="form-control k-textbox" required />
+                <label for="lastname">Last Name *</label>
+                <input id="lastname" name="lastname" type="text" class="form-control k-textbox" required />
             </div>
         </div>
         <div class="row">
@@ -75,6 +75,7 @@
                 @(Html.Kendo().DropDownList()
                     .Name("country")
                     .Height(192)
+                    .OptionLabel("Select country")
                     .DataSource(source =>
                     {
                         source.Read(read =>
@@ -88,8 +89,8 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <label>Comments *</label>
-                <textarea class="form-control k-textbox" cols"20" rows="20"></textarea>
+                <label for="comments">Comments *</label>
+                <textarea name="comments" class="form-control k-textbox" cols"20" rows="20" required></textarea>
             </div>
         </div>
         <div class="row">
@@ -103,5 +104,11 @@
 <script>
 $(document).ready(function () {
     var validator = $("#feedbackForm").kendoValidator().data("kendoValidator");
+    $("#feedbackForm").submit(function (event) {
+        event.preventDefault();
+        if (validator.validate()) {
+            kendo.alert("Thank you for your feedback!");
+        } 
+    });
 });
 </script>

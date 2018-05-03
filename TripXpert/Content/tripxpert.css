@@ -7,3 +7,8 @@
   height: 450px;
   background-repeat: no-repeat;
   background-size: cover; }
+
+.logo {
+    height: 150px;
+    width: 250px;
+}
