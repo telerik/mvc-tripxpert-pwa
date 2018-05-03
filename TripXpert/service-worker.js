@@ -8,7 +8,7 @@ var cachedFiles = [
     '/Scripts/jquery-3.1.1.min.js',
     '/Scripts/kendo/2018.1.221/kendo.custom.min.js',
     '/Scripts/tripxpert.js',
-    '/Images/App/trip_xpert_logo.png',
+    '/Images/App/tripxpert_logo.svg',
     '/Home/GetDestinations',
     '/Home/GetSpecialDestinations',
     '/Images/Gallery/United-States/Fenway-Park_Attraction.jpg',

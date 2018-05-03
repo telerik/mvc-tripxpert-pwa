@@ -99,41 +99,43 @@
                     </text>);
             items.Add().Text("Enquiry form")
                 .Content(@<text>
+                  <form id="enquiry-form">
                     <h3>Contact an Expert</h3>
                     <p>
-                        <strong>@Model.Title</strong> has been added to your enquiry.  Please complete the short form. We’ll get right back to you to help you with your travels.
+                        <strong>@Model.Title</strong> has been added to your enquiry.  Please complete the short form. We'll get right back to you to help you with your travels.
                     </p>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="firstNameTextBox">First name</label>
-                            @(Html.Kendo().TextBox().Name("firstNameTextBox").HtmlAttributes(new { @class = "form-control" }))
+                            <label for="FirstName">First name</label>
+                            @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @class = "form-control", required = "required" }))
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="lastNameTextBox">Last Name</label>
-                            @(Html.Kendo().TextBox().Name("lastNameTextBox").HtmlAttributes(new { @class = "form-control" }))
+                            <label for="LastName">Last Name</label>
+                            @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @class = "form-control", required = "required" }))
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="emailTextBox">Email</label>
-                            @(Html.Kendo().TextBox().Name("emailTextBox").HtmlAttributes(new { @class = "form-control" }))
+                            <label for="Email">Email</label>
+                            @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control", required = "required" }))
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="commentsTextBox">Comments</label>
-                            @(Html.TextArea("commentsTextBox", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
+                            <label for="Comments">Comments</label>
+                            @(Html.TextArea("Comments", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             @(Html.Kendo().Button()
-                                .Name("sendEnquiry")
-                                .Content("Send")
-                                .Events(e => e.Click("enquirySendClick"))
+                              .Name("sendEnquiry")
+                              .Content("Send")
+                              .Events(e => e.Click("enquirySendClick"))
                             )
                         </div>
                     </div>
+                  </form>
                 </text>);
         })
         .HtmlAttributes(new { @style = "margin-top: -2.5rem" })
@@ -194,22 +196,13 @@
         $("#windowPriceInfo").data("kendoWindow").center().open();
     });
 
-    function enquirySendClick(e) {
-        var firstName = $("#firstNameTextBox");
-        var lastName = $("#lastNameTextBox");
-        var email = $("#emailTextBox");
-        var phone = $("#phoneTextBox");
-        var mobile = $("#mobileTextBox");
-        var country = $("#countryDropDown").data("kendoDropDownList");
-        var comments = $("#commentsTextBox");
+    var validator = $("#enquiry-form").kendoValidator().getKendoValidator();
 
-        firstName.val("");
-        lastName.val("");
-        email.val("");
-        phone.val("");
-        mobile.val("");
-        country.value("");
-        comments.val("");
+    function enquirySendClick(e) {
+        e.preventDefault();
+        if (validator.validate()) {
+            kendo.alert("Thank you for sending an inquiry! We will be in touch shortly.");
+        }
     }
 
     $(document).ready(function () {
