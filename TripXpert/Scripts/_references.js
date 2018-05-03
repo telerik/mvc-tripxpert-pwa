@@ -4,7 +4,6 @@
 /// <reference path="jquery-3.1.1.min.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
-/// <reference path="kendo/2018.1.221/kendo.custom.min.js" />
 /// <reference path="modernizr-2.8.3.js" />
 /// <reference path="respond.js" />
 /// <reference path="tripxpert.js" />
