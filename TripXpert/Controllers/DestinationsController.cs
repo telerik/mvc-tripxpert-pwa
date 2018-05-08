@@ -114,6 +114,27 @@ namespace TripXpert.Controllers
             return Json(data.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Destinations_First()
+        {
+            IEnumerable<DestinationViewModel> data = TripXpertDAL.GetFirstDestinations().Select(s => new DestinationViewModel()
+            {
+                DestinationID = s.DestinationID,
+                DefaultImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
+                LowestPrice = TripXpertDAL.GetLowestPriceForDestination(s.DestinationID, null, null),
+                TestimonialID = s.TestimonialID,
+                IsSpecial = s.IsSpecial,
+                Title = s.Title,
+                ShortDescription = s.ShortDescription.Split('|'),
+                FullDescription = s.FullDescription,
+                Duration = s.Duration,
+                VideoURL = s.VideoURL,
+                Rating = s.Rating,
+                DetailImage = TripXpertDAL.GetDestinationDefaultImage(s.DestinationID),
+            });
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetDestinationImages(int destinationId)
         {
             return Json((TripXpertDAL.GetAllDestinationImages(destinationId) as IEnumerable<object>).Take(7), JsonRequestBehavior.AllowGet);

@@ -16,8 +16,13 @@
             .ClientTemplateId("kendo-card-template")
             .DataSource(dataSource =>
             {
-                dataSource.Read(read => read.Action("Destinations_Read", "Destinations"));
-                dataSource.PageSize(3);
+                dataSource.Custom()
+                .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
+                .ServerAggregates(false)
+                .ServerFiltering(false)
+                .ServerGrouping(false)
+                .ServerPaging(false)
+                .ServerSorting(false);
             })
             .HtmlAttributes(new { @class = "border-0 k-card-deck" })
         )

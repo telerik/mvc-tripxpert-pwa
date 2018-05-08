@@ -257,6 +257,16 @@ namespace TripXpert.DAL
             }
         }
 
+        public static List<Destination> GetFirstDestinations()
+        {
+            TripXpertEntities entity = new TripXpertEntities();
+            using (entity)
+            {
+                var destinations = (from destionation in entity.Destinations select destionation).Take(3).ToList();
+                return destinations;
+            }
+        }
+
         public static object GetFullDestinationInfo()
         {
             Dictionary<string, List<object>> dataDictionary = new Dictionary<string, List<object>>();

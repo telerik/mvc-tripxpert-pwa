@@ -12,26 +12,10 @@ var cachedFiles = [
     '/Images/App/tripxpert_logo.svg',
     '/Home/GetDestinations',
     '/Home/GetSpecialDestinations',
-    '/Images/Gallery/United-States/Fenway-Park_Attraction.jpg',
-    '/Images/Gallery/Malta/Church-of-St.-Catherine-of-Alexandria_Maria-Kovacheva_Attraction.jpg',
-    '/Images/Gallery/Western-Europe/Frankfurt-Bridge_Daniel-Peichev_Attraction.jpg',
-    '/Images/Gallery/UNESCO-Bulgaria/Alexander-Nevsky-Cathedral_Svetlin-Nikolaev_Attraction.jpg',
-    '/Images/Gallery/India/Amber-Fort_Attraction.jpg',
-    '/Images/Gallery/South-Africa/Featherbed-Nature-Reserve_Attraction.jpg',
-    '/Images/Gallery/France/Arc-de-Triomphe_Attraction.jpg',
-    '/Images/Gallery/Costa-Rica/Barra-Honda-National-Park_Daniel-Peichev_Attraction.JPG',
-    '/Images/Gallery/Brazil-and-Argentina/Cristo-Redentor-(Christ-the-Redeemer)_Galabina-Yordanova_Attraction.JPG',
-    '/Images/Gallery/Cuba/Cienfuegos2_Kiril-Nedyalkov_Attraction.jpg',
-    '/Images/Gallery/Egypt/Abu-Simbel-Temples_Dimo-Dimov_Attraction.jpg',
-    '/Images/Gallery/England-Scotland-and-Wales/Big-Ben_Valentin-Likyov_Attraction.jpg',
-    '/Images/Gallery/Myanmar/Mahamuni-Pagoda_Attraction.jpg',
-    '/Images/Gallery/China/Forbidden-City_Attraction.jpg',
-    '/Images/Gallery/Kenya/Great-Rift-Valley_Attraction.jpg',
-    '/Images/Gallery/New-York-City/Brooklyn-Bridge_Pavlina-Hadjieva_Attraction.JPG',
-    '/Images/Gallery/Turkey-and-Greece/Blue-Mosque_Valentin-Likyov_Attraction.jpg',
-    '/Images/Gallery/Central-Europe/Berlin-Wall_Liliya-Karakoleva_Attraction.JPG',
-    '/Images/Gallery/Peru/Cathedral-of-Lima_Attraction.jpg',
-    '/Images/Gallery/Italy/Doges-Palace-Venice_Lilia-Karakoleva_Attraction.jpg'
+    '/Destinations/Destinations_First',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Barcelona-and-Tenerife/Arc-de-Triomf,-Barcelona,-Spain_Liliya-Karakoleva.JPG&width=320&height=320',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/United-States/Boston-Old-South-Church_Ivo-Igov.JPG&width=320&height=320',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG&width=320&height=320'
 ];
 
 var getPath = function (href) {
@@ -62,7 +46,10 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    if (cachedFiles.indexOf(e.request.url) !== -1 || cachedFiles.indexOf(getPath(e.request.url)) !== -1) {
+    var urlHelper = new URL(e.request.url);
+    if (cachedFiles.indexOf(e.request.url) !== -1 ||
+        cachedFiles.indexOf(urlHelper.pathname + urlHelper.search) !== -1
+        ) {
         e.respondWith(
             caches.match(e.request).then(function (resp) {
                 return resp || fetch(e.request).then(function (response) {
