@@ -12,3 +12,7 @@
     height: 150px;
     width: 250px;
 }
+
+.k-card-deck{
+    justify-content:space-between;
+}
