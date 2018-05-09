@@ -15,7 +15,32 @@ var cachedFiles = [
     '/Destinations/Destinations_First',
     '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Barcelona-and-Tenerife/Arc-de-Triomf,-Barcelona,-Spain_Liliya-Karakoleva.JPG&width=320&height=320',
     '/Home/GetPhotoInCertainSize?path=/Images/Gallery/United-States/Boston-Old-South-Church_Ivo-Igov.JPG&width=320&height=320',
-    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG&width=320&height=320'
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG&width=320&height=320',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Barcelona-and-Tenerife/Arc-de-Triomf,-Barcelona,-Spain_Liliya-Karakoleva.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/United-States/Boston-Old-South-Church_Ivo-Igov.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Italy/Basilica-di-San-Pietro-in-Vaticano2_Lilia-Karakoleva.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Western-Europe/Austrian-Parliament,-Vienna,-Austria_Gergana-Prokopieva.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/UNESCO-Bulgaria/Ahmed-Bay-Mosque,-Kustendil,-Bulgaria_Svetlin-Nikolaev.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/India/Amber-Fort_Attraction.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/South-Africa/Featherbed-Nature-Reserve_Attraction.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/France/Arc-de-Triomphe_Attraction.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Costa-Rica/Barra-Honda-National-Park_Daniel-Peichev_Attraction.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Brazil-and-Argentina/Aconcagua-national-park-Confluencia-camp2_Galabina-Yordanova.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Cuba/Beach_Kiril-Nedyalkov.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Egypt/Abu-Simbel-Temples_Dimo-Dimov_Attraction.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/England-Scotland-and-Wales/Bath,-United-Kingdom_Gergana-Prokopieva.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Myanmar/Mahamuni-Pagoda_Attraction.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/China/Detail-of-bronze-lion-inside-Forbidden-City-in-Beijing,-China.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Kenya/Giraffe_Herd_in_Field_Kenya_Africa_Ivan-Zhekov.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/New-York-City/Brooklyn-Bridge-View_Pavlina-Hadjieva.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Turkey-and-Greece/Blue-Mosque,-Istanbul,-Turkey2_Valentin-Likyov.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Japan/Fuji-san3_Ivan-Zhekov.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Central-Europe/Berlin-Cathedral,-Berlin,-Germany4.jpg&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Peru/Beach-Zorritos,-Peru_Svetlin-Nikolaev.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Barcelona-and-Tenerife/Arc-de-Triomf,-Barcelona,-Spain_Liliya-Karakoleva.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/United-States/Boston-Old-South-Church_Ivo-Igov.JPG&width=450&height=450',
+    '/Home/GetPhotoInCertainSize?path=/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG&width=450&height=450'
 ];
 
 var getPath = function (href) {
