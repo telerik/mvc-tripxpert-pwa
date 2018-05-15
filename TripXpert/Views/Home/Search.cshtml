@@ -23,7 +23,7 @@
                     .Height(442)
                     .Template(@"
                         <div class='destination-combo-template clearfix'>
-                        <span></span><img src='/Home/GetPhotoInCertainSize?path=#:DefaultImage#&width=450&height=450' title='#=data.Title#' /><h4>#=data.Title#</h4>
+                        <span></span><img src='#:DefaultImage#?width=450&height=450' title='#=data.Title#' /><h4>#=data.Title#</h4>
                         <span>#=getRating(data.Rating)#</span>
                         <span class='info'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
                         </div>
