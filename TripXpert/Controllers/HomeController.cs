@@ -39,14 +39,17 @@ namespace TripXpert.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public void GetPhotoInCertainSize(string path, int width, int height)
+        public void GetPhotoInCertainSize(string path, int? width, int? height)
         {
             var rootDirecory = System.AppDomain.CurrentDomain.BaseDirectory;
+            var webImage = new WebImage(rootDirecory + path);
 
-                new WebImage(rootDirecory+path)
-                    .Resize(width, height, true, true) 
-                    .Crop(1, 1)
-                    .Write();
+            if (width != null && height != null)
+            {
+                webImage.Resize((int)width, (int)height, true, true).Crop(1, 1);
+            }
+
+            webImage.Write();
         }
     }
 }
