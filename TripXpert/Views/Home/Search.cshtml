@@ -1,7 +1,7 @@
-
-<div class="jumbotron jumbotron-fluid jumbotron-home d-flex align-items-center bg-dark text-light">
+<div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
-        <div class="row">
+        <div class="h1 mb-3">Find the best destinations all around the world</div>
+        <div class="row tx-searchbar">
             <div class="col-md-6">
                 @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                 @(Html.Kendo().ComboBox()
@@ -10,7 +10,7 @@
                     .DataTextField("Title")
                     .DataValueField("DestinationID")
                     .Filter("contains")
-                    .HtmlAttributes(new { style = "width: 100%" })
+                    .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox" })
                     .AutoBind(false)
                     .DataSource(source =>
                     {
@@ -23,9 +23,10 @@
                     .Height(442)
                     .Template(@"
                         <div class='destination-combo-template clearfix'>
-                        <span></span><img src='#:DefaultImage#?width=450&height=450' title='#=data.Title#' /><h4>#=data.Title#</h4>
-                        <span>#=getRating(data.Rating)#</span>
-                        <span class='info'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                            <img src='#:DefaultImage#?width=450&height=450' title='#=data.Title#' />
+                            <h4>#=data.Title#</h4>
+                            <span>#=getRating(data.Rating)#</span>
+                            <span class='info'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
                         </div>
                     ")
                 )
@@ -41,7 +42,7 @@
                         new SelectListItem() { Text = "Special offers", Value = "Special" },
                         new SelectListItem() { Text = "Regular offers", Value = "Regular" }
                     })
-                    .HtmlAttributes(new { style = "width:100%;" })
+                    .HtmlAttributes(new { style = "width:100%;", @class = "tx-offertype" })
                     .Height(150)
                 )
             </div>
@@ -57,7 +58,7 @@
                         new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
                         new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
                     })
-                    .HtmlAttributes(new { style = "width:100%;" })
+                    .HtmlAttributes(new { style = "width:100%;", @class = "tx-pricerange" })
                     .Height(150)
                     .Events(x => x.Change("priceRangeDropDownChange"))
                     .Deferred()
@@ -66,7 +67,7 @@
             <div class="col-md-2">
                 @(Html.Kendo().Button()
                     .Name("SearchButton")
-                    .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary" })
+                    .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary tx-search-button" })
                     .Content("Search")
                     .Events(ev => ev.Click("searchClick"))
                 )

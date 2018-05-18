@@ -3,11 +3,11 @@
 }
 @Html.Partial("Search")
 
-<div class="bg-light">
+<div class="mt-5 k-flex">
     <div class="container">
 
-        <div class="text-center">
-            <h2 class="k-h1">Tripxpert Recommends</h2>
+        <div class="text-center tx-bottom-dash">
+            <h2 class="h1 font-weight-normal">Tripxpert Recommends</h2>
             <p class="text-muted">Explore top destinations and attractions</p>
         </div>
         @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
@@ -24,7 +24,7 @@
                 .ServerPaging(false)
                 .ServerSorting(false);
             })
-            .HtmlAttributes(new { @class = "border-0 k-card-deck" })
+            .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
         )
 
     </div>
@@ -45,7 +45,7 @@
             </h6>
         </div>
         <div class="k-card-actions">
-            <a class="k-button k-flat k-primary" href="/Destination/#:DestinationID#">View Details</a>
+            <a href="/Destination/#:DestinationID#">View Details</a>
         </div>
     </div>
 </script>

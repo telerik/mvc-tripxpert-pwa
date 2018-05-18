@@ -138,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ImagesHttpHandler.cs" />
     <Compile Include="Models\Attraction.cs" />
     <Compile Include="Models\DestinationViewModel.cs" />
     <Compile Include="Models\Image.cs" />
@@ -219,6 +220,11 @@
     <Content Include="Content\bootstrap.scss" />
     <Content Include="Content\_variables.scss" />
     <Content Include="Content\tripxpert.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\_search.scss" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />

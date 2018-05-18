@@ -1,18 +1,166 @@
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; }
+
+#header {
+  border-bottom: 1px solid white;
+  background: rgba(255, 255, 255, 0.85);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; }
+  #header .logo {
+    width: 150px; }
+  #header .tx-top-menu {
+    padding: 0;
+    margin: -1rem 0;
+    background: none;
+    align-self: stretch; }
+    #header .tx-top-menu .k-item {
+      color: inherit; }
+    #header .tx-top-menu .k-state-highlight {
+      color: #ff005f; }
+    #header .tx-top-menu .k-state-highlight::after {
+      content: "";
+      height: 3px;
+      background: currentColor;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+
 .jumbotron-splash {
+  margin-top: -70px;
   height: 600px;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  position: relative;
+  z-index: 1; }
 
-.jumbotron-home {
-  height: 450px;
+.tx-jumbotron-home {
+  margin-top: -70px;
+  height: 520px;
+  background-image: url("/images/app/homepage-image.jpg");
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  position: relative;
+  z-index: 1; }
+  .tx-jumbotron-home .h1 {
+    text-shadow: 0 0 60px black; }
 
-.logo {
-    height: 150px;
-    width: 250px;
-}
+.tx-searchbar {
+  margin: 0;
+  background-color: #ffffff; }
+  .tx-searchbar > div {
+    padding: 0; }
+  .tx-searchbar .tx-search-button {
+    padding-top: calc( 10px + 0.375rem);
+    padding-bottom: calc( 10px + 0.375rem);
+    border-radius: 0;
+    border-width: 0; }
+  .tx-searchbar span.tx-searchbox, .tx-searchbar span.tx-offertype, .tx-searchbar span.tx-pricerange {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    .tx-searchbar span.tx-searchbox .k-select, .tx-searchbar span.tx-offertype .k-select, .tx-searchbar span.tx-pricerange .k-select, .tx-searchbar span.tx-searchbox .k-dropdown-wrap, .tx-searchbar span.tx-offertype .k-dropdown-wrap, .tx-searchbar span.tx-pricerange .k-dropdown-wrap {
+      border-width: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none; }
 
-.k-card-deck{
-    justify-content:space-between;
-}
+.k-listview {
+  border-width: 0;
+  background-color: transparent; }
+
+.tx-tabstrip-destinations {
+  margin-top: -3.5rem; }
+  .tx-tabstrip-destinations > .k-tabstrip-items {
+    border-width: 0; }
+  .tx-tabstrip-destinations > .k-tabstrip-items > .k-item {
+    margin: 0;
+    border-width: 0;
+    background: none; }
+  .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active {
+    color: #ff005f; }
+    .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active::after {
+      content: "";
+      display: block;
+      height: 2px;
+      background: #ff005f;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+
+.tx-calendar-destinations {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column; }
+  .tx-calendar-destinations .k-header {
+    background: none;
+    border-width: 0; }
+  .tx-calendar-destinations table.k-content {
+    flex: 1 1 auto;
+    height: 18rem; }
+  .tx-calendar-destinations .k-content .k-link {
+    line-height: 2; }
+
+.k-card-deck .k-card {
+  flex: 1 0 0%; }
+
+.k-card {
+  transition: box-shadow ease-in-out .2s; }
+
+.k-card:hover {
+  box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.12); }
+
+.k-tabstrip > .k-content {
+  padding: 40px 0;
+  border: 0;
+  overflow: visible; }
+
+.k-calendar-container {
+  margin: -8rem -15px -3rem;
+  height: 22rem;
+  padding: 1rem 15px 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+
+.testimonial {
+  opacity: .6;
+  font-style: italic; }
+
+.k-card-columns {
+  column-count: 3;
+  column-gap: 50px; }
+  .k-card-columns .k-card {
+    margin-bottom: 50px;
+    display: inline-flex; }
+
+.k-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px; }
+
+.tx-bottom-dash {
+  position: relative; }
+  .tx-bottom-dash::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #ff005f;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%); }
+
+.tx-bottom-dash-start::after {
+  transform: none;
+  left: 0; }
+

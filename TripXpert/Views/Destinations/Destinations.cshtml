@@ -1,24 +1,23 @@
 @{
     ViewBag.Title = "Destinations";
 }
-
+<div class="py-5"></div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h2 class="k-h1">Available Destinations</h2>
-        </div>
+    <div class="text-center tx-bottom-dash mb-5">
+        <h2 class="h1 font-weight-normal">Available Destinations</h2>
     </div>
 
-@(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
-    .Name("listView")
-    .TagName("div")
-    .ClientTemplateId("kendo-card-template")
-    .DataSource(dataSource =>
-    {
-        dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
-        dataSource.PageSize(21);
-    })
-)
+    @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
+        .Name("listView")
+        .TagName("div")
+        .ClientTemplateId("kendo-card-template")
+        .DataSource(dataSource =>
+        {
+            dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
+            dataSource.PageSize(21);
+        })
+        .HtmlAttributes(new { @class = "border-0 k-card-columns" })
+    )
 
 </div>
 
@@ -37,7 +36,7 @@
             </h6>
         </div>
         <div class="k-card-actions">
-            <a class="k-button k-flat k-primary" href="/Destination/#:DestinationID#">View Details</a>
+            <a href="/Destination/#:DestinationID#">View Details</a>
         </div>
     </div>
 </script>

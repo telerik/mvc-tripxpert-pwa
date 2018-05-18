@@ -1,17 +1,137 @@
 @import "variables";
+@import  "../node_modules/@progress/kendo-theme-bootstrap/scss/variables";
 
-.jumbotron-splash {
-    height: 600px;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.jumbotron-home {
-    height: 450px;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+// Wrapper
+#wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.logo {
-    height: 150px;
-    width: 250px;
+
+// Search
+@import "header";
+@import "search";
+
+
+// Widgets
+.k-listview {
+    border-width: 0;
+    background-color: transparent;
+}
+.tx-tabstrip-destinations {
+    margin-top: -3.5rem;
+
+    > .k-tabstrip-items {
+        border-width: 0;
+    }
+    > .k-tabstrip-items > .k-item {
+        margin: 0;
+        border-width: 0;
+        background: none;
+    }
+    > .k-tabstrip-items > .k-state-active {
+        color: $accent;
+
+        &::after {
+            content: "";
+            display: block;
+            height: 2px;
+            background: $accent;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+.tx-calendar-destinations {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    .k-header {
+        background: none;
+        border-width: 0;
+    }
+
+    table.k-content {
+        flex: 1 1 auto;
+        height: 18rem;
+    }
+    .k-content .k-link {
+        line-height: 2;
+    }
+}
+
+// cards
+.k-card-deck .k-card {
+    flex: 1 0 0%;
+}
+.k-card {
+    transition: box-shadow ease-in-out .2s;
+}
+.k-card:hover {
+    box-shadow: 0 0 40px 10px rgba(0, 0, 0, .12);
+}
+
+
+.k-tabstrip > .k-content {
+    padding: 40px 0;
+    border: 0;
+    overflow: visible;
+}
+
+.k-calendar-container {
+    margin: -8rem -15px -3rem;
+    height: 22rem;
+    padding: 1rem 15px 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.testimonial {
+    opacity: .6;
+    font-style: italic;
+}
+
+.k-card-columns {
+    column-count: 3;
+    column-gap: $card-deck-gap;
+
+    .k-card {
+        margin-bottom: $card-deck-gap;
+        display: inline-flex;
+    }
+}
+
+.k-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: $card-deck-gap;
+}
+
+.tx-bottom-dash {
+    position: relative;
+
+
+    &::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 2px;
+        background: $accent;
+        position: absolute;
+        bottom: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+.tx-bottom-dash-start::after {
+    transform: none;
+    left: 0;
 }
