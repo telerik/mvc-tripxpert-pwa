@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Content/tripxpert.css",
+    "inputFile": "Content/tripxpert.scss"
+  },
+  {
+    "outputFile": "Content/bootstrap.css",
+    "inputFile": "Content/bootstrap.scss"
+  },
+  {
+    "outputFile": "Content/kendo-theme.css",
+    "inputFile": "Content/kendo-theme.scss"
+  }
+]

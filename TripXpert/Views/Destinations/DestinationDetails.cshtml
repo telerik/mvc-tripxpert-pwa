@@ -8,16 +8,18 @@
 <div class="jumbotron jumbotron-fluid m-0 jumbotron-splash" style="background-image: url('@Model.DetailImage');" title="@Model.Title">
 </div>
 
-<div class="bg-light py-4">
+<div class="pt-4 pb-5" style="position: relative; z-index: 2;">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="display-4">@Model.Title</h1>
-                <p class="text-muted">@attractions</p>
-                Price from $@Model.LowestPrice<span>@Model.Duration days</span>
-                <div>
-                    <span id="pricesButton" class="btn-link">view full price info</span>
+                <div class="mb-4 tx-bottom-dash tx-bottom-dash-start">
+                    <h1 class="h1 font-weight-normal">@Model.Title</h1>
+                    <p class="text-muted">@attractions</p>
                 </div>
+                <p>
+                    Price from $@Model.LowestPrice<span>@Model.Duration days</span><br />
+                    <span id="pricesButton" class="btn-link">view full price info</span>
+                </p>
             </div>
             <div class="col-md-4">
                 @{ var tourInfos = Model.TourInfos;
@@ -30,116 +32,120 @@
                         }
                     }
                 }
-                @(Html.Kendo().Calendar()
-                    .Name("toursCalendar")
-                    .Selectable("multiple")
-                    .SelectDates(list)
-                    .Value(Model.TourInfos.First().StartDate)
-                    .HtmlAttributes(new { @style = "margin-top: -8rem" })
-                )
+                <div class="k-calendar-container">
+                    @(Html.Kendo().Calendar()
+                        .Name("toursCalendar")
+                        .Selectable("multiple")
+                        .SelectDates(list)
+                        .Value(Model.TourInfos.First().StartDate)
+                        .Footer(false)
+                        .HtmlAttributes( new { @class = "tx-calendar-destinations" })
+                    )
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="bg-white k-flex" style="margin-bottom: -3em; position: relative; z-index: 3">
+    <div class="container">
+        @(Html.Kendo().TabStrip()
+            .Animation(false)
+            .Scrollable(true)
+            .Name("tabStripInfo")
+            .Items(items => {
+                items.Add().Text("Overview").Selected(true)
+                    .Content(@<text>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>@Model.FullDescription</p>
+                            </div>
+                            <div class="col-md-4" class="testimonial">
+                                <blockquote>
+                                    <p>@Model.Testimonial.TestimonialContent</p>
+                                    <footer class="blockquote-footer">@Model.Testimonial.Author.</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @(Html.Kendo().Map()
+                                    .Name("overviewMap")
+                                    .Center((double)Model.MapInfo.ZoomSettings["Latitude"], (double)Model.MapInfo.ZoomSettings["Longitude"])
+                                    .Zoom((double)Model.MapInfo.ZoomSettings["Zoom"])
+                                    .HtmlAttributes(new { style = "width: 100%; height: 320px;" })
+                                    .Layers(layers => {
+                                        layers.Add()
+                                            .Type(MapLayerType.Tile)
+                                            .UrlTemplate("https://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
+                                            .Subdomains("a", "b", "c")
+                                            .Attribution("&copy; <a href='https://osm.org/copyright' title='OpenStreetMap contributors' target='_blank'>OpenStreetMap contributors</a>");
 
-<div class="container">
-    @(Html.Kendo().TabStrip()
-        .Animation(false)
-        .Scrollable(true)
-        .Name("tabStripInfo")
-        .Items(items => {
-            items.Add().Text("Overview").Selected(true)
-                .Content(@<text>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h3>@Model.Title</h3>
-                            <p>@Model.FullDescription</p>
+                                    }).Markers(markers => {
+                                        foreach (var marker in Model.MapInfo.Markers)
+                                        {
+                                            markers.Add()
+                                            .Location(marker.LatLng);
+                                        }
+                                    })
+                                )
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <blockquote>
-                                <p>@Model.Testimonial.TestimonialContent</p>
-                                <footer class="blockquote-footer">@Model.Testimonial.Author.</footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            @(Html.Kendo().Map()
-                                .Name("overviewMap")
-                                .Center((double)Model.MapInfo.ZoomSettings["Latitude"], (double)Model.MapInfo.ZoomSettings["Longitude"])
-                                .Zoom((double)Model.MapInfo.ZoomSettings["Zoom"])
-                                .HtmlAttributes(new { style = "width: 100%; height: 320px;" })
-                                .Layers(layers => {
-                                    layers.Add()
-                                        .Type(MapLayerType.Tile)
-                                        .UrlTemplate("https://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
-                                        .Subdomains("a", "b", "c")
-                                        .Attribution("&copy; <a href='https://osm.org/copyright' title='OpenStreetMap contributors' target='_blank'>OpenStreetMap contributors</a>");
-
-                                }).Markers(markers => {
-                                    foreach (var marker in Model.MapInfo.Markers)
-                                    {
-                                        markers.Add()
-                                        .Location(marker.LatLng);
-                                    }
-                                })
-                            )
-                        </div>
-                    </div>
-                </text>);
-            items.Add().Text("Attractions")
-                .Content(@<text>
-                    @(Html.Kendo().ListView(Model.Attractions)
-                        .Name("AttractionsListView")
-                        .TagName("div")
-                        .ClientTemplateId("attractionsTemplate")
-                        .HtmlAttributes(new { @class = "k-card-columns border-0 d-flex" })
-                    )
                     </text>);
-            items.Add().Text("Enquiry form")
-                .Content(@<text>
-                  <form id="enquiry-form">
-                    <h3>Contact an Expert</h3>
-                    <p>
-                        <strong>@Model.Title</strong> has been added to your enquiry.  Please complete the short form. We'll get right back to you to help you with your travels.
-                    </p>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="FirstName">First name</label>
-                            @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                items.Add().Text("Attractions")
+                    .Content(@<text>
+                        @(Html.Kendo().ListView(Model.Attractions)
+                            .Name("AttractionsListView")
+                            .TagName("div")
+                            .ClientTemplateId("attractionsTemplate")
+                            .HtmlAttributes(new { @class = "k-card-columns border-0 d-flex" })
+                        )
+                        </text>);
+                items.Add().Text("Enquiry form")
+                    .Content(@<text>
+                      <form id="enquiry-form">
+                        <h3>Contact an Expert</h3>
+                        <p>
+                            <strong>@Model.Title</strong> has been added to your enquiry.  Please complete the short form. We'll get right back to you to help you with your travels.
+                        </p>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="FirstName">First name</label>
+                                @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="LastName">Last Name</label>
+                                @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="LastName">Last Name</label>
-                            @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="Email">Email</label>
+                                @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="Email">Email</label>
-                            @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control", required = "required" }))
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="Comments">Comments</label>
+                                @(Html.TextArea("Comments", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="Comments">Comments</label>
-                            @(Html.TextArea("Comments", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
+                        <div class="row">
+                            <div class="col-md-12">
+                                @(Html.Kendo().Button()
+                                  .Name("sendEnquiry")
+                                  .Content("Send")
+                                  .Events(e => e.Click("enquirySendClick"))
+                                  .HtmlAttributes(new { @class = "k-primary" })
+                                )
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            @(Html.Kendo().Button()
-                              .Name("sendEnquiry")
-                              .Content("Send")
-                              .Events(e => e.Click("enquirySendClick"))
-                            )
-                        </div>
-                    </div>
-                  </form>
-                </text>);
-        })
-        .HtmlAttributes(new { @style = "margin-top: -2.5rem" })
-    )
+                      </form>
+                    </text>);
+            })
+            .HtmlAttributes(new { @class = "tx-tabstrip-destinations" })
+        )
+    </div>
 </div>
 
 @(Html.Kendo().Window()

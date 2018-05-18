@@ -1,5 +1,5 @@
-<div>
-    <div id="header" class="container">
+<div id="header">
+    <div class="container">
         <div class="navbar">
             <div class="navbar-header">
                 <a href="@Url.Action("Index", "Home")">
@@ -14,8 +14,9 @@
                     items.Add().Text("Destinations").Route("Destinations");
                     items.Add().Text("Contact").Route("Contact");
                     items.Add().Text("Source Code").SpriteCssClasses("k-icon k-i-download")
-                    .HtmlAttributes(new { @class = "rightAlignedItem" }).Url("https://github.com/telerik/mvc-tripxpert-sample-app");
+                    .HtmlAttributes(new { @class = "text-muted" }).Url("https://github.com/telerik/mvc-tripxpert-sample-app");
                 })
+                .HtmlAttributes(new { @class = "tx-top-menu" })
             )
         </div>
     </div>

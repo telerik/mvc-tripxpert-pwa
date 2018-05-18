@@ -10,8 +10,7 @@ namespace TripXpert
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
                 "~/Scripts/jquery-3.1.1.min.js",
-                "~/Scripts/tripxpert.js",
-                "~/Scripts/service-worker.js"
+                "~/Scripts/tripxpert.js"
             ));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(

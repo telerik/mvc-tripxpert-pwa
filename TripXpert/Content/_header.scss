@@ -1,0 +1,52 @@
+// Header
+#header {
+    border-bottom: 1px solid white;
+    background: rgba(white, .85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    .logo {
+        width: 150px;
+    }
+
+
+    // Top menu
+    .tx-top-menu {
+        padding: 0;
+        margin: -$navbar-padding-y 0;
+        background: none;
+        align-self: stretch;
+
+        .k-item {
+            color: inherit;
+        }
+
+        .k-state-highlight {
+            color: $accent;
+        }
+        .k-state-highlight::after {
+            content: "";
+            height: 3px;
+            background: currentColor;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+
+// Jumbotrons
+.jumbotron-splash {
+    margin-top: -70px;
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}

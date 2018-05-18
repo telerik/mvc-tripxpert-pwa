@@ -1,0 +1,55 @@
+.tx-jumbotron-home {
+    margin-top: -70px;
+    height: 520px;
+    background-image: url("/images/app/homepage-image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+
+    .h1 {
+        text-shadow: 0 0 60px black;
+    }
+}
+
+
+.tx-searchbar {
+    margin: 0;
+    background-color: $input-bg;
+
+    > div {
+        padding: 0;
+    }
+
+
+    // Kendo controls
+    .tx-search-button {
+        padding-top: calc( 10px + #{$button-padding-y} );
+        padding-bottom: calc( 10px + #{$button-padding-y} );
+        border-radius: 0;
+        border-width: 0;
+    }
+
+
+    %tx-dropdown {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+        .k-select,
+        .k-dropdown-wrap {
+            border-width: 0;
+            border-radius: 0;
+            background: none;
+            box-shadow: none;
+        }
+    }
+    span.tx-searchbox {
+        @extend %tx-dropdown;
+    }
+    span.tx-offertype {
+        @extend %tx-dropdown;
+    }
+    span.tx-pricerange {
+        @extend %tx-dropdown;
+    }
+}
