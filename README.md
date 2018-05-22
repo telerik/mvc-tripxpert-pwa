@@ -9,8 +9,7 @@ The app demonstrates how you can integrate some of the most popular server-side 
 
 * Browse available trips
 * Discover interesting information about destinations
-* Browse images and videos of trips and destinations
-* Upload images from their own trips
+* Browse images of trips and destinations
 * View maps of the destinations’ locations
 * View a calendar of accommodation availability
 * Submit inquiries
