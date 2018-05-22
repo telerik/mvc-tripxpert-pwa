@@ -3,7 +3,7 @@
 **TripXpert** is a sample application built with
 [Telerik&reg; UI for ASP.NET MVC][ui-for-mvc].
 The app demonstrates how you can integrate some of the most popular server-side wrappers for the
-[Kendo UI widgets][kendo-demos] and leverage their mobile capabilities.
+[Kendo UI widgets][kendo-demos] in a progressive web app (PWA). A progressive web app is a mobile app delivered through the web. It functions like a native app, due to the use of an app shell that allows for app-style gestures and navigations. The main difference is that there is no need to download it from an app store. It runs, self-contained, right in a web browser. With the help of service workers, a progressive web app is able to load instantly, even in areas of low connectivity. With the help of pre-caching, the app stays up to date at all times, displaying the most recent version upon launching.
 
 **TripXpert** is a trip-planning app that enables users to:
 
@@ -18,12 +18,14 @@ The app demonstrates how you can integrate some of the most popular server-side 
 ## What was it built with?
 
 * [ASP.NET MVC DropDownList][mvc-dropdownlist]
+* [ASP.NET MVC MaskedTextBox][mvc-maskedtextbox]
+* [ASP.NET MVC Window][mvc-window]
+* [ASP.NET MVC Button][mvc-button]
 * [ASP.NET MVC Map][mvc-map]
 * [ASP.NET MVC Dialog][mvc-dialog]
 * [ASP.NET MVC Menu][mvc-menu]
 * [ASP.NET MVC ListView][mvc-listview]
 * [ASP.NET MVC Calendar][mvc-calendar]
-* [ASP.NET MVC Upload][mvc-upload]
 * [ASP.NET MVC TabStrip][mvc-tabstrip]
 * [ASP.NET MVC ComboBox][mvc-combobox]
 * [ASP.NET MVC ResponsivePanel][mvc-responsivepanel]
@@ -80,3 +82,7 @@ IE Mobile | 11.0+
 [mvc-combobox]: https://demos.telerik.com/aspnet-mvc/combobox/index
 [mvc-responsivepanel]: https://demos.telerik.com/aspnet-mvc/responsive-panel/index
 [kendo-validator]: https://demos.telerik.com/kendo-ui/validator/index
+[kendo-validator]: https://demos.telerik.com/kendo-ui/validator/index
+[mvc-maskedtextbox]: https://demos.telerik.com/aspnet-mvc/maskedtextbox
+[mvc-window]: https://demos.telerik.com/aspnet-mvc/window
+[mvc-button]: https://demos.telerik.com/aspnet-mvc/button
