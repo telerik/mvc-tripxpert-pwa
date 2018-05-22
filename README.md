@@ -18,7 +18,6 @@ The app demonstrates how you can integrate some of the most popular server-side 
 ## What was it built with?
 
 * [ASP.NET MVC DropDownList][mvc-dropdownlist]
-* [ASP.NET MVC MediaPlayer][mvc-mediaplayer]
 * [ASP.NET MVC Map][mvc-map]
 * [ASP.NET MVC Dialog][mvc-dialog]
 * [ASP.NET MVC Menu][mvc-menu]
