@@ -4,19 +4,19 @@
 <div class="py-5"></div>
 <div class="container">
     <div class="text-center tx-bottom-dash mb-5">
-        <h1 class="h1 font-weight-normal">@ViewBag.Title</h1>
+        <h1 class="h1">@ViewBag.Title</h1>
     </div>
     <div class="row">
-        <div class="col-md-6 text-right">
-            <p class="k-h4">Address</p>
+        <div class="col-6 text-right">
+            <p class="h4">Address</p>
             <p>
                 33 Alexander Malinov blvd<br />
                 1729 Sofia<br />
                 Bulgaria
             </p>
         </div>
-        <div class="col-md-6 text-left">
-            <p class="k-h4">Phone &amp; Fax</p>
+        <div class="col-6 text-left">
+            <p class="h4">Phone &amp; Fax</p>
             <p>
                 P: <a href="tel:+35928099850">+359 2 8099850</a><br />
                 F: <a href="tel:+16172492116">+1 617 249 2116</a>
@@ -25,7 +25,7 @@
             <span></span>
         </div>
     </div>
-    <div class="row">
+    <div class="row my-5">
         <div class="col-md-12">
             @(Html.Kendo().Map()
                 .Name("map1")
@@ -96,7 +96,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="k-button" type="submit">Send</button>
+                <button class="k-button k-primary" type="submit">Send</button>
             </div>
         </div>
     </form>

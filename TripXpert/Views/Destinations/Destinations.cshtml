@@ -4,7 +4,7 @@
 <div class="py-5"></div>
 <div class="container">
     <div class="text-center tx-bottom-dash mb-5">
-        <h2 class="h1 font-weight-normal">Available Destinations</h2>
+        <h2 class="h1">Available Destinations</h2>
     </div>
 
     @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
@@ -26,16 +26,17 @@
         <img src="#:DefaultImage#?width=320&height=320" class="k-card-image" />
         <div class="k-card-body">
             <h5 class="k-card-title">#:Title#</h5>
-            <h6 class="k-card-subtitle">
+            <h6 class="k-card-subtitle small text-muted">
                 # for (var i=0; i < data.ShortDescription.length; i++) {#
-                # if (i > 0) { #
-                <span style="display: inline-block"></span>
-                #}#
-                #:data.ShortDescription[i]#
+                    # if (i > 0) { #
+                        &bull;
+                    #}#
+                    #:data.ShortDescription[i]#
                 #}#
             </h6>
         </div>
-        <div class="k-card-actions">
+        <div class="k-card-actions d-flex justify-content-between">
+            <span class="text-primary">From $#: data.LowestPrice #</span>
             <a href="/Destination/#:DestinationID#">View Details</a>
         </div>
     </div>

@@ -135,3 +135,85 @@
     transform: none;
     left: 0;
 }
+
+.navbar-nav-svg {
+    margin-right: .25rem;
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    vertical-align: text-top;
+}
+.tx-tabstrip-svg {
+    margin-right: .25rem;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .k-card-grid {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+    }
+    .k-card-columns {
+        column-count: 2;
+    }
+    .k-card-columns .k-card {
+        margin-bottom: 1rem;
+    }
+    .k-card-image {
+        width: 100%;
+    }
+
+    .k-calendar-container {
+        margin-top: -1.5rem;
+        margin-bottom: -3rem;
+        height: auto;
+    }
+    .tx-calendar-destinations table.k-content {
+        height: auto;
+    }
+    .tx-calendar-destinations .k-content .k-link {
+        line-height: normal;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    .k-card-columns {
+        column-count: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+    }
+    .k-card-columns .k-card {
+        margin: 0;
+    }
+
+    .k-calendar-container {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        height: auto;
+    }
+    .tx-calendar-destinations .k-content .k-link {
+        line-height: 3;
+    }
+
+    .tx-tabstrip-destinations {
+        margin: 0;
+    }
+    .tx-tabstrip-destinations .k-tabstrip-items {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+    }
+    .tx-tabstrip-destinations .k-tabstrip-items > .k-item {
+        flex: 1 1 0;
+    }
+    .tx-tabstrip-destinations .k-tabstrip-items > .k-item .k-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
