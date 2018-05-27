@@ -225,6 +225,7 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\_search.scss" />
+    <Content Include="Content\_header.scss" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
