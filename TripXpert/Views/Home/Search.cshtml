@@ -1,8 +1,9 @@
 <div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
-        <div class="h1 mb-3">Find the best destinations all around the world</div>
-        <div class="row tx-searchbar">
-            <div class="col-md-6">
+        <div class="h1 font-weight-medium mb-3">Find the best destinations all around the world</div>
+        <div class="row tx-searchbar text-body">
+            <div class="col-md-6 d-flex">
+                <span class="k-icon k-i-search"></span>
                 @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                 @(Html.Kendo().ComboBox()
                     .Name("Destinations")
@@ -22,11 +23,12 @@
                     .Events(ev => ev.Select("destinationsSelect").Change("destinationsChange"))
                     .Height(442)
                     .Template(@"
-                        <div class='destination-combo-template clearfix'>
-                            <img src='#:DefaultImage#?width=450&height=450' title='#=data.Title#' />
-                            <h4>#=data.Title#</h4>
-                            <span>#=getRating(data.Rating)#</span>
-                            <span class='info'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                        <div class='d-flex py-2 align-items-center'>
+                            <img src='#:DefaultImage#?width=140&height=140' title='#=data.Title#' />
+                            <div class='k-flex ml-2'>
+                                #=data.Title#<br />
+                                <span class='text-primary'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                            </div>
                         </div>
                     ")
                 )

@@ -16,10 +16,12 @@
   #header .tx-top-menu {
     padding: 0;
     margin: -1rem 0;
+    font-size: 18px;
     background: none;
     align-self: stretch; }
     #header .tx-top-menu .k-item {
       color: inherit; }
+    #header .tx-top-menu .k-state-hover,
     #header .tx-top-menu .k-state-highlight {
       color: #ff005f; }
     #header .tx-top-menu .k-state-highlight::after {
@@ -56,6 +58,11 @@
   background-color: #ffffff; }
   .tx-searchbar > div {
     padding: 0; }
+  .tx-searchbar > div > .k-icon {
+    margin: 0 10px;
+    font-size: 32px;
+    align-self: center;
+    opacity: .5; }
   .tx-searchbar .tx-search-button {
     padding-top: calc( 10px + 0.375rem);
     padding-bottom: calc( 10px + 0.375rem);
@@ -69,6 +76,10 @@
       border-radius: 0;
       background: none;
       box-shadow: none; }
+  .tx-searchbar span.tx-offertype {
+    border-left-width: 1px; }
+  .tx-searchbar span.tx-pricerange {
+    border-left-width: 1px; }
 
 .k-listview {
   border-width: 0;
@@ -165,14 +176,14 @@
   left: 0; }
 
 .navbar-nav-svg {
-  margin-right: .25rem;
-  width: 1rem;
-  height: 1rem;
+  margin-right: .5rem;
+  width: 1em;
+  height: 1em;
   display: inline-block;
   vertical-align: text-top; }
 
 .tx-tabstrip-svg {
-  margin-right: .25rem;
+  margin-right: .5rem;
   width: 1em;
   height: 1em;
   display: inline-block;
@@ -222,4 +233,7 @@
   .tx-tabstrip-destinations .k-tabstrip-items > .k-item .k-link {
     width: 100%;
     justify-content: center; } }
+
+.font-weight-medium {
+  font-weight: 500 !important; }
 

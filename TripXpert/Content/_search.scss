@@ -20,6 +20,12 @@
     > div {
         padding: 0;
     }
+    > div > .k-icon {
+        margin: 0 10px;
+        font-size: 32px;
+        align-self: center;
+        opacity: .5;
+    }
 
 
     // Kendo controls
@@ -48,8 +54,10 @@
     }
     span.tx-offertype {
         @extend %tx-dropdown;
+        border-left-width: 1px;
     }
     span.tx-pricerange {
         @extend %tx-dropdown;
+        border-left-width: 1px;
     }
 }
