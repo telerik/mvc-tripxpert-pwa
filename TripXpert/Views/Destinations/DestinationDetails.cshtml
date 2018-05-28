@@ -17,7 +17,7 @@
             <div class="col-md-8">
                 <div class="mb-4 tx-bottom-dash tx-bottom-dash-start">
                     <h1 class="h1">@Model.Title</h1>
-                    <p class="text-muted">@attractions</p>
+                    <p class="text-muted font-italic">@attractions</p>
                 </div>
                 <p>
                     Price from $@Model.LowestPrice for <span>@Model.Duration days</span><br />
@@ -101,7 +101,7 @@
                             .Name("AttractionsListView")
                             .TagName("div")
                             .ClientTemplateId("attractionsTemplate")
-                            .HtmlAttributes(new { @class = "k-card-columns border-0 d-flex row" })
+                            .HtmlAttributes(new { @class = "border-0 k-card-columns" })
                         )
                         </text>);
                 items.Add().Text(string.Format("{0} <span class='d-none d-sm-block'>Enquiry Form</span>", enquirySvg)).Encoded(false)
@@ -224,12 +224,12 @@
     });
 </script>
 <script id="attractionsTemplate" type="text/x-kendo-tmpl">
-    <div class="col-md-4">
+    <div>
         <div class="k-card">
             <img class="k-card-image" src="#=Image.ImageURL#" alt="#=Title#">
             <div class="k-card-body">
                 <h5 class="k-card-title">#:Title#</h5>
-                <p class="k-card-subtitle small text-muted">#:Location#</p>
+                <p class="k-card-subtitle small text-muted font-italic">#:Location#</p>
                 <p class="k-card-text">#: Description #</p>
             </div>
         </div>

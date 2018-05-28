@@ -17,6 +17,7 @@
     .tx-top-menu {
         padding: 0;
         margin: -$navbar-padding-y 0;
+        font-size: 18px;
         background: none;
         align-self: stretch;
 
@@ -24,6 +25,7 @@
             color: inherit;
         }
 
+        .k-state-hover,
         .k-state-highlight {
             color: $accent;
         }
