@@ -54,12 +54,12 @@
     <form id="feedbackForm">
         <div class="row">
             <div class="form-group col-md-6">
-                <label for="firstname">First Name*</label>
-                <input id="firstname" name="firstname" type="text" class="form-control k-textbox" required />
+                <label for="FirstName">First name</label>
+                @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @class = "form-control" }))
             </div>
             <div class="form-group col-md-6">
-                <label for="lastname">Last Name *</label>
-                <input id="lastname" name="lastname" type="text" class="form-control k-textbox" required />
+                <label for="LastName">Last Name</label>
+                @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @class = "form-control" }))
             </div>
         </div>
         <div class="row">
@@ -90,8 +90,8 @@
         </div>
         <div class="row">
             <div class="form-group col-md-12">
-                <label for="comments">Comments *</label>
-                <textarea name="comments" class="form-control k-textbox" cols"20" rows="20" required></textarea>
+                <label for="Comments">Comments</label>
+                @(Html.TextArea("Comments", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
             </div>
         </div>
         <div class="row">
@@ -109,7 +109,7 @@ $(document).ready(function () {
         event.preventDefault();
         if (validator.validate()) {
             kendo.alert("Thank you for your feedback!");
-        } 
+        }
     });
 });
 </script>
