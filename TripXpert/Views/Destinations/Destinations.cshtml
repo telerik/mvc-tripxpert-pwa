@@ -1,6 +1,10 @@
 @{
     ViewBag.Title = "Destinations";
 }
+@section Kendo
+{
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.listview.min.js"></script>
+}
 <div class="py-5"></div>
 <div class="container">
     <div class="text-center tx-bottom-dash mb-5">
@@ -8,15 +12,15 @@
     </div>
 
     @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
-        .Name("listView")
-        .TagName("div")
-        .ClientTemplateId("kendo-card-template")
-        .DataSource(dataSource =>
-        {
-            dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
-            dataSource.PageSize(21);
-        })
-        .HtmlAttributes(new { @class = "border-0 k-card-columns" })
+                .Name("listView")
+                .TagName("div")
+                .ClientTemplateId("kendo-card-template")
+                .DataSource(dataSource =>
+                {
+                    dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
+                    dataSource.PageSize(21);
+                })
+                .HtmlAttributes(new { @class = "border-0 k-card-columns" })
     )
 
 </div>
@@ -28,10 +32,10 @@
             <h5 class="k-card-title">#:Title#</h5>
             <h6 class="k-card-subtitle small text-muted font-italic">
                 # for (var i=0; i < data.ShortDescription.length; i++) {#
-                    # if (i > 0) { #
-                        &bull;
-                    #}#
-                    #:data.ShortDescription[i]#
+                # if (i > 0) { #
+                &bull;
+                #}#
+                #:data.ShortDescription[i]#
                 #}#
             </h6>
         </div>

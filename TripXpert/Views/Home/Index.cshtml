@@ -1,6 +1,15 @@
 @{
     ViewBag.Title = "Home Page";
 }
+@section Kendo
+{
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.listview.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.list.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.combobox.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.button.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js"></script>
+}
+
 @Html.Partial("Search")
 
 <div class="mt-5 k-flex">
@@ -11,20 +20,20 @@
             <p class="text-muted font-italic">Explore top destinations and attractions</p>
         </div>
         @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
-            .Name("listView")
-            .TagName("div")
-            .ClientTemplateId("kendo-card-template")
-            .DataSource(dataSource =>
-            {
-                dataSource.Custom()
-                .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
-                .ServerAggregates(false)
-                .ServerFiltering(false)
-                .ServerGrouping(false)
-                .ServerPaging(false)
-                .ServerSorting(false);
-            })
-            .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
+                            .Name("listView")
+                            .TagName("div")
+                            .ClientTemplateId("kendo-card-template")
+                            .DataSource(dataSource =>
+                            {
+                                dataSource.Custom()
+                                .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
+                                .ServerAggregates(false)
+                                .ServerFiltering(false)
+                                .ServerGrouping(false)
+                                .ServerPaging(false)
+                                .ServerSorting(false);
+                            })
+                            .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
         )
 
     </div>
@@ -37,10 +46,10 @@
             <h5 class="k-card-title">#:Title#</h5>
             <h6 class="k-card-subtitle small text-muted font-italic">
                 # for (var i=0; i < data.ShortDescription.length; i++) {#
-                    # if (i > 0) { #
-                        &bull;
-                    #}#
-                    #:data.ShortDescription[i]#
+                # if (i > 0) { #
+                &bull;
+                #}#
+                #:data.ShortDescription[i]#
                 #}#
             </h6>
         </div>
