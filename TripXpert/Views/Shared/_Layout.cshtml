@@ -6,32 +6,13 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/js")
+
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.core.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.button.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.userevents.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.selectable.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.calendar.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.data.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.listview.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.maskedtextbox.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.tabstrip.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.draganddrop.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.popup.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.window.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.tooltip.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.color.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.drawing.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dataviz.core.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.fx.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.mobile.scroller.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dataviz.map.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.list.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.combobox.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.multiselect.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.validator.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.popup.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.menu.min.js"></script>
+    @RenderSection("Kendo", false)
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#858585" />
     <!-- Google Tag Manager -->
