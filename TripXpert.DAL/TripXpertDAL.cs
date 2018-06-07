@@ -168,26 +168,8 @@ namespace TripXpert.DAL
         {
             TripXpertEntities entity = new TripXpertEntities();
             using (entity)
-            {
-                var matchingImages = (from image in entity.Images
-                                      where image.DestinationID == id
-                                      select new
-                                      {
-                                          Title=image.Title,
-                                          Description=(image.Author!=string.Empty)?"Photo by: " + image.Author:string.Empty,
-                                          ImageURL=image.ImageURL,
-                                          FolderName=image.FolderName
-                                      }).ToList();
-
-                var imagesToReturn = (from matchingImage in matchingImages
-                                      select new
-                                      {
-                                          Title = matchingImage.Title,
-                                          Description = matchingImage.Description,
-                                          ImageURL = domainURL + matchingImage.FolderName.Trim() + "/2000x1125/" + matchingImage.ImageURL,
-                                          ThumbnailURL = domainURL + matchingImage.FolderName.Trim() + "/138x138/" + matchingImage.ImageURL
-                                      });
-                return imagesToReturn;
+            {                
+                return entity.Images.Where(x => x.DestinationID == id).ToList(); 
             }
         }
 
