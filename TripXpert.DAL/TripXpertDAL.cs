@@ -195,7 +195,7 @@ namespace TripXpert.DAL
             {
                 var rnd = new Random();
                 var detailImages = (from image in entity.Images
-                                      where image.DestinationID == id && image.AttractionID != null
+                                      where image.DestinationID == id
                                       select image).ToList();
                 int randomIndex = rnd.Next(detailImages.Count);
                 var detailImage = detailImages[randomIndex];
