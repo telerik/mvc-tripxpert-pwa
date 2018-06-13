@@ -5,6 +5,9 @@
 {
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.listview.min.js"></script>
 }
+
+@model int[]
+
 <div class="py-5"></div>
 <div class="container">
     <div class="text-center tx-bottom-dash mb-5">
@@ -56,15 +59,12 @@
         return result;
     }
 
-    function getIds() {
-        var urlParams = getQueryString("Ids");
-        var idList;
+    function getIds() {        
+        var ids = JSON.parse('@Html.Raw(Json.Encode(Model))')
 
-        if (urlParams) {
-            idList = urlParams.split(",").map(Number);
+        if (ids) {
+            return { ids: ids  };
         }
-
-        return { ids: idList };
     }
 
     var getQueryString = function (field, url) {

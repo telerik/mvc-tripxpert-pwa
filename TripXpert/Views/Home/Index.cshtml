@@ -89,45 +89,16 @@
     }
 
     function searchClick() {
-        $.ajax({
-            url: '@Url.Action("GetDestinationsQuery","Home")',
-            type: 'GET',
-            data: {
-                priceRange:  $("#PriceRange").val() || "",
-                offerType: $("#OfferType").data("kendoDropDownList").value()
-            },
-            success: function (data) {
-                data ? ids = data : ids = "1";
-                ids = ids.split(',');
-                if (selectedID != "") {
-                    ids = selectedID;
-                }
-                if (ids.length > 1) {
-                    window.location.href = '@Url.Action("Destinations","Destinations")' + "?Ids=" + ids.toString();
-                }
-                else {
-                    window.location.href = '@Url.Action("DestinationDetails", "Destinations")' + "/" + ids.toString();;
-                }
-            }
-        });
-    }
+        var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
+        var offerDropDown = $("#OfferType").data("kendoDropDownList");
+        debugger
+        var prices = priceDropDown.value().split('-');
 
-    function priceRangeDropDownChange() {
-        $("#PriceRange").val(this.value());
+        window.location.href = `/Destinations/Destinations?isSpecial=${offerDropDown.value() === 'Special'}&priceFrom=${prices[0]}&priceTo=${prices[1]}`;
     }
-
-    function priceRangeSliderChange(e) {
-        $("#PriceRange").val(e.values.toString().replace(",", "-"));
-    }
-
+    
     $(function () {
-         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
-            $('.k-price-range-slider-wrapper').show();
-        } else {
-            @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
-            $('.k-price-range-drop-down-wrapper').show();
-        }
+
 
         dataSource = new kendo.data.DataSource({
             transport: {
@@ -158,4 +129,61 @@
         priceDropDown? priceDropDown.close():'';
         offerDropDown.close();
     });
+
+    function onOfferTypeChange(e) {
+        var destinationCombo = $("#Destinations").data("kendoComboBox");
+        var currentFilters = prepareQuery(destinationCombo.dataSource.filter(), 'IsSpecial');
+
+        if (this.value() === 'Special') {
+            currentFilters.filters.push({ field: 'IsSpecial', operator: 'eq', value: true });
+        } else if (this.value() === 'Special') {
+            currentFilters.filters.push({ field: 'IsSpecial', operator: 'eq', value: false });
+        }
+
+        applyQuery(destinationCombo, currentFilters);
+    }
+
+    function priceRangeChange() {
+        var destinationCombo = $("#Destinations").data("kendoComboBox");
+        var currentFilters = prepareQuery(destinationCombo.dataSource.filter(), 'LowestPrice');
+        
+        if (this.value()) {
+            var values = this.value().split('-');
+            currentFilters.filters.push({ field: 'LowestPrice', operator: 'gte', value: +values[0] });
+            currentFilters.filters.push({ field: 'LowestPrice', operator: 'lte', value: +values[1] });
+        }
+
+        applyQuery(destinationCombo, currentFilters);
+    }
+
+    function prepareQuery(query, field) {
+        if (!query) {
+            query = { logic: 'and', filters: [] };
+        } else {
+            removeFiltersForField(query, field);
+        }
+
+        return query;
+    }
+
+    function applyQuery(widget, query) {
+        if (query.filters.length) {
+            widget.dataSource.filter(query);
+        } else {
+            widget.dataSource.filter({});
+        }
+    }
+
+    function removeFiltersForField(expression, field) {
+        if (expression.filters) {
+            expression.filters = $.grep(expression.filters, function (filter) {
+                removeFiltersForField(filter, field);
+                if (filter.filters) {
+                    return filter.filters.length;
+                } else {
+                    return filter.field != field;
+                }
+            });
+        }
+    }
 </script>
