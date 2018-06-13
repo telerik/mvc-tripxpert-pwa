@@ -12,10 +12,12 @@ namespace TripXpert
     {
         protected void Application_Start()
         {
+            BundleTable.EnableOptimizations = true;
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
     }
 }

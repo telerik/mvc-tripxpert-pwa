@@ -233,9 +233,8 @@ namespace TripXpert.DAL
         {
             TripXpertEntities entity = new TripXpertEntities();
             using (entity)
-            {
-                var destinations = (from destionation in entity.Destinations select destionation).ToList();
-                return destinations;
+            {              
+                return entity.Destinations.ToList();
             }
         }
 

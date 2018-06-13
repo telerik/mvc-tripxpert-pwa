@@ -6,8 +6,16 @@ var cachedFiles = [
     '/Content/tripxpert.css',
     '/Scripts/modernizr-2.8.3.js',
     '/Scripts/jquery-3.1.1.min.js',
-    'https://kendo.cdn.telerik.com/2018.1.221/js/kendo.all.min.js',
-    'https://kendo.cdn.telerik.com/2018.1.221/js/kendo.aspnetmvc.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.core.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.data.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.aspnetmvc.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.popup.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.menu.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.listview.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.list.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.combobox.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.button.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js',
     '/Scripts/tripxpert.js',
     '/Images/App/tripxpert_logo.svg',
     '/Home/GetDestinations',
@@ -40,7 +48,8 @@ var cachedFiles = [
     '/Images/Gallery/Peru/Beach-Zorritos,-Peru_Svetlin-Nikolaev.JPG?width=450&height=450',
     '/Images/Gallery/Barcelona-and-Tenerife/Arc-de-Triomf,-Barcelona,-Spain_Liliya-Karakoleva.JPG?width=450&height=450',
     '/Images/Gallery/United-States/Boston-Old-South-Church_Ivo-Igov.JPG?width=450&height=450',
-    '/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG?width=450&height=450'
+    '/Images/Gallery/Malta/Bibliotheca-National-Library_Marie-Lan-Nguyen.JPG?width=450&height=450',
+    '/images/app/homepage-image.jpg'
 ];
 
 var getPath = function (href) {
