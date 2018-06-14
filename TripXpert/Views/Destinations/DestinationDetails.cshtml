@@ -292,13 +292,23 @@
             zoom: smallMap.zoom() + 1
         });
     });
+
+    function toggleDescription(e) {
+        $(e.target).parents('.k-card').find('.k-card-text').slideToggle();
+        $(e.target).toggle();
+        $(e.target).siblings('.k-icon').toggle();
+    }
 </script>
 <script id="attractionsTemplate" type="text/x-kendo-tmpl">
-    <div>
+    <div id="attractions-template">
         <div class="k-card">
             <img class="k-card-image" src="#=Image.ImageURL#" alt="#=Title#">
             <div class="k-card-body">
-                <h5 class="k-card-title">#:Title#</h5>
+                <h5 class="k-card-title">#:Title#
+                <span onclick="toggleDescription(event)" class="k-icon k-i-arrow-chevron-down"></span>
+                <span onclick="toggleDescription(event)" class="k-icon k-i-arrow-chevron-up"></span>
+
+                </h5>
                 <p class="k-card-subtitle small text-muted font-italic">#:Location#</p>
                 <p class="k-card-text">#: Description #</p>
             </div>
@@ -327,4 +337,19 @@
         .k-scrollview-next:hover, .k-scrollview-prev:hover {
             opacity: 0.6;
         }
+
+    #attractions-template .k-icon {
+        float: right;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    #attractions-template .k-card-text {
+        display: none;
+    }
+
+    #attractions-template .k-i-arrow-chevron-up {
+        display: none;
+    }
+
 </style>
