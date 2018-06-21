@@ -84,14 +84,16 @@
     overflow: visible;
 }
 
-.k-calendar-container {
-    margin: -8rem -15px -3rem;
+.tx-calendar-container {
+    margin: -8rem (-$grid-gutter-width) -3rem;
     height: 22rem;
-    padding: 1rem 15px 0;
+    padding: 1rem ($grid-gutter-width) 0;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
+    .k-calendar { border-width: 0; }
 }
 
 .testimonial {
@@ -136,6 +138,12 @@
     left: 0;
 }
 
+
+.tx-send-button {
+    padding: $spacer;
+    min-width: 190px;
+}
+
 .navbar-nav-svg {
     margin-right: .5rem;
     width: 1em;
@@ -167,7 +175,7 @@
         width: 100%;
     }
 
-    .k-calendar-container {
+    .tx-calendar-container {
         margin-top: -1.5rem;
         margin-bottom: -3rem;
         height: auto;
@@ -192,7 +200,7 @@
         margin: 0;
     }
 
-    .k-calendar-container {
+    .tx-calendar-container {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
         height: auto;

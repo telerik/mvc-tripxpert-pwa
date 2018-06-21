@@ -1,4 +1,4 @@
-#wrapper {
+﻿#wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column; }
@@ -81,6 +81,13 @@
   .tx-searchbar span.tx-pricerange {
     border-left-width: 1px; }
 
+.k-popup#Destinations-list a {
+  color: inherit;
+  text-decoration: none; }
+
+.k-popup#Destinations-list .k-state-focused {
+  box-shadow: none; }
+
 .k-listview {
   border-width: 0;
   background-color: transparent; }
@@ -133,14 +140,16 @@
   border: 0;
   overflow: visible; }
 
-.k-calendar-container {
-  margin: -8rem -15px -3rem;
+.tx-calendar-container {
+  margin: -8rem -30px -3rem;
   height: 22rem;
-  padding: 1rem 15px 0;
+  padding: 1rem 30px 0;
   background: white;
   display: flex;
   flex-direction: column;
   align-items: stretch; }
+  .tx-calendar-container .k-calendar {
+    border-width: 0; }
 
 .testimonial {
   opacity: .6;
@@ -175,6 +184,10 @@
   transform: none;
   left: 0; }
 
+.tx-send-button {
+  padding: 1rem;
+  min-width: 190px; }
+
 .navbar-nav-svg {
   margin-right: .5rem;
   width: 1em;
@@ -199,7 +212,7 @@
     margin-bottom: 1rem; }
   .k-card-image {
     width: 100%; }
-  .k-calendar-container {
+  .tx-calendar-container {
     margin-top: -1.5rem;
     margin-bottom: -3rem;
     height: auto; }
@@ -216,7 +229,7 @@
     grid-gap: 1rem; }
   .k-card-columns .k-card {
     margin: 0; }
-  .k-calendar-container {
+  .tx-calendar-container {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     height: auto; }
