@@ -61,3 +61,15 @@
         border-left-width: 1px;
     }
 }
+
+
+.k-popup#Destinations-list {
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .k-state-focused {
+        box-shadow: none;
+    }
+}
