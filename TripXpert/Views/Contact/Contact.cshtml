@@ -16,6 +16,7 @@
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.maskedtextbox.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.list.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dialog.min.js"></script>
 }
 
 <div class="py-5"></div>
@@ -45,26 +46,26 @@
     <div class="row my-5">
         <div class="col-md-12">
             @(Html.Kendo().Map()
-                                .Name("map1")
-                                .Center(42, 23)
-                                .Zoom(6)
-                                .HtmlAttributes(new { @style = "width: 100%; height: 320px;" })
-                                .Layers(layers =>
-                                {
-                                    layers.Add()
-                                        .Type(MapLayerType.Tile)
-                                        .UrlTemplate("http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
-                                        .Subdomains("a", "b", "c")
-                                        .Attribution("&copy; <a href='http://osm.org/copyright' title='OpenStreetMap contributors' target='_blank'>OpenStreetMap contributors</a>.");
-                                })
-                                .Markers(markers =>
-                                {
-                                    markers.Add()
-                                        .Location(42.650680, 23.379321)
-                                        .Shape(MapMarkersShape.PinTarget)
-                                        .Title("Sofia HQ")
-                                        .Tooltip(tooltip => tooltip.Content("33 Alexander Malinov Blvd, Sofia, Bulgaria"));
-                                })
+                .Name("map1")
+                .Center(42, 23)
+                .Zoom(6)
+                .HtmlAttributes(new { @style = "width: 100%; height: 320px;" })
+                .Layers(layers =>
+                {
+                    layers.Add()
+                        .Type(MapLayerType.Tile)
+                        .UrlTemplate("http://#= subdomain #.tile.openstreetmap.org/#= zoom #/#= x #/#= y #.png")
+                        .Subdomains("a", "b", "c")
+                        .Attribution("&copy; <a href='http://osm.org/copyright' title='OpenStreetMap contributors' target='_blank'>OpenStreetMap contributors</a>.");
+                })
+                .Markers(markers =>
+                {
+                    markers.Add()
+                        .Location(42.650680, 23.379321)
+                        .Shape(MapMarkersShape.PinTarget)
+                        .Title("Sofia HQ")
+                        .Tooltip(tooltip => tooltip.Content("33 Alexander Malinov Blvd, Sofia, Bulgaria"));
+                })
             )
         </div>
     </div>
@@ -83,25 +84,25 @@
             <div class="form-group col-md-6">
                 <label>Mobile*</label>
                 @(Html.Kendo().MaskedTextBox()
-                                                            .Name("mobile")
-                                                            .Mask("(999) 000-0000")
-                                                            .HtmlAttributes(new { @style = "width: 100%" })
+                    .Name("mobile")
+                    .Mask("(999) 000-0000")
+                    .HtmlAttributes(new { @style = "width: 100%" })
                 )
             </div>
             <div class="form-group col-md-6">
                 <label>Where are you from*</label>
                 @(Html.Kendo().DropDownList()
-                                                            .Name("country")
-                                                            .Height(192)
-                                                            .OptionLabel("Select country")
-                                                            .DataSource(source =>
-                                                            {
-                                                                source.Read(read =>
-                                                                {
-                                                                    read.Action("GetCountries", "Contact");
-                                                                });
-                                                            })
-                                                            .HtmlAttributes(new { @style = "width: 100%" })
+                    .Name("country")
+                    .Height(192)
+                    .OptionLabel("Select country")
+                    .DataSource(source =>
+                    {
+                        source.Read(read =>
+                        {
+                            read.Action("GetCountries", "Contact");
+                        });
+                    })
+                    .HtmlAttributes(new { @style = "width: 100%" })
                 )
             </div>
         </div>
