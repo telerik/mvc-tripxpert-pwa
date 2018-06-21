@@ -202,6 +202,32 @@
   display: inline-block;
   vertical-align: text-top; }
 
+.tx-scrollview-container {
+  position: relative;
+  padding: 0; }
+  .tx-scrollview-container .tx-scrollview {
+    height: 600px; }
+  .tx-scrollview-container .tx-scrollview-image-container {
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  .tx-scrollview-container .km-virtual-page {
+    height: 600px; }
+  .tx-scrollview-container .km-pages {
+    display: none; }
+  .tx-scrollview-container .k-scrollview-next,
+  .tx-scrollview-container .k-scrollview-prev {
+    height: 40%;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer; }
+
 @media only screen and (max-width: 800px) {
   .k-card-grid {
     grid-template-columns: 1fr;
@@ -249,4 +275,20 @@
 
 .font-weight-medium {
   font-weight: 500 !important; }
+
+.tx-attraction-card .k-card-title .k-toggle {
+  float: right;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s ease-in-out; }
+  .tx-attraction-card .k-card-title .k-toggle .k-icon {
+    font-size: inherit;
+    vertical-align: top; }
+
+.tx-attraction-card .k-card-text {
+  display: none; }
+
+.tx-attraction-card .k-rotated {
+  transform: rotate(180deg); }
 

@@ -160,6 +160,47 @@
 }
 
 
+.tx-scrollview-container {
+    position: relative;
+    padding: 0;
+
+    .tx-scrollview {
+        height: 600px;
+    }
+
+    .tx-scrollview-image-container {
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .km-virtual-page {
+        height: 600px;
+    }
+
+    .km-pages {
+        display: none;
+    }
+
+    .k-scrollview-next,
+    .k-scrollview-prev {
+        height: 40%;
+        color: #ffffff;
+        font-size: $font-size-lg;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        span {
+        }
+    }
+}
+
+
 @media only screen and (max-width: 800px) {
     .k-card-grid {
         grid-template-columns: 1fr;
@@ -228,3 +269,29 @@
 
 
 .font-weight-medium { font-weight: 500 !important; }
+
+
+
+.tx-attraction-card {
+
+    .k-card-title .k-toggle {
+        float: right;
+        font-size: 2rem;
+        line-height: 1;
+        cursor: pointer;
+        transition: transform .2s ease-in-out;
+
+        .k-icon {
+            font-size: inherit;
+            vertical-align: top;
+        }
+    }
+
+    .k-card-text {
+        display: none;
+    }
+
+    .k-rotated {
+        transform: rotate(180deg);
+    }
+}
