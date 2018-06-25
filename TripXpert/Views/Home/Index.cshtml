@@ -8,9 +8,13 @@
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.combobox.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.button.min.js"></script>
     <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.userevents.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.draganddrop.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2018.2.516/js/kendo.slider.min.js"></script>
 }
 
 @Html.Partial("Search")
+<input type="hidden" id="priceRange" />
 
 <div class="mt-5 k-flex">
     <div class="container">
@@ -20,20 +24,20 @@
             <p class="text-muted font-italic">Explore top destinations and attractions</p>
         </div>
         @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
-                            .Name("listView")
-                            .TagName("div")
-                            .ClientTemplateId("kendo-card-template")
-                            .DataSource(dataSource =>
-                            {
-                                dataSource.Custom()
-                                .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
-                                .ServerAggregates(false)
-                                .ServerFiltering(false)
-                                .ServerGrouping(false)
-                                .ServerPaging(false)
-                                .ServerSorting(false);
-                            })
-                            .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
+                                    .Name("listView")
+                                    .TagName("div")
+                                    .ClientTemplateId("kendo-card-template")
+                                    .DataSource(dataSource =>
+                                    {
+                                        dataSource.Custom()
+                                        .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
+                                        .ServerAggregates(false)
+                                        .ServerFiltering(false)
+                                        .ServerGrouping(false)
+                                        .ServerPaging(false)
+                                        .ServerSorting(false);
+                                    })
+                                    .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
         )
 
     </div>
@@ -91,14 +95,19 @@
     function searchClick() {
         var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
         var offerDropDown = $("#OfferType").data("kendoDropDownList");
-        debugger
-        var prices = priceDropDown.value().split('-');
+        var prices = $('#priceRange').val().split('-');
 
         window.location.href = `/Destinations/Destinations?isSpecial=${offerDropDown.value() === 'Special'}&priceFrom=${prices[0]}&priceTo=${prices[1]}`;
     }
-    
-    $(function () {
 
+    $(function () {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
+            $('.k-price-range-slider-wrapper').show();
+        } else {
+            @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
+            $('.k-price-range-drop-down-wrapper').show();
+        }
 
         dataSource = new kendo.data.DataSource({
             transport: {
@@ -143,12 +152,22 @@
         applyQuery(destinationCombo, currentFilters);
     }
 
-    function priceRangeChange() {
+    function priceRangeDropDownChange() {
+        $('#priceRange').val(this.value());
+        filterPrice();
+    }
+
+    function priceRangeSliderChange(e) {
+        $("#priceRange").val(e.values.toString().replace(",", "-"));
+        filterPrice();
+    }
+
+    function filterPrice(){
         var destinationCombo = $("#Destinations").data("kendoComboBox");
         var currentFilters = prepareQuery(destinationCombo.dataSource.filter(), 'LowestPrice');
-        
-        if (this.value()) {
-            var values = this.value().split('-');
+
+        var values = $('#priceRange').val().split('-');
+        if (values.length) {
             currentFilters.filters.push({ field: 'LowestPrice', operator: 'gte', value: +values[0] });
             currentFilters.filters.push({ field: 'LowestPrice', operator: 'lte', value: +values[1] });
         }
@@ -187,3 +206,8 @@
         }
     }
 </script>
+<style>
+    .k-price-range-drop-down-wrapper, .k-price-range-slider-wrapper {
+        display: none;
+    }
+</style>

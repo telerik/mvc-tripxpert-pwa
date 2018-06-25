@@ -19,23 +19,36 @@
                 )
             </div>
             <div class="col-md-2">
-                @(Html.Kendo().DropDownList()
-                    .Name("PriceRangeDropDown")
-                    .OptionLabel("Price range")
-                    .DataTextField("Text")
-                    .DataValueField("Value")
-                    .BindTo(new List<SelectListItem>() {
-                        new SelectListItem() { Text = "from $0 to $999", Value = "0-999" },
-                        new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
-                        new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
-                    })
-                    .HtmlAttributes(new { style = "width:100%;", @class = "tx-pricerange" })
-                    .Height(150)
-                    .Events(x => x.Change("priceRangeChange"))
-                )
+                <div class="k-price-range-drop-down-wrapper">
+                    @(Html.Kendo().DropDownList()
+                        .Name("PriceRangeDropDown")
+                        .OptionLabel("Price range")
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .BindTo(new List<SelectListItem>() {
+                            new SelectListItem() { Text = "from $0 to $999", Value = "0-999" },
+                            new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
+                            new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
+                        })
+                        .HtmlAttributes(new { style = "width:100%;", @class = "tx-pricerange" })
+                        .Height(150)
+                        .Events(x => x.Change("priceRangeDropDownChange"))
+                        .Deferred()                    
+                    )
+                </div>
+                <div class="k-price-range-slider-wrapper">
+                    @(Html.Kendo().RangeSlider()
+                        .Name("PriceRangeSlider")
+                        .LargeStep(100)
+                        .SmallStep(10)
+                        .Min(0)
+                        .Max(3000)
+                        .Events(x=> x.Change("priceRangeSliderChange"))
+                        .Deferred()
+                     )
+                </div>
             </div>
             <div class="col-md-6 d-flex">
-                <span class="k-icon k-i-search"></span>
                 @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                 @(Html.Kendo().ComboBox()
                     .Name("Destinations")
