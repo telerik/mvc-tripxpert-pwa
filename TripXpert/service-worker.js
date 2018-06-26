@@ -16,6 +16,9 @@ var cachedFiles = [
     'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.combobox.min.js',
     'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.button.min.js',
     'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.dropdownlist.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.userevents.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.draganddrop.min.js',
+    'http://kendo.cdn.telerik.com/2018.2.516/js/kendo.slider.min.js',      
     '/Scripts/tripxpert.js',
     '/Images/App/tripxpert_logo.svg',
     '/Home/GetDestinations',
@@ -61,7 +64,9 @@ self.addEventListener('install', function (e) {
 
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
-            return cache.addAll(cachedFiles);
+            Promise.all(
+                cachedFiles.map(function (url) { cache.add(url) })
+            );
         })
     );
 });
