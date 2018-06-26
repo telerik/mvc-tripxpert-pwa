@@ -166,7 +166,7 @@
                                     @(Html.Kendo().TextBox().Name("Email").HtmlAttributes(new { @class = "form-control" }))
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label>Mobile</label>
+                                    <label for="mobile">Mobile</label>
                                     @(Html.Kendo().MaskedTextBox()
                                         .Name("mobile")
                                         .Mask("(999) 000-0000")
@@ -186,7 +186,7 @@
                                         .Name("sendEnquiry")
                                         .Content("Send")
                                         .Events(e => e.Click("enquirySendClick"))
-                                        .HtmlAttributes(new { @class = "k-primary tx-send-button" })
+                                        .HtmlAttributes(new { @class = "k-primary tx-send-button", aria_label="Send" })
                                     )
                                 </div>
                             </div>
