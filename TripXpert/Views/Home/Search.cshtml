@@ -70,7 +70,7 @@
                     .Template(@"
                        <a href='/Destination/#:data.DestinationID#' style='width:100%;height:100%;'> 
                         <div class='d-flex py-2 align-items-center'>
-                            <img src='#:DefaultImage#?width=140&height=140' title='#=data.Title#' />
+                            <img alt='#:Title#' src='#:DefaultImage#?width=140&height=140' title='#=data.Title#' />
                             <div class='k-flex ml-2'>
                                 #=data.Title#<br />
                                 <span class='text-primary'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
