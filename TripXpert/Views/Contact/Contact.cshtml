@@ -82,7 +82,7 @@
         </div>
         <div class="row">
             <div class="form-group col-md-6">
-                <label>Mobile*</label>
+                <label for="mobile">Mobile*</label>
                 @(Html.Kendo().MaskedTextBox()
                     .Name("mobile")
                     .Mask("(999) 000-0000")
@@ -90,7 +90,7 @@
                 )
             </div>
             <div class="form-group col-md-6">
-                <label>Where are you from*</label>
+                <label for="country">Where are you from*</label>
                 @(Html.Kendo().DropDownList()
                     .Name("country")
                     .Height(192)
@@ -114,7 +114,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="k-button k-primary tx-send-button" type="submit">Send</button>
+                <button aria-label="Submit" class="k-button k-primary tx-send-button" type="submit">Send</button>
             </div>
         </div>
     </form>
