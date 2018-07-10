@@ -22,6 +22,7 @@
 }
 .tx-tabstrip-destinations {
     margin-top: -3.5rem;
+    font-size: 1.125rem;
 
     > .k-tabstrip-items {
         border-width: 0;
@@ -170,6 +171,7 @@
 
     .tx-scrollview-image-container {
         height: 600px;
+        background-position: 50%;
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -276,7 +278,7 @@
 
     .k-card-title .k-toggle {
         float: right;
-        font-size: 2rem;
+        font-size: 1.5rem;
         line-height: 1;
         cursor: pointer;
         transition: transform .2s ease-in-out;

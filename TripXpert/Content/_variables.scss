@@ -1,8 +1,11 @@
-$accent: #ff005f;
+$accent: #ea0058;
 $primary: $accent;
-$link-color: #007bff;
+$link-color: #0072ef;
 $selected-bg: #007bff;
 $component-active-bg: #007bff;
+$text-muted: #677480;
+
+$h6-font-size: 12px;
 
 $navbar-padding-y: 1rem;
 
@@ -12,6 +15,7 @@ $tabstrip-tab-gap: 0;
 $tabstrip-tab-padding-x: 1.25rem;
 $tabstrip-tab-padding-y: 1rem;
 
+$card-border: #f2f2f2;
 $card-border-radius: 2px;
 $card-actions-border-width: 0;
 $card-deck-gap: 50px;
