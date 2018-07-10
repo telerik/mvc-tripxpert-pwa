@@ -23,7 +23,7 @@
       color: inherit; }
     #header .tx-top-menu .k-state-hover,
     #header .tx-top-menu .k-state-highlight {
-      color: #ff005f; }
+      color: #ea0058; }
     #header .tx-top-menu .k-state-highlight::after {
       content: "";
       height: 3px;
@@ -42,10 +42,32 @@
   position: relative;
   z-index: 1; }
 
+#tx-top-menu-container {
+  float: none;
+  overflow: visible; }
+
+@media (max-width: 800px) {
+  .k-rpanel-toggle {
+    border-width: 1px;
+    border-style: solid;
+    background-image: none;
+    background-color: #ffffff; }
+  #tx-top-menu-container {
+    padding: 2rem 0;
+    background: #ffffff; }
+    #tx-top-menu-container .tx-top-menu {
+      flex-direction: column; }
+    #tx-top-menu-container .tx-top-menu .k-state-highlight::after {
+      height: auto;
+      width: 3px;
+      right: auto;
+      top: 0; } }
+
 .tx-jumbotron-home {
   margin-top: -70px;
   height: 520px;
   background-image: url("/images/app/homepage-image.jpg");
+  background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -93,7 +115,8 @@
   background-color: transparent; }
 
 .tx-tabstrip-destinations {
-  margin-top: -3.5rem; }
+  margin-top: -3.5rem;
+  font-size: 1.125rem; }
   .tx-tabstrip-destinations > .k-tabstrip-items {
     border-width: 0; }
   .tx-tabstrip-destinations > .k-tabstrip-items > .k-item {
@@ -101,12 +124,12 @@
     border-width: 0;
     background: none; }
   .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active {
-    color: #ff005f; }
+    color: #ea0058; }
     .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active::after {
       content: "";
       display: block;
       height: 2px;
-      background: #ff005f;
+      background: #ea0058;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -174,7 +197,7 @@
     display: block;
     width: 60px;
     height: 2px;
-    background: #ff005f;
+    background: #ea0058;
     position: absolute;
     bottom: -1rem;
     left: 50%;
@@ -209,6 +232,7 @@
     height: 600px; }
   .tx-scrollview-container .tx-scrollview-image-container {
     height: 600px;
+    background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover; }
   .tx-scrollview-container .km-virtual-page {
@@ -278,7 +302,7 @@
 
 .tx-attraction-card .k-card-title .k-toggle {
   float: right;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
   transition: transform .2s ease-in-out; }

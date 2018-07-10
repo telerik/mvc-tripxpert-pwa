@@ -9,17 +9,27 @@
                 <img src="@Url.Content("~/Images/App/tripxpert_logo.svg")" alt="tripxpert logo" class="logo" />
             </a>
         </div>
-        @(Html.Kendo().Menu()
-                            .Name("Menu1")
-                            .Items(items =>
-                            {
-                                items.Add().Text("Home").Route("Home");
-                                items.Add().Text("Destinations").Route("Destinations");
-                                items.Add().Text("Contact").Route("Contact");
-                                items.Add().Text(String.Format("{0} Source Code", gitHubSvg)).Encoded(false)
-                                .HtmlAttributes(new { @class = "ml-3" }).Url("https://github.com/telerik/mvc-tripxpert-sample-app");
-                            })
-                            .HtmlAttributes(new { @class = "tx-top-menu" })
-        )
+            <button class="k-rpanel-toggle"><span class="k-icon k-i-menu"></span></button>
+        <div id="tx-top-menu-container">
+            @(Html.Kendo().Menu()
+                .Name("Menu1")
+                .Items(items =>
+                {
+                    items.Add().Text("Home").Route("Home");
+                    items.Add().Text("Destinations").Route("Destinations");
+                    items.Add().Text("Contact").Route("Contact");
+                    items.Add().Text(String.Format("{0} Source Code", gitHubSvg)).Encoded(false)
+                    .HtmlAttributes(new { @class = "ml-3" }).Url("https://github.com/telerik/mvc-tripxpert-sample-app");
+                })
+                .HtmlAttributes(new { @class = "tx-top-menu" })
+            )
+        </div>
     </div>
 </div>
+
+<script>
+    $("#tx-top-menu-container").kendoResponsivePanel({
+        breakpoint: 800,
+        orientation: "right"
+    });
+</script>

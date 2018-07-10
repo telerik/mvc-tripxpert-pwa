@@ -52,3 +52,34 @@
     position: relative;
     z-index: 1;
 }
+
+
+#tx-top-menu-container {
+    float: none;
+    overflow: visible;
+}
+
+@media (max-width: 800px) {
+    .k-rpanel-toggle {
+        border-width: 1px;
+        border-style: solid;
+        background-image: none;
+        background-color: #ffffff;
+    }
+
+    #tx-top-menu-container {
+        padding: 2rem 0;
+        background: #ffffff;
+
+        .tx-top-menu {
+            flex-direction: column;
+        }
+
+            .tx-top-menu .k-state-highlight::after {
+                height: auto;
+                width: 3px;
+                right: auto;
+                top: 0;
+            }
+    }
+}
