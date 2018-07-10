@@ -75,7 +75,7 @@
     transition: box-shadow ease-in-out .2s;
 }
 .k-card:hover {
-    box-shadow: 0 0 40px 10px rgba(0, 0, 0, .12);
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, .12);
 }
 
 
@@ -109,6 +109,7 @@
     .k-card {
         margin-bottom: $card-deck-gap;
         display: inline-flex;
+        width: 100%;
     }
 }
 

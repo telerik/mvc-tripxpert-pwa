@@ -156,7 +156,7 @@
   transition: box-shadow ease-in-out .2s; }
 
 .k-card:hover {
-  box-shadow: 0 0 40px 10px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.12); }
 
 .k-tabstrip > .k-content {
   padding: 40px 0;
@@ -183,7 +183,8 @@
   column-gap: 50px; }
   .k-card-columns .k-card {
     margin-bottom: 50px;
-    display: inline-flex; }
+    display: inline-flex;
+    width: 100%; }
 
 .k-card-grid {
   display: grid;
