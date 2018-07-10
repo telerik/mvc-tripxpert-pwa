@@ -47,15 +47,33 @@
         }
     }
 }
+
+
+.tx-calendar-container {
+    margin: -8rem (-$grid-gutter-width) -3rem;
+    height: 22rem;
+    padding: 1rem ($grid-gutter-width) 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 .tx-calendar-destinations {
     width: 100%;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    border-width: 0;
+    border-bottom: 1px solid #e2e3e3;
 
     .k-header {
         background: none;
         border-width: 0;
+    }
+
+    thead th {
+        border-top: 1px solid #e2e3e3;
+        border-bottom: 1px solid #e2e3e3;
     }
 
     table.k-content {
@@ -83,18 +101,6 @@
     padding: 40px 0;
     border: 0;
     overflow: visible;
-}
-
-.tx-calendar-container {
-    margin: -8rem (-$grid-gutter-width) -3rem;
-    height: 22rem;
-    padding: 1rem ($grid-gutter-width) 0;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    .k-calendar { border-width: 0; }
 }
 
 .testimonial {

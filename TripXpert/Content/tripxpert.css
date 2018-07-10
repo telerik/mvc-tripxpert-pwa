@@ -43,25 +43,48 @@
   z-index: 1; }
 
 #tx-top-menu-container {
+  padding: 1rem 0;
+  margin: -1rem 0;
+  height: auto;
+  display: flex;
+  align-self: stretch;
   float: none;
   overflow: visible; }
 
 @media (max-width: 800px) {
+  .tx-menu-toggle-icon {
+    font-size: 2rem;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: top; }
   .k-rpanel-toggle {
-    border-width: 1px;
-    border-style: solid;
+    border-width: 0;
     background-image: none;
-    background-color: #ffffff; }
+    background-color: transparent; }
   #tx-top-menu-container {
-    padding: 2rem 0;
-    background: #ffffff; }
+    margin: 0;
+    padding: 1.3125rem 1rem;
+    height: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-end;
+    box-shadow: none; }
+    #tx-top-menu-container.k-rpanel-expanded {
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+      transition: all .2s ease-in-out; }
     #tx-top-menu-container .tx-top-menu {
-      flex-direction: column; }
-    #tx-top-menu-container .tx-top-menu .k-state-highlight::after {
-      height: auto;
-      width: 3px;
-      right: auto;
-      top: 0; } }
+      margin-top: 1rem;
+      flex-direction: column;
+      align-items: flex-end; }
+    #tx-top-menu-container .tx-top-menu .k-item {
+      justify-content: flex-end; } }
+
+@media (max-width: 600px) {
+  #header .navbar-brand {
+    z-index: 10; }
+  #tx-top-menu-container {
+    width: 100%; } }
 
 .tx-jumbotron-home {
   margin-top: -70px;
@@ -135,14 +158,28 @@
       left: 0;
       right: 0; }
 
+.tx-calendar-container {
+  margin: -8rem -30px -3rem;
+  height: 22rem;
+  padding: 1rem 30px 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+
 .tx-calendar-destinations {
   width: 100%;
   flex: 1 1 auto;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border-width: 0;
+  border-bottom: 1px solid #e2e3e3; }
   .tx-calendar-destinations .k-header {
     background: none;
     border-width: 0; }
+  .tx-calendar-destinations thead th {
+    border-top: 1px solid #e2e3e3;
+    border-bottom: 1px solid #e2e3e3; }
   .tx-calendar-destinations table.k-content {
     flex: 1 1 auto;
     height: 18rem; }
@@ -162,17 +199,6 @@
   padding: 40px 0;
   border: 0;
   overflow: visible; }
-
-.tx-calendar-container {
-  margin: -8rem -30px -3rem;
-  height: 22rem;
-  padding: 1rem 30px 0;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; }
-  .tx-calendar-container .k-calendar {
-    border-width: 0; }
 
 .testimonial {
   opacity: .6;
