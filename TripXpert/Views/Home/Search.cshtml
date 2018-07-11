@@ -56,7 +56,7 @@
                     .DataTextField("Title")
                     .DataValueField("DestinationID")
                     .Filter("contains")
-                    .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox" })
+                    .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox", title = "destinations" })
                     .AutoBind(false)
                     .DataSource(source =>
                     {
