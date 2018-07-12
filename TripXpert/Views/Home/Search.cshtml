@@ -4,10 +4,10 @@
 
 <div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
-        <div class="h1 font-weight-medium mb-3">Find the best destinations all around the world</div>
-        <span id="tx-search-open" class="form-control d-none-md">Enter destinations</span>
+        <div class="h1 font-weight-medium mb-3 d-none d-md-block">Find the best destinations all around the world</div>
+        <span id="tx-search-open" class="form-control d-md-none">Enter destinations</span>
         <div id="tx-searchbar-container">
-            <button id="tx-search-close" class="k-button k-flat tx-search-close d-none-md">@Html.Raw(searchCloseSvg)</button>
+            <span id="tx-search-close" class="k-button k-flat tx-search-close d-md-none">@Html.Raw(searchCloseSvg)</span>
             <div class="row tx-searchbar text-body flex-column flex-md-row">
                 <div class="col-md-2 d-none d-md-block">
                     @(Html.Kendo().DropDownList()
@@ -20,18 +20,25 @@
                             new SelectListItem() { Text = "Special offers", Value = "Special" },
                             new SelectListItem() { Text = "Regular offers", Value = "Regular" }
                         })
-                        .HtmlAttributes(new { style = "width:100%;", @class = "tx-offertype d-none d-" })
+                        .HtmlAttributes(new { style = "width:100%;", @class = "tx-offertype" })
                         .Height(150)
                         .Events(x=> x.Change("onOfferTypeChange"))
                     )
                 </div>
-                <div class="col-12 d-md-none">
-                    <label for="OfferTypeNative">Offer types</label>
-                    @(Html.ListBox("OfferTypeNative", new List<SelectListItem>() {
-                        new SelectListItem() { Text = "All types", Value = "All" },
-                        new SelectListItem() { Text = "Special offers", Value = "Special" },
-                        new SelectListItem() { Text = "Regular offers", Value = "Regular" }
-                    }, new { @class = "form-control" }))
+                <div class="col-12 d-md-none mt-4">
+                    <h5>Offer types</h5>
+                    <div class="custom-control custom-radio mb-2">
+                        <input type="radio" id="all-offers" name="offerTypeRadio" value="All" class="custom-control-input" checked="checked" />
+                        <label class="custom-control-label" for="all-offers">All types</label>
+                    </div>
+                    <div class="custom-control custom-radio mb-2">
+                        <input type="radio" id="special-offers" name="offerTypeRadio" value="Special" class="custom-control-input" />
+                        <label class="custom-control-label" for="special-offers">Special offers</label>
+                    </div>
+                    <div class="custom-control custom-radio mb-2">
+                        <input type="radio" id="regular-offers" name="offerTypeRadio" value="Regular" class="custom-control-input" />
+                        <label class="custom-control-label" for="regular-offers">Regular offers</label>
+                    </div>
                 </div>
                 <div class="col-md-2 d-none d-md-block">
                     <div class="k-price-range-drop-down-wrapper">
@@ -52,13 +59,13 @@
                         )
                     </div>
                 </div>
-                <div class="col-12 d-md-none">
-                    <label>Price range</label>
+                <div class="col-12 d-md-none mt-4 pb-4">
+                    <h5>Price range</h5>
                     <div class="k-price-range-slider-wrapper">
                         @(Html.Kendo().RangeSlider()
                             .Name("PriceRangeSlider")
-                            .LargeStep(100)
-                            .SmallStep(10)
+                            .LargeStep(1000)
+                            .SmallStep(100)
                             .Min(0)
                             .Max(3000)
                             .Events(x=> x.Change("priceRangeSliderChange"))
@@ -66,8 +73,9 @@
                          )
                     </div>
                 </div>
-                <div class="col-md-6 d-flex">
+                <div class="col-md-6 d-flex flex-column flex-md-row mt-4 mt-md-0">
                     @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
+                    <h5 class="d-md-none">Destinations</h5>
                     @(Html.Kendo().ComboBox()
                         .Name("Destinations")
                         .Placeholder("Destinations")
@@ -98,7 +106,7 @@
                         ")
                     )
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 mt-4 mt-md-0">
                     @(Html.Kendo().Button()
                         .Name("SearchButton")
                         .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary tx-search-button" })
@@ -122,12 +130,28 @@
         e.stopPropagation();
         e.preventDefault();
         searchPanel.open();
+        $("#header").addClass("search-opened");
+        sizeSlider();
         return false;
     });
     $("#tx-search-close").click(function (e) {
         e.stopPropagation();
         e.preventDefault();
+        $("#header").removeClass("search-opened");
+        console.log("ici")
         searchPanel.close();
         return false;
     });
+
+    $("input[name=offerTypeRadio]").on("change", function (e) {
+        var val = $("input[name=offerTypeRadio]:checked").val();
+        $("#OfferType").data("kendoDropDownList").value(val);
+        $("#OfferType").data("kendoDropDownList").trigger("change");
+    });
+
+    function sizeSlider() {
+        var slider = $("#PriceRangeSlider").data("kendoRangeSlider");
+        slider.wrapper.width(slider.wrapper.parent().width());
+        slider.resize();
+    }
 </script>
