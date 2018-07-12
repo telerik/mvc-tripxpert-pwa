@@ -1,93 +1,133 @@
+@{
+    var searchCloseSvg = @"<svg class=""tx-menu-toggle-icon"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 32 32""><path d=""M17.4,16L28,26.6L26.6,28L16,17.4L5.4,28L4,26.6L14.6,16L4,5.4L5.4,4L16,14.6L26.6,4L28,5.4L17.4,16z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
+}
+
 <div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
         <div class="h1 font-weight-medium mb-3">Find the best destinations all around the world</div>
-        <div class="row tx-searchbar text-body">
-            <div class="col-md-2">
-                @(Html.Kendo().DropDownList()
-                    .Name("OfferType")
-                    .OptionLabel("Offer type")
-                    .DataTextField("Text")
-                    .DataValueField("Value")
-                    .BindTo(new List<SelectListItem>() {
-                        new SelectListItem() { Text = "All types", Value = "All" },
-                        new SelectListItem() { Text = "Special offers", Value = "Special" },
-                        new SelectListItem() { Text = "Regular offers", Value = "Regular" }
-                    })
-                    .HtmlAttributes(new { style = "width:100%;", @class = "tx-offertype" })
-                    .Height(150)
-                    .Events(x=> x.Change("onOfferTypeChange"))
-                )
-            </div>
-            <div class="col-md-2">
-                <div class="k-price-range-drop-down-wrapper">
+        <span id="tx-search-open" class="form-control d-none-md">Enter destinations</span>
+        <div id="tx-searchbar-container">
+            <button id="tx-search-close" class="k-button k-flat tx-search-close d-none-md">@Html.Raw(searchCloseSvg)</button>
+            <div class="row tx-searchbar text-body flex-column flex-md-row">
+                <div class="col-md-2 d-none d-md-block">
                     @(Html.Kendo().DropDownList()
-                        .Name("PriceRangeDropDown")
-                        .OptionLabel("Price range")
+                        .Name("OfferType")
+                        .OptionLabel("Offer type")
                         .DataTextField("Text")
                         .DataValueField("Value")
                         .BindTo(new List<SelectListItem>() {
-                            new SelectListItem() { Text = "from $0 to $999", Value = "0-999" },
-                            new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
-                            new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
+                            new SelectListItem() { Text = "All types", Value = "All" },
+                            new SelectListItem() { Text = "Special offers", Value = "Special" },
+                            new SelectListItem() { Text = "Regular offers", Value = "Regular" }
                         })
-                        .HtmlAttributes(new { style = "width:100%;", @class = "tx-pricerange" })
+                        .HtmlAttributes(new { style = "width:100%;", @class = "tx-offertype d-none d-" })
                         .Height(150)
-                        .Events(x => x.Change("priceRangeDropDownChange"))
-                        .Deferred()                    
+                        .Events(x=> x.Change("onOfferTypeChange"))
                     )
                 </div>
-                <div class="k-price-range-slider-wrapper">
-                    @(Html.Kendo().RangeSlider()
-                        .Name("PriceRangeSlider")
-                        .LargeStep(100)
-                        .SmallStep(10)
-                        .Min(0)
-                        .Max(3000)
-                        .Events(x=> x.Change("priceRangeSliderChange"))
-                        .Deferred()
-                     )
+                <div class="col-12 d-md-none">
+                    <label for="OfferTypeNative">Offer types</label>
+                    @(Html.ListBox("OfferTypeNative", new List<SelectListItem>() {
+                        new SelectListItem() { Text = "All types", Value = "All" },
+                        new SelectListItem() { Text = "Special offers", Value = "Special" },
+                        new SelectListItem() { Text = "Regular offers", Value = "Regular" }
+                    }, new { @class = "form-control" }))
                 </div>
-            </div>
-            <div class="col-md-6 d-flex">
-                @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
-                @(Html.Kendo().ComboBox()
-                    .Name("Destinations")
-                    .Placeholder("Destinations")
-                    .DataTextField("Title")
-                    .DataValueField("DestinationID")
-                    .Filter("contains")
-                    .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox", title = "destinations" })
-                    .AutoBind(false)
-                    .DataSource(source =>
-                    {
-                        source.Read(read =>
+                <div class="col-md-2 d-none d-md-block">
+                    <div class="k-price-range-drop-down-wrapper">
+                        @(Html.Kendo().DropDownList()
+                            .Name("PriceRangeDropDown")
+                            .OptionLabel("Price range")
+                            .DataTextField("Text")
+                            .DataValueField("Value")
+                            .BindTo(new List<SelectListItem>() {
+                                new SelectListItem() { Text = "from $0 to $999", Value = "0-999" },
+                                new SelectListItem() { Text = "from $1000 to $1999", Value = "1000-1999" },
+                                new SelectListItem() { Text = "from $2000 to $2999", Value = "2000-2999" }
+                            })
+                            .HtmlAttributes(new { style = "width:100%;", @class = "tx-pricerange" })
+                            .Height(150)
+                            .Events(x => x.Change("priceRangeDropDownChange"))
+                            .Deferred()
+                        )
+                    </div>
+                </div>
+                <div class="col-12 d-md-none">
+                    <label>Price range</label>
+                    <div class="k-price-range-slider-wrapper">
+                        @(Html.Kendo().RangeSlider()
+                            .Name("PriceRangeSlider")
+                            .LargeStep(100)
+                            .SmallStep(10)
+                            .Min(0)
+                            .Max(3000)
+                            .Events(x=> x.Change("priceRangeSliderChange"))
+                            .Deferred()
+                         )
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex">
+                    @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
+                    @(Html.Kendo().ComboBox()
+                        .Name("Destinations")
+                        .Placeholder("Destinations")
+                        .DataTextField("Title")
+                        .DataValueField("DestinationID")
+                        .Filter("contains")
+                        .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox" })
+                        .AutoBind(false)
+                        .DataSource(source =>
                         {
-                            read.Action("GetDestinations", "Home"); //Set the Action and Controller names.
-                        });
-                    })
-                    .Events(ev => ev.Select("destinationsSelect").Change("destinationsChange"))
-                    .Height(442)
-                    .Template(@"
-                       <a href='/Destination/#:data.DestinationID#' style='width:100%;height:100%;'> 
-                        <div class='d-flex py-2 align-items-center'>
-                            <img alt='#:Title#' src='#:DefaultImage#?width=140&height=140' title='#=data.Title#' />
-                            <div class='k-flex ml-2'>
-                                #=data.Title#<br />
-                                <span class='text-primary'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                            source.Read(read =>
+                            {
+                                read.Action("GetDestinations", "Home"); //Set the Action and Controller names.
+                            });
+                        })
+                        .Events(ev => ev.Select("destinationsSelect").Change("destinationsChange"))
+                        .Height(442)
+                        .Template(@"
+                           <a href='/Destination/#:data.DestinationID#' style='width:100%;height:100%;'>
+                            <div class='d-flex py-2 align-items-center'>
+                                <img alt='#:Title#' src='#:DefaultImage#?width=140&height=140' title='#=data.Title#' />
+                                <div class='k-flex ml-2'>
+                                    #=data.Title#<br />
+                                    <span class='text-primary'>from #:kendo.toString(data.LowestPrice, 'c0')#</span>
+                                </div>
                             </div>
-                        </div>
-                      <a>
-                    ")
-                )
-            </div>
-            <div class="col-md-2">
-                @(Html.Kendo().Button()
-                    .Name("SearchButton")
-                    .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary tx-search-button" })
-                    .Content("Search")
-                    .Events(ev => ev.Click("searchClick"))
-                )
+                          <a>
+                        ")
+                    )
+                </div>
+                <div class="col-md-2">
+                    @(Html.Kendo().Button()
+                        .Name("SearchButton")
+                        .HtmlAttributes(new { type = "button", style = "width:100%;", @class = "k-primary tx-search-button" })
+                        .Content("Search")
+                        .Events(ev => ev.Click("searchClick"))
+                    )
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<script>
+    var searchPanel = $("#tx-searchbar-container").kendoResponsivePanel({
+        breakpoint: 768,
+        orientation: "top"
+    }).data("kendoResponsivePanel");
+    $("#tx-search-open").click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        searchPanel.open();
+        return false;
+    });
+    $("#tx-search-close").click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        searchPanel.close();
+        return false;
+    });
+</script>
