@@ -102,12 +102,17 @@
     }
 
     $(function () {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
-            $('.k-price-range-slider-wrapper').show();
-        } else {
-            @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
-            $('.k-price-range-drop-down-wrapper').show();
+        if ("matchMedia" in window) {
+            var mql = window.matchMedia("(max-width: 767.98px)");
+
+            if (mql.matches) {
+                @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
+                $('.k-price-range-slider-wrapper').show();
+            }
+            else {
+                @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
+                $('.k-price-range-drop-down-wrapper').show();
+            }
         }
 
         dataSource = new kendo.data.DataSource({

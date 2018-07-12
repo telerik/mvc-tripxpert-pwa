@@ -64,7 +64,7 @@
     overflow: visible;
 }
 
-@media (max-width: 800px) {
+@include media-breakpoint-down(sm) {
     .tx-menu-toggle-icon {
         font-size: 2rem;
         width: 1em;
@@ -102,10 +102,8 @@
                 justify-content: flex-end;
             }
     }
-}
 
 
-@media (max-width: 600px) {
     #header .navbar-brand {
         z-index: 10;
     }
