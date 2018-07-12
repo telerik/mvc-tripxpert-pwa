@@ -8,6 +8,15 @@
     right: 0;
     z-index: 10;
 
+    &.search-opened {
+        background-color: transparent;
+        pointer-events: none;
+
+        .tx-menu-open {
+            display: none;
+        }
+    }
+
     .logo {
         width: 150px;
     }

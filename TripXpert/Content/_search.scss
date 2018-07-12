@@ -81,7 +81,7 @@
 @include media-breakpoint-down(sm) {
 
     #tx-searchbar-container {
-        padding: $spacer;
+        padding: $spacer ($spacer * 2);
         height: 100vh;
         max-height: none;
         color: $popup-text;
@@ -101,8 +101,30 @@
         }
 
         .tx-search-close {
+            margin-right: (-$spacer);
             align-self: flex-end;
             order: 0;
+        }
+
+        .k-slider-horizontal .k-label,
+        .k-slider-horizontal .k-first .k-label,
+        .k-slider-horizontal .k-last .k-label {
+            width: auto;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+        }
+
+        .tx-searchbox {
+            .k-dropdown-wrap {
+                border-bottom-width: 1px;
+            }
+            .k-input {
+                padding-left: 0;
+            }
+            .k-select {
+                display: none;
+            }
         }
     }
 }
