@@ -5,7 +5,7 @@
 <div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
         <div class="h1 font-weight-medium mb-3">Find the best destinations all around the world</div>
-        <span id="tx-search-open" class="form-control d-md-none tx-search-open">Type your destination</span>
+        <span id="tx-search-open" class="form-control d-md-none tx-search-open">Find your destination</span>
         <div id="tx-searchbar-container">
             <span id="tx-search-close" class="k-button k-flat tx-search-close d-md-none">@Html.Raw(searchCloseSvg)</span>
             <div class="row tx-searchbar text-body d-block d-md-flex flex-md-row">
@@ -73,7 +73,7 @@
                          )
                     </div>
                 </div>
-                <div id="tx-searchbox-wrapper" class="col-md-6 d-flex flex-column flex-md-row mt-4 mt-md-0">
+                <div id="tx-searchbox-wrapper" class="col-md-6 d-none d-md-flex">
                     @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                     <h5 class="d-md-none">Destinations</h5>
                     @(Html.Kendo().ComboBox()
@@ -127,7 +127,8 @@
 <script>
     var searchPanel = $("#tx-searchbar-container").kendoResponsivePanel({
         breakpoint: 768,
-        orientation: "top"
+        orientation: "top",
+        autoClose: false
     }).data("kendoResponsivePanel");
     $("#tx-search-open").click(function (e) {
         e.stopPropagation();
