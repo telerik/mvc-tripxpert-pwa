@@ -85,6 +85,12 @@
   #tx-top-menu-container {
     width: 100%; } }
 
+.tx-menu-shown {
+  overflow: hidden; }
+
+.tx-search-shown {
+  overflow: hidden; }
+
 .tx-jumbotron-home {
   margin-top: -70px;
   height: 520px;

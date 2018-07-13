@@ -33,17 +33,20 @@
 <script>
     var menuPanel = $("#tx-top-menu-container").kendoResponsivePanel({
         breakpoint: 768,
-        orientation: "right"
+        orientation: "right",
+        autoClose: false
     }).data("kendoResponsivePanel");
     $("#tx-menu-open").click(function (e) {
         e.stopPropagation();
         e.preventDefault();
+        $("body").addClass("tx-menu-shown");
         menuPanel.open();
         return false;
     });
     $("#tx-menu-close").click(function (e) {
         e.stopPropagation();
         e.preventDefault();
+        $("body").removeClass("tx-menu-shown");
         menuPanel.close();
         return false;
     });

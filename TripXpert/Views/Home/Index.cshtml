@@ -96,8 +96,8 @@
         var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
         var offerDropDown = $("#OfferType").data("kendoDropDownList");
         var prices = $('#priceRange').val().split('-');
-        debugger
         var url = "/Destinations/Destinations?isSpecial=" + (offerDropDown.value() === 'Special') + "&priceFrom=" + prices[0] + "&priceTo=" + prices[1];
+
         window.location.href = url;
     }
 
@@ -110,7 +110,6 @@
                 @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
                 $('.k-price-range-slider-wrapper').show();
                 destinations.popup.options.appendTo = destinations.wrapper.parent();
-                console.log(destinations);
             }
             else {
                 @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)
