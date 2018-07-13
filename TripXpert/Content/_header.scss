@@ -8,7 +8,7 @@
     right: 0;
     z-index: 10;
 
-    &.search-opened {
+    .tx-search-shown & {
         background-color: transparent;
         pointer-events: none;
 
@@ -71,16 +71,13 @@
     align-self: stretch;
     float: none;
     overflow: visible;
+
+    .tx-top-menu > .k-item > .k-link {
+        padding: .5rem 1rem;
+    }
 }
 
 @include media-breakpoint-down(sm) {
-    .tx-menu-toggle-icon {
-        font-size: 2rem;
-        width: 1em;
-        height: 1em;
-        display: inline-block;
-        vertical-align: top;
-    }
     .k-rpanel-toggle {
         border-width: 0;
         background-image: none;
