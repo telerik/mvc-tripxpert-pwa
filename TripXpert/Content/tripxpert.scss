@@ -88,6 +88,42 @@
     }
 }
 
+@include media-breakpoint-down(md) {
+
+    #tx-calendar-container {
+        margin: 0;
+        padding: $spacer ($spacer * 2);
+        height: 100vh;
+        max-height: none;
+        color: $popup-text;
+        background-color: $popup-bg;
+        display: none !important;
+        flex-direction: column;
+        align-items: stretch;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+
+        &.k-rpanel-expanded {
+            display: flex !important;
+        }
+
+        .tx-calendar-close {
+            margin-right: (-$spacer);
+            align-self: flex-end;
+            order: 0;
+        }
+
+        .tx-calendar-destinations {
+            margin-top: 3rem;
+        }
+    }
+}
+
+
 // cards
 .k-card-deck .k-card {
     flex: 1 0 0%;
@@ -172,11 +208,12 @@
 
 
 .tx-scrollview-container {
-    position: relative;
     padding: 0;
+    position: relative;
 
     .tx-scrollview {
         height: 600px;
+        border-width: 0;
     }
 
     .tx-scrollview-image-container {
@@ -213,7 +250,7 @@
 }
 
 
-@media only screen and (max-width: 800px) {
+@include media-breakpoint-down(sm) {
     .k-card-grid {
         grid-template-columns: 1fr;
         grid-gap: 1rem;
@@ -239,10 +276,23 @@
     .tx-calendar-destinations .k-content .k-link {
         line-height: normal;
     }
+
+    .tx-send-button {
+        width: 100%;
+    }
+
+    .tx-scrollview-container .k-scrollview-prev,
+    .tx-scrollview-container .k-scrollview-next {
+        display: none;
+    }
+    .tx-scrollview-container .km-pages {
+        display: flex;
+        position: absolute;
+    }
 }
 
 
-@media only screen and (max-width: 700px) {
+@include media-breakpoint-down(xs) {
     .k-card-columns {
         column-count: auto;
         display: grid;
@@ -262,9 +312,6 @@
         line-height: 3;
     }
 
-    .tx-tabstrip-destinations {
-        margin: 0;
-    }
     .tx-tabstrip-destinations .k-tabstrip-items {
         font-size: 2rem;
         display: flex;
@@ -274,6 +321,8 @@
         flex: 1 1 0;
     }
     .tx-tabstrip-destinations .k-tabstrip-items > .k-item .k-link {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
         width: 100%;
         justify-content: center;
     }
@@ -306,4 +355,52 @@
     .k-rotated {
         transform: rotate(180deg);
     }
+}
+
+.tx-destination-summary {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+.tx-destination-details {
+    margin-bottom: -3em;
+    position: relative;
+    z-index: 3;
+}
+.tx-calendar-shown {
+    overflow: hidden;
+
+    #header {
+        background-color: transparent;
+        pointer-events: none;
+    }
+    #tx-menu-open,
+    #tx-top-menu-container {
+        visibility: hidden;
+    }
+
+    .tx-destination-summary {
+        z-index: 4;
+    }
+
+    .tx-destination-details {}
+}
+
+
+
+
+.tx-svg-icon {
+    font-size: 1rem;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: top;
+}
+.tx-svg-icon-lg {
+    font-size: 2rem;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: top;
 }

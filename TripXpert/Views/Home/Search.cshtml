@@ -1,14 +1,14 @@
 @{
-    var searchCloseSvg = @"<svg class=""tx-menu-toggle-icon"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 32 32""><path d=""M17.4,16L28,26.6L26.6,28L16,17.4L5.4,28L4,26.6L14.6,16L4,5.4L5.4,4L16,14.6L26.6,4L28,5.4L17.4,16z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
+    var searchCloseSvg = @"<svg class=""tx-svg-icon-lg"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 32 32""><path d=""M17.4,16L28,26.6L26.6,28L16,17.4L5.4,28L4,26.6L14.6,16L4,5.4L5.4,4L16,14.6L26.6,4L28,5.4L17.4,16z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
 }
 
 <div class="jumbotron jumbotron-fluid tx-jumbotron-home d-flex align-items-center bg-dark text-light my-0">
     <div class="container">
-        <div class="h1 font-weight-medium mb-3 d-none d-md-block">Find the best destinations all around the world</div>
-        <span id="tx-search-open" class="form-control d-md-none">Enter destinations</span>
+        <div class="h1 font-weight-medium mb-3">Find the best destinations all around the world</div>
+        <span id="tx-search-open" class="form-control d-md-none tx-search-open">Type your destination</span>
         <div id="tx-searchbar-container">
             <span id="tx-search-close" class="k-button k-flat tx-search-close d-md-none">@Html.Raw(searchCloseSvg)</span>
-            <div class="row tx-searchbar text-body flex-column flex-md-row">
+            <div class="row tx-searchbar text-body d-block d-md-flex flex-md-row">
                 <div class="col-md-2 d-none d-md-block">
                     @(Html.Kendo().DropDownList()
                         .Name("OfferType")
@@ -73,7 +73,7 @@
                          )
                     </div>
                 </div>
-                <div class="col-md-6 d-flex flex-column flex-md-row mt-4 mt-md-0">
+                <div id="tx-searchbox-wrapper" class="col-md-6 d-flex flex-column flex-md-row mt-4 mt-md-0">
                     @*The label is needed for accessibility https://docs.telerik.com/kendo-ui/accessibility/section-508#label-element-support*@
                     <h5 class="d-md-none">Destinations</h5>
                     @(Html.Kendo().ComboBox()
@@ -104,6 +104,9 @@
                             </div>
                           <a>
                         ")
+                        .Popup( popup => {
+                            popup.AppendTo("#tx-searchbox-wrapper");
+                        })
                     )
                 </div>
                 <div class="col-md-2 mt-4 mt-md-0">
@@ -130,15 +133,14 @@
         e.stopPropagation();
         e.preventDefault();
         searchPanel.open();
-        $("#header").addClass("search-opened");
+        $("body").addClass("tx-search-shown");
         sizeSlider();
         return false;
     });
     $("#tx-search-close").click(function (e) {
         e.stopPropagation();
         e.preventDefault();
-        $("#header").removeClass("search-opened");
-        console.log("ici")
+        $("body").removeClass("tx-search-shown");
         searchPanel.close();
         return false;
     });

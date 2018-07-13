@@ -104,10 +104,13 @@
     $(function () {
         if ("matchMedia" in window) {
             var mql = window.matchMedia("(max-width: 767.98px)");
+            var destinations = $("#Destinations").data("kendoComboBox");
 
             if (mql.matches) {
                 @Html.Kendo().DeferredScriptsFor("PriceRangeSlider", false)
                 $('.k-price-range-slider-wrapper').show();
+                destinations.popup.options.appendTo = destinations.wrapper.parent();
+                console.log(destinations);
             }
             else {
                 @Html.Kendo().DeferredScriptsFor("PriceRangeDropDown", false)

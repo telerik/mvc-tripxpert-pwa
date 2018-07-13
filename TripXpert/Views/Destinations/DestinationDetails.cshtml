@@ -7,6 +7,7 @@
     var infoSvg = @"<svg class=""tx-tabstrip-svg"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512"" focusable=""false""><path d=""M256,0C114.6,0,0,114.6,0,256c0,141.4,114.6,256,256,256s256-114.6,256-256C512,114.6,397.4,0,256,0zM256,469.3c-117.8,0-213.3-95.5-213.3-213.3c0-117.8,95.5-213.3,213.3-213.3S469.3,138.2,469.3,256C469.3,373.8,373.8,469.3,256,469.3z M287.9,128.1c0,17.6-14.3,31.9-31.9,31.9S224,145.7,224,128.1s14.3-31.9,31.9-31.9S287.9,110.4,287.9,128.1z M320,384H192v-13.1c3.1-0.2,11.7-0.5,14.7-0.9c3-0.4,5.6-1,7.7-1.8c3.8-1.4,6.5-3.5,8.1-6.2c1.5-2.7,1.5-5.6,1.5-10.1c0,0,0-125.4,0-128s-6.4-11.5-32-11.2c0,7,0-20.8,0-20.8h93.3l2.7,2.7V352c0,6.7,3.7,12.3,10.3,15.5c6.5,3.1,17,3.3,21.7,3.4V384z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
     var attractionsSvg = @"<svg class=""tx-tabstrip-svg"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512"" focusable=""false""><path d=""M256,0C114.6,0,0,114.6,0,256c0,141.4,114.6,256,256,256s256-114.6,256-256C512,114.6,397.4,0,256,0zM256,469.3c-117.8,0-213.3-95.5-213.3-213.3c0-117.8,95.5-213.3,213.3-213.3S469.3,138.2,469.3,256C469.3,373.8,373.8,469.3,256,469.3z M128,352 M96,352h320 M96,224v-32 M416,352v32H96v-32 M416,160H96l160-64L416,160z M96,192h320v32H96 M112,352V192h32v160H112 M368,192h32v160h-32V192z M272,352h-32V192h32V352z M336,352h-32V192h32V352z M176,352V192h32v160H176"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
     var enquirySvg = @"<svg class=""tx-tabstrip-svg"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 512 512"" focusable=""false""><path d=""M256,0C114.6,0,0,114.6,0,256c0,141.4,114.6,256,256,256s256-114.6,256-256C512,114.6,397.4,0,256,0zM256,469.3c-117.8,0-213.3-95.5-213.3-213.3c0-117.8,95.5-213.3,213.3-213.3S469.3,138.2,469.3,256C469.3,373.8,373.8,469.3,256,469.3z M96,192l192,192h96v-96L192,96L96,192z M320,288l-32,32L160.3,192.1L192,160L320,288z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
+    var calendarCloseSvg = @"<svg class=""tx-svg-icon-lg"" xmlns=""http://www.w3.org/2000/svg"" viewBox=""0 0 32 32""><path d=""M17.4,16L28,26.6L26.6,28L16,17.4L5.4,28L4,26.6L14.6,16L4,5.4L5.4,4L16,14.6L26.6,4L28,5.4L17.4,16z"" fill=""currentColor"" fill-rule=""evenodd""></path></svg>";
 }
 @section Kendo
 {
@@ -16,6 +17,7 @@
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.userevents.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.selectable.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.calendar.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.responsivepanel.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.maskedtextbox.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.tabstrip.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.draganddrop.min.js"></script>
@@ -42,20 +44,21 @@
     </span>
 </div>
 
-<div class="pt-4 pb-5" style="position: relative; z-index: 2;">
+<div class="tx-destination-summary">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="mb-4 tx-bottom-dash tx-bottom-dash-start">
                     <h1 class="h1">@Model.Title</h1>
                     <p class="text-muted font-italic">@Html.Raw(attractions)</p>
                 </div>
                 <p>
                     Price from $@Model.LowestPrice for <span>@Model.Duration days</span><br />
-                    <span id="pricesButton" class="btn-link">view full price info</span>
+                    <span id="pricesButton" class="btn-link">View full price info</span>
+                    <span id="tx-calendar-open" class="btn-link d-lg-none ml-4">View availbale dates</span>
                 </p>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 @{ var tourInfos = Model.TourInfos;
                     List<DateTime> list = new List<DateTime>();
                     foreach (var tourInfo in tourInfos)
@@ -66,7 +69,8 @@
                         }
                     }
                 }
-                <div class="tx-calendar-container">
+                <div id="tx-calendar-container" class="tx-calendar-container">
+                    <span id="tx-calendar-close" class="k-button k-flat tx-calendar-close d-lg-none">@Html.Raw(calendarCloseSvg)</span>
                     @(Html.Kendo().Calendar()
                         .Name("toursCalendar")
                         .Selectable("multiple")
@@ -81,7 +85,7 @@
     </div>
 </div>
 
-<div class="bg-white k-flex" style="margin-bottom: -3em; position: relative; z-index: 3">
+<div class="tx-destination-details bg-white k-flex">
     <div class="container">
         @(Html.Kendo().TabStrip()
             .Animation(false)
@@ -181,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     @(Html.Kendo().Button()
                                         .Name("sendEnquiry")
                                         .Content("Send")
@@ -278,7 +282,8 @@
         $("#scrollview").kendoMobileScrollView({
             dataSource: scrollViewDs,
             contentHeight:"600px",
-            template: kendo.template($("#template").html())
+            template: kendo.template($("#template").html()),
+            pagerOverlay: true
         });
 
         var smallMap = $("#overviewMap").data("kendoMap");
@@ -306,6 +311,25 @@
         $toggle.toggleClass("k-rotated");
         $toggle.parents('.k-card').find('.k-card-text').slideToggle(200);
     }
+
+    var calendarPanel = $("#tx-calendar-container").kendoResponsivePanel({
+        breakpoint: 992,
+        orientation: "top"
+    }).data("kendoResponsivePanel");
+    $("#tx-calendar-open").click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        calendarPanel.open();
+        $("body").addClass("tx-calendar-shown");
+        return false;
+    });
+    $("#tx-calendar-close").click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        calendarPanel.close();
+        $("body").removeClass("tx-calendar-shown");
+        return false;
+    });
 </script>
 <script id="attractionsTemplate" type="text/x-kendo-tmpl">
     <div class="k-card tx-attraction-card">
