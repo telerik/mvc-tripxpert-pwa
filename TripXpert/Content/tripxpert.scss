@@ -250,6 +250,17 @@
 }
 
 
+@include media-breakpoint-down(md) {
+
+    .k-card-columns {
+        column-gap: 10px;
+    }
+    .k-card-columns .k-card {
+        margin-bottom: 10px;
+    }
+}
+
+
 @include media-breakpoint-down(sm) {
     .k-card-grid {
         grid-template-columns: 1fr;
