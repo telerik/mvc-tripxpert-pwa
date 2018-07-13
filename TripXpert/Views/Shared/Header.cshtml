@@ -11,9 +11,9 @@
                 <img src="@Url.Content("~/Images/App/tripxpert_logo.svg")" alt="tripxpert logo" class="logo" />
             </a>
         </div>
-        <button id="tx-menu-open" class="k-button k-flat tx-menu-open d-md-none">@Html.Raw(menuOpenSvg)</button>
+        <button id="tx-menu-open" aria-label="toggle-menu-open" class="k-button k-flat tx-menu-open d-md-none">@Html.Raw(menuOpenSvg)</button>
         <div id="tx-top-menu-container">
-            <button id="tx-menu-close" class="k-button k-flat d-md-none tx-menu-close">@Html.Raw(menuCloseSvg)</button>
+            <button id="tx-menu-close" aria-label="toggle-menu-close" class="k-button k-flat d-md-none tx-menu-close">@Html.Raw(menuCloseSvg)</button>
             @(Html.Kendo().Menu()
                 .Name("Menu1")
                 .Items(items =>
