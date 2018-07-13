@@ -90,7 +90,7 @@
                 )
             </div>
             <div class="form-group col-md-6">
-                <label for="country">Where are you from*</label>
+                <label for="country">Where are you from</label>
                 @(Html.Kendo().DropDownList()
                     .Name("country")
                     .Height(192)
@@ -123,10 +123,14 @@
 <script>
     $(document).ready(function () {
         var validator = $("#feedbackForm").kendoValidator().data("kendoValidator");
-        $("#feedbackForm").submit(function (event) {
-            event.preventDefault();
+        $("#feedbackForm").submit(function (e) {
+            e.preventDefault();
             if (validator.validate()) {
                 kendo.alert("Thank you for your feedback!");
+                
+                $(e.target).find("input, textarea").val("");
+                $(e.target).find("[data-role='dropdownlist']").data("kendoDropDownList").value("");
+
             }
         });
     });
