@@ -253,10 +253,14 @@
 @include media-breakpoint-down(md) {
 
     .k-card-columns {
-        column-gap: 10px;
+        column-gap: ($spacer / 2);
     }
     .k-card-columns .k-card {
-        margin-bottom: 10px;
+        margin-bottom: ($spacer / 2);
+    }
+
+    .k-card-grid {
+        grid-gap: ($spacer / 2);
     }
 }
 
