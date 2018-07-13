@@ -44,7 +44,6 @@ If you'd like to take a look behind the curtain, download the source code. You c
 Browser | Windows | Mac | Linux
 --- | --- | --- | ---
 Edge | 20+ | N/A
-Internet Explorer | 11+ | N/A
 FireFox | Current, previous and ESR
 Chrome | Current and previous
 Opera | Current and previous
@@ -52,10 +51,8 @@ Opera | Current and previous
 Mobile Browsers | Version
 --- | ---
 iOS Safari | iOS 8+
-Android Native Browser | 2.3+
 Chrome Mobile | Current and previous
 Opera Mobile | Current and previous
-IE Mobile | 11.0+
 
 ---
 
