@@ -15,8 +15,15 @@ namespace TripXpert.Handlers
             var width = context.Request.QueryString["width"];
             var height = context.Request.QueryString["height"];
             var path = context.Request.Path;
+            var applicationPath = "";
 
-            context.Response.Redirect(string.Format("/Home/GetPhotoInCertainSize?width={0}&height={1}&path={2}", width, height, path));
+            if (context.Request.ApplicationPath != "/")
+            {
+                path = path.Remove(path.IndexOf(context.Request.ApplicationPath), context.Request.ApplicationPath.Length);
+                applicationPath = context.Request.ApplicationPath;
+            }
+
+            context.Response.Redirect(applicationPath + string.Format("/Home/GetPhotoInCertainSize?width={0}&height={1}&path={2}", width, height, path));
         }
     }
 }

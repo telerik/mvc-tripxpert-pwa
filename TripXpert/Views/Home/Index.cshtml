@@ -45,7 +45,7 @@
 
 <script type="text/x-kendo-tmpl" id="kendo-card-template">
     <div class="k-card">
-        <img alt="#:Title#" src="#:DefaultImage#?width=320&height=320" class="k-card-image" />
+        <img alt="#:Title#" src="@Url.Content("~/")#:DefaultImage#?width=320&height=320" class="k-card-image" />
         <div class="k-card-body">
             <h5 class="k-card-title">#:Title#</h5>
             <h6 class="k-card-subtitle small text-muted font-italic">
@@ -59,7 +59,7 @@
         </div>
         <div class="k-card-actions d-flex justify-content-between">
             <span class="text-primary">From $#: data.LowestPrice #</span>
-            <a href="/Destination/#:DestinationID#">View Details</a>
+            <a href="@Url.Content("~/")Destination/#:DestinationID#">View Details</a>
         </div>
     </div>
 </script>
@@ -96,7 +96,7 @@
         var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
         var offerDropDown = $("#OfferType").data("kendoDropDownList");
         var prices = $('#priceRange').val().split('-');
-        var url = "/Destinations/Destinations?isSpecial=" + (offerDropDown.value() === 'Special') + "&priceFrom=" + prices[0] + "&priceTo=" + prices[1];
+        var url = "@Url.Content("~/")Destinations/Destinations?isSpecial=" + (offerDropDown.value() === 'Special') + "&priceFrom=" + prices[0] + "&priceTo=" + prices[1];
 
         window.location.href = url;
     }
