@@ -248,7 +248,7 @@
                 .Actions(actions => actions.Close())
 )
 <script id="template" type="text/x-kendo-template">
-    <div class="tx-scrollview-image-container" style="background-image: url('/Images/Gallery/#:FolderName.trim()#/#:ImageURL#');" title="#:Title#"></div>
+    <div class="tx-scrollview-image-container" style="background-image: url('@Url.Content("~/")Images/Gallery/#:FolderName.trim()#/#:ImageURL#');" title="#:Title#"></div>
 </script>
 <script>
     $("#pricesButton").on("click", function (e) {
