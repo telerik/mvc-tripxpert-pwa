@@ -21,13 +21,18 @@ self.addEventListener('fetch', function (e) {
         e.request.url.indexOf("d.rlcdn") !== -1 ||
         e.request.url.indexOf("t.eloqua") !== -1
     ) {
-        return
+        return;
     }
 
     e.respondWith(
         caches.match(e.request.url).then(function (resp) {
+            e.request.redirect = "follow";
             return resp || fetch(e.request.url).then(function (response) {
                 var clonedResponse = response.clone();
+
+                if (response.redirected) {
+                    return new Response(response.body);
+                }
 
                 caches.open(cacheName).then(function (cache) {
                     cache.put(e.request.url, clonedResponse);
