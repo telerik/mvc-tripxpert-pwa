@@ -268,7 +268,7 @@
 
     var scrollViewDs = new kendo.data.DataSource({
         transport: {
-            read: '/Destinations/GetDestinationImages?destinationId=@Model.DestinationID'
+            read: '@Url.Content("~/")Destinations/GetDestinationImages?destinationId=@Model.DestinationID'
         }
     })
 
