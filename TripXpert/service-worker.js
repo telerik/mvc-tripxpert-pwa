@@ -15,7 +15,7 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     if (e.request.url.indexOf("kendo") === -1 ||
-        e.request.url.indexOf("tripxpert") === -1 ||
+        e.request.url.indexOf("tripxpert") === -1
     ) {
         return;
     }
@@ -24,7 +24,7 @@ self.addEventListener('fetch', function (e) {
         caches.match(e.request.url).then(function (resp) {
             return resp || fetch(e.request.url).then(function (response) {
                 var clonedResponse = response.clone();
-
+                
                 if (response.redirected) {
                     return new Response(response.body);
                 }
