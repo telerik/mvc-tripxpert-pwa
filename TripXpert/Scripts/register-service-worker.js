@@ -1,6 +1,8 @@
 if ('serviceWorker' in navigator) {
+    var path = location.pathname;
+
     navigator.serviceWorker
-        .register('./service-worker.js', { scope: './' })
+        .register(path + 'service-worker.js', { scope: path })
         .then(function (reg) {
             console.log('Registered!');
         })
