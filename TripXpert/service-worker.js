@@ -85,9 +85,9 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    if ((e.request.url.indexOf("kendo") === -1 &&
-        e.request.url.indexOf("tripxpert") === -1) ||
-        e.request.url.indexOf("t.eloqua") !== -1
+    if ((e.request.url.indexOf("kendo") === -1 && e.request.url.indexOf("tripxpert") === -1) ||
+        e.request.url.indexOf("t.eloqua") !== -1 ||
+        e.request.url.indexOf("d.company") !== -1
     ) {
         return;
     }
