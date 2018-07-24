@@ -1,8 +1,8 @@
 if ('serviceWorker' in navigator) {
     var path = location.pathname;
-
+    debugger
     navigator.serviceWorker
-        .register(path + 'service-worker.js', { scope: path })
+        .register(path.replace("Home","") + 'service-worker.js', { scope: path })
         .then(function (reg) {
             console.log('Registered!');
         })
