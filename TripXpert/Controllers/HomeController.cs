@@ -13,6 +13,10 @@ namespace TripXpert.Controllers
     {
         public ActionResult Index()
         {
+            if (!Request.Path.EndsWith("/"))
+            {
+                return RedirectPermanent(Request.Url.ToString() + "/");
+            }
             return View();
         }
 

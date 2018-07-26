@@ -248,7 +248,7 @@
                 .Actions(actions => actions.Close())
 )
 <script id="template" type="text/x-kendo-template">
-    <div class="tx-scrollview-image-container" style="background-image: url('/Images/Gallery/#:FolderName.trim()#/#:ImageURL#');" title="#:Title#"></div>
+    <div class="tx-scrollview-image-container" style="background-image: url('@Url.Content("~/")Images/Gallery/#:FolderName.trim()#/#:ImageURL#');" title="#:Title#"></div>
 </script>
 <script>
     $("#pricesButton").on("click", function (e) {
@@ -268,7 +268,7 @@
 
     var scrollViewDs = new kendo.data.DataSource({
         transport: {
-            read: '/Destinations/GetDestinationImages?destinationId=@Model.DestinationID'
+            read: '@Url.Content("~/")Destinations/GetDestinationImages?destinationId=@Model.DestinationID'
         }
     })
 
@@ -329,7 +329,7 @@
 </script>
 <script id="attractionsTemplate" type="text/x-kendo-tmpl">
     <div class="k-card tx-attraction-card">
-        <img class="k-card-image" src="#=Image.ImageURL#" alt="#=Title#">
+        <img class="k-card-image" src="@Url.Content("~/")#=Image.ImageURL#" alt="#=Title#">
         <div class="k-card-body">
             <h5 class="k-card-title">
                 <span class="k-toggle"><span class="k-icon k-i-arrow-chevron-down"></span></span>

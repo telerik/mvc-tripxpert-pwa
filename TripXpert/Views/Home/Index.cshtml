@@ -11,6 +11,8 @@
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.userevents.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.draganddrop.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.slider.min.js"></script>
+    <script src="~/Scripts/register-service-worker.js"></script>
+
 }
 
 @Html.Partial("Search")
@@ -24,20 +26,20 @@
             <p class="text-muted font-italic">Explore top destinations and attractions</p>
         </div>
         @(Html.Kendo().ListView<TripXpert.Models.DestinationViewModel>()
-                                    .Name("listView")
-                                    .TagName("div")
-                                    .ClientTemplateId("kendo-card-template")
-                                    .DataSource(dataSource =>
-                                    {
-                                        dataSource.Custom()
-                                        .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
-                                        .ServerAggregates(false)
-                                        .ServerFiltering(false)
-                                        .ServerGrouping(false)
-                                        .ServerPaging(false)
-                                        .ServerSorting(false);
-                                    })
-                                    .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
+                                            .Name("listView")
+                                            .TagName("div")
+                                            .ClientTemplateId("kendo-card-template")
+                                            .DataSource(dataSource =>
+                                            {
+                                                dataSource.Custom()
+                                                .Transport(x => x.Read(read => read.Action("Destinations_First", "Destinations").Type(HttpVerbs.Get)))
+                                                .ServerAggregates(false)
+                                                .ServerFiltering(false)
+                                                .ServerGrouping(false)
+                                                .ServerPaging(false)
+                                                .ServerSorting(false);
+                                            })
+                                            .HtmlAttributes(new { @class = "border-0 k-card-grid mt-5" })
         )
 
     </div>
@@ -45,7 +47,7 @@
 
 <script type="text/x-kendo-tmpl" id="kendo-card-template">
     <div class="k-card">
-        <img alt="#:Title#" src="#:DefaultImage#?width=320&height=320" class="k-card-image" />
+        <img alt="#:Title#" src="@Url.Content("~/")#:DefaultImage#?width=320&height=320" class="k-card-image" />
         <div class="k-card-body">
             <h5 class="k-card-title">#:Title#</h5>
             <h6 class="k-card-subtitle small text-muted font-italic">
@@ -59,7 +61,7 @@
         </div>
         <div class="k-card-actions d-flex justify-content-between">
             <span class="text-primary">From $#: data.LowestPrice #</span>
-            <a href="/Destination/#:DestinationID#">View Details</a>
+            <a href="@Url.Content("~/")Destination/#:DestinationID#">View Details</a>
         </div>
     </div>
 </script>
@@ -96,7 +98,7 @@
         var priceDropDown = $("#PriceRangeDropDown").data("kendoDropDownList");
         var offerDropDown = $("#OfferType").data("kendoDropDownList");
         var prices = $('#priceRange').val().split('-');
-        var url = "/Destinations/Destinations?isSpecial=" + (offerDropDown.value() === 'Special') + "&priceFrom=" + prices[0] + "&priceTo=" + prices[1];
+        var url = "@Url.Content("~/")Destinations/Destinations?isSpecial=" + (offerDropDown.value() === 'Special') + "&priceFrom=" + prices[0] + "&priceTo=" + prices[1];
 
         window.location.href = url;
     }

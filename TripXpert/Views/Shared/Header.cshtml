@@ -7,7 +7,7 @@
 <div id="header">
     <div class="navbar container">
         <div class="navbar-brand">
-            <a href="@Url.Action("Index", "Home")">
+            <a href="@Url.Content("~/")">
                 <img src="@Url.Content("~/Images/App/tripxpert_logo.svg")" alt="tripxpert logo" class="logo" />
             </a>
         </div>
@@ -18,11 +18,12 @@
                 .Name("Menu1")
                 .Items(items =>
                 {
-                    items.Add().Text("Home").Route("Home");
+                    items.Add().Text("Home").Url(@Url.Content("~/"));
                     items.Add().Text("Destinations").Route("Destinations");
                     items.Add().Text("Contact").Route("Contact");
                     items.Add().Text(String.Format("{0} Source Code", gitHubSvg)).Encoded(false)
-                    .HtmlAttributes(new { @class = "ml-3" }).Url("https://github.com/telerik/mvc-tripxpert-sample-app");
+                    .LinkHtmlAttributes(new {target="_blank" })
+                    .HtmlAttributes(new { @class = "ml-3" }).Url("https://github.com/telerik/mvc-tripxpert-pwa");
                 })
                 .HtmlAttributes(new { @class = "tx-top-menu" })
             )

@@ -4,10 +4,10 @@
   "theme_color": "#858585",
   "background_color": "#858585",
   "display": "standalone",
-  "Scope": "/",
+  "Scope": "./",
   "lang": "en",
   "description": "The ultimate trip planning app!",
-  "start_url": "/",
+  "start_url": "./",
   "icons": [
     {
       "src": "/Images/App/Icons/HomeScreen/homescreen-icons_144X144.png",

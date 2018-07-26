@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,14 +15,14 @@
     <script src="https://kendo.cdn.telerik.com/2018.2.516/js/kendo.responsivepanel.min.js"></script>
 
     @RenderSection("Kendo", false)
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="@Url.Content("~/")manifest.json">
     <meta name="theme-color" content="#858585" />
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
+                    new Date().getTime(), event: 'gtm.js'
             }); var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
