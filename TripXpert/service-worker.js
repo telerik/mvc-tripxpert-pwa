@@ -92,7 +92,8 @@ self.addEventListener('fetch', function (e) {
         e.request.url.indexOf("google") !== -1 ||
         e.request.url.indexOf("outbrain") !== -1 ||
         e.request.url.indexOf("twitter") !== -1 ||
-        e.request.url.indexOf("linkedin") !== -1         
+        e.request.url.indexOf("linkedin") !== -1 ||
+        e.request.url.indexOf("Destination") !== -1
     ) {
         return;
     }
