@@ -35,7 +35,7 @@ The app demonstrates how you can integrate some of the most popular server-side 
 If you'd like to take a look behind the curtain, download the source code. You can examine and modify it to meet your project requirements. To run the sample app locally, you’ll need the respective or later version of the following products:
 
 * [UI for ASP.NET MVC](https://www.telerik.com/download-trial-file/v2/ui-for-asp.net-mvc)
-* [Microsoft SQL Server Express 2008](http://www.microsoft.com/en-us/download/details.aspx?id=1695)
+* [Microsoft SQL Server Express 2012](https://www.microsoft.com/en-us/download/details.aspx?id=29062)
 * [Microsoft .NET framework 4.0](http://www.microsoft.com/en-us/download/details.aspx?id=17851)
 
 
