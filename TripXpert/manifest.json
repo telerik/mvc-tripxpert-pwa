@@ -10,22 +10,22 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "/Images/App/Icons/HomeScreen/homescreen-icons_144X144.png",
+      "src": "./Images/App/Icons/HomeScreen/homescreen-icons_144X144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/Images/App/Icons/HomeScreen/homescreen-icons_180X180.png",
+      "src": "./Images/App/Icons/HomeScreen/homescreen-icons_180X180.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/Images/App/Icons/HomeScreen/homescreen-icons_192X192.png",
+      "src": "./Images/App/Icons/HomeScreen/homescreen-icons_192X192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/Images/App/Icons/HomeScreen/homescreen-icons_512X512.png",
+      "src": "./Images/App/Icons/HomeScreen/homescreen-icons_512X512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -33,12 +33,12 @@
   "splash_pages": null,
   "screenshots": [
     {
-      "src": "/Images/Gallery/France/Eiffel-Tower_Attraction.jpg",
+      "src": "./Images/Gallery/France/Eiffel-Tower_Attraction.jpg",
       "sizes": "320x320",
       "type": "image/jpeg"
     },
     {
-      "src": "/Images/Gallery/Italy/Roman-Colosseum_Lilia-Karakoleva.jpg",
+      "src": "./Images/Gallery/Italy/Roman-Colosseum_Lilia-Karakoleva.jpg",
       "sizes": "320x320",
       "type": "image/jpeg"
     }
