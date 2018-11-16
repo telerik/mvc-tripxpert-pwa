@@ -3,7 +3,7 @@ var url = self.location.href.split("/");
 
 url.pop();
 
-var path = url.join("/") + "/"
+var path = url.join("/") + "/";
 
 var cachedFiles = [
     path,
@@ -85,16 +85,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    if ((e.request.url.indexOf("kendo") === -1 && e.request.url.indexOf("tripxpert") === -1) ||
-        e.request.url.indexOf("t.eloqua") !== -1 ||
-        e.request.url.indexOf("d.company") !== -1 ||
-        e.request.url.indexOf("facebook") !== -1 ||
-        e.request.url.indexOf("google") !== -1 ||
-        e.request.url.indexOf("outbrain") !== -1 ||
-        e.request.url.indexOf("twitter") !== -1 ||
-        e.request.url.indexOf("linkedin") !== -1 ||
-        e.request.url.indexOf("Destination") !== -1
-    ) {
+    if (cachedFiles.indexOf(e.request.url) < 0) {
         return;
     }
 
@@ -102,7 +93,7 @@ self.addEventListener('fetch', function (e) {
         caches.match(e.request.url).then(function (resp) {
             return resp || fetch(e.request.url).then(function (response) {
                 var clonedResponse = response.clone();
-                
+
                 if (response.redirected) {
                     return new Response(response.body);
                 }
