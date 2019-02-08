@@ -63,9 +63,6 @@
 }
 .tx-calendar-destinations {
     width: 100%;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
     border-width: 0;
     border-bottom: 1px solid #e2e3e3;
 
@@ -74,17 +71,32 @@
         border-width: 0;
     }
 
-    thead th {
-        border-top: 1px solid #e2e3e3;
-        border-bottom: 1px solid #e2e3e3;
-    }
-
     table.k-content {
         flex: 1 1 auto;
         height: 18rem;
+
+        thead th {
+            border-top: 1px solid #e2e3e3;
+            border-bottom: 1px solid #e2e3e3;
+            font-size: 0.75rem;
+            text-align: center;
+        }
     }
-    .k-content .k-link {
-        line-height: 2;
+
+    .k-calendar-view {
+        width: auto;
+        padding: 0;
+
+        &::after {
+            display: none;
+        }
+
+        .k-content .k-link {
+            line-height: 2;
+            height: auto;
+            width: 100%;
+            padding: 0.25rem;
+        }
     }
 }
 
