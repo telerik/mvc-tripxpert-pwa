@@ -226,22 +226,29 @@
 
 .tx-calendar-destinations {
   width: 100%;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
   border-width: 0;
   border-bottom: 1px solid #e2e3e3; }
   .tx-calendar-destinations .k-header {
     background: none;
     border-width: 0; }
-  .tx-calendar-destinations thead th {
-    border-top: 1px solid #e2e3e3;
-    border-bottom: 1px solid #e2e3e3; }
   .tx-calendar-destinations table.k-content {
     flex: 1 1 auto;
     height: 18rem; }
-  .tx-calendar-destinations .k-content .k-link {
-    line-height: 2; }
+    .tx-calendar-destinations table.k-content thead th {
+      border-top: 1px solid #e2e3e3;
+      border-bottom: 1px solid #e2e3e3;
+      font-size: 0.75rem;
+      text-align: center; }
+  .tx-calendar-destinations .k-calendar-view {
+    width: auto;
+    padding: 0; }
+    .tx-calendar-destinations .k-calendar-view::after {
+      display: none; }
+    .tx-calendar-destinations .k-calendar-view .k-content .k-link {
+      line-height: 2;
+      height: auto;
+      width: 100%;
+      padding: 0.25rem; }
 
 @media (max-width: 991.98px) {
   #tx-calendar-container {
@@ -478,4 +485,3 @@
   height: 1em;
   display: inline-block;
   vertical-align: top; }
-
