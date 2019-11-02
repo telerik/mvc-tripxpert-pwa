@@ -10,6 +10,6 @@
   "license": "ISC",
   "devDependencies": {
     "@progress/kendo-theme-bootstrap": "^2.13.4",
-    "bootstrap": "^4.1.0"
+    "bootstrap": "^4.3.1"
   }
 }
