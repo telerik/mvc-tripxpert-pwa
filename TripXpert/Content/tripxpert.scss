@@ -159,9 +159,9 @@
     font-style: italic;
 }
 
-.k-card-columns {
-    column-count: 3;
+.k-card-columns .k-listview-content {
     column-gap: $card-deck-gap;
+    grid-template-columns: repeat(3, 1fr);
 
     .k-card {
         margin-bottom: $card-deck-gap;
@@ -170,7 +170,7 @@
     }
 }
 
-.k-card-grid {
+.k-card-grid .k-listview-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: $card-deck-gap;
@@ -264,30 +264,34 @@
 
 @include media-breakpoint-down(md) {
 
-    .k-card-columns {
+    .k-card-columns .k-listview-content {
         column-gap: ($spacer / 2);
     }
+
     .k-card-columns .k-card {
         margin-bottom: ($spacer / 2);
     }
 
-    .k-card-grid {
+    .k-card-grid .k-listview-content {
         grid-gap: ($spacer / 2);
     }
 }
 
 
 @include media-breakpoint-down(sm) {
-    .k-card-grid {
+    .k-card-grid .k-listview-content {
         grid-template-columns: 1fr;
         grid-gap: 1rem;
     }
-    .k-card-columns {
+
+    .k-card-columns .k-listview-content {
         column-count: 2;
     }
+
     .k-card-columns .k-card {
         margin-bottom: 1rem;
     }
+
     .k-card-image {
         width: 100%;
     }
@@ -297,9 +301,11 @@
         margin-bottom: -3rem;
         height: auto;
     }
+
     .tx-calendar-destinations table.k-content {
         height: auto;
     }
+
     .tx-calendar-destinations .k-content .k-link {
         line-height: normal;
     }
@@ -312,6 +318,7 @@
     .tx-scrollview-container .k-scrollview-next {
         display: none;
     }
+
     .tx-scrollview-container .km-pages {
         display: flex;
         position: absolute;
@@ -320,9 +327,8 @@
 
 
 @include media-breakpoint-down(xs) {
-    .k-card-columns {
+    .k-card-columns .k-listview-content {
         column-count: auto;
-        display: grid;
         grid-template-columns: 1fr;
         grid-gap: 1rem;
     }

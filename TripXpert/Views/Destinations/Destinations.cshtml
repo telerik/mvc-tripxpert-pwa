@@ -18,6 +18,7 @@
                 .Name("listView")
                 .TagName("div")
                 .ClientTemplateId("kendo-card-template")
+                .Layout("grid")
                 .DataSource(dataSource =>
                 {
                     dataSource.Read(read => read.Action("Destinations_Read", "Destinations").Data("getIds"));
