@@ -74,11 +74,11 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="FirstName">First name</label>
-                @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @class = "form-control" }))
+                @(Html.Kendo().TextBox().Name("FirstName").HtmlAttributes(new { @style = "width: 100%" }))
             </div>
             <div class="form-group col-md-6">
                 <label for="LastName">Last Name</label>
-                @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @class = "form-control" }))
+                @(Html.Kendo().TextBox().Name("LastName").HtmlAttributes(new { @style = "width: 100%" }))
             </div>
         </div>
         <div class="row">
@@ -110,7 +110,7 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label for="Comments">Comments</label>
-                @(Html.TextArea("Comments", new { style = "width: 100%; resize: none;", rows = "5", @class = "form-control", cols = "200" }))
+                @(Html.TextArea("Comments", new { @style = "width: 100%; resize: none;", rows = "5", @class = "k-textarea", cols = "200" }))
             </div>
         </div>
         <div class="row">
