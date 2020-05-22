@@ -1,4 +1,4 @@
-#wrapper {
+﻿#wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column; }
@@ -18,6 +18,8 @@
       display: none; }
   #header .logo {
     width: 150px; }
+    .k-ie #header .logo {
+      height: 35px; }
   #header .tx-top-menu {
     padding: 0;
     margin: -1rem 0;
@@ -203,6 +205,8 @@
     margin: 0;
     border-width: 0;
     background: none; }
+    .tx-tabstrip-destinations > .k-tabstrip-items > .k-item .k-link {
+      padding: 1rem 1.25rem; }
   .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active {
     color: #ea0058; }
     .tx-tabstrip-destinations > .k-tabstrip-items > .k-state-active::after {
@@ -241,7 +245,8 @@
       text-align: center; }
   .tx-calendar-destinations .k-calendar-view {
     width: auto;
-    padding: 0; }
+    padding: 0;
+    height: calc( 19em + 2.07142857em); }
     .tx-calendar-destinations .k-calendar-view::after {
       display: none; }
     .tx-calendar-destinations .k-calendar-view .k-content .k-link {
@@ -301,11 +306,22 @@
     margin-bottom: 50px;
     display: inline-flex;
     width: 100%; }
+  .k-ie .k-card-columns .k-listview-content {
+    display: flex;
+    flex-wrap: wrap; }
+    .k-ie .k-card-columns .k-listview-content .k-card {
+      margin: 0 25px 50px;
+      width: 300px;
+      display: inline-block; }
 
 .k-card-grid .k-listview-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px; }
+  .k-ie .k-card-grid .k-listview-content {
+    display: flex; }
+    .k-ie .k-card-grid .k-listview-content .k-card {
+      margin: 0 25px; }
 
 .tx-bottom-dash {
   position: relative; }
@@ -357,18 +373,9 @@
     height: 600px; }
   .tx-scrollview-container .km-pages {
     display: none; }
-  .tx-scrollview-container .k-scrollview-next,
-  .tx-scrollview-container .k-scrollview-prev {
-    height: 40%;
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer; }
+  .tx-scrollview-container .k-scrollview-next span,
+  .tx-scrollview-container .k-scrollview-prev span {
+    color: #ffffff; }
 
 @media (max-width: 991.98px) {
   .k-card-columns .k-listview-content {
