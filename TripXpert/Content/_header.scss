@@ -19,8 +19,11 @@
 
     .logo {
         width: 150px;
-    }
 
+        .k-ie & {
+            height: 35px;
+        }
+    }
 
     // Top menu
     .tx-top-menu {
@@ -38,6 +41,7 @@
         .k-state-highlight {
             color: $accent;
         }
+
         .k-state-highlight::after {
             content: "";
             height: 3px;

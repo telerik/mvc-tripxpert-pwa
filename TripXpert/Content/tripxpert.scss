@@ -30,11 +30,17 @@
     > .k-tabstrip-items {
         border-width: 0;
     }
+
     > .k-tabstrip-items > .k-item {
         margin: 0;
         border-width: 0;
         background: none;
+
+        .k-link {
+            padding: 1rem 1.25rem;
+        }
     }
+
     > .k-tabstrip-items > .k-state-active {
         color: $accent;
 
@@ -86,6 +92,7 @@
     .k-calendar-view {
         width: auto;
         padding: 0;
+        height: calc( 19em + 2.07142857em);
 
         &::after {
             display: none;
@@ -168,12 +175,31 @@
         display: inline-flex;
         width: 100%;
     }
+
+    .k-ie & {
+        display: flex;
+        flex-wrap: wrap;
+
+        .k-card {
+            margin: 0 ($card-deck-gap / 2) $card-deck-gap;
+            width: 300px;
+            display: inline-block;
+        }
+    }
 }
 
 .k-card-grid .k-listview-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: $card-deck-gap;
+
+    .k-ie & {
+        display: flex;
+
+        .k-card {
+            margin: 0 $card-deck-gap / 2;
+        }
+    }
 }
 
 .tx-bottom-dash {
@@ -245,18 +271,9 @@
 
     .k-scrollview-next,
     .k-scrollview-prev {
-        height: 40%;
-        color: #ffffff;
-        font-size: $font-size-lg;
-        font-weight: 400;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
 
         span {
+            color: #ffffff;
         }
     }
 }
