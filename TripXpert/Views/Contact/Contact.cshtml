@@ -3,21 +3,23 @@
 }
 @section Kendo
 {
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.validator.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.userevents.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.tooltip.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.color.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.drawing.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.dataviz.core.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.fx.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.draganddrop.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.mobile.scroller.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.dataviz.map.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.textbox.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.maskedtextbox.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.list.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.dropdownlist.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.3.914/js/kendo.dialog.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.validator.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.userevents.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.tooltip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.color.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.drawing.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.dataviz.core.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.fx.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.draganddrop.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.mobile.scroller.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.dataviz.map.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.textbox.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.maskedtextbox.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.list.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.dropdownlist.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.dialog.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.floatinglabel.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.textarea.min.js"></script>
 }
 
 <div class="py-5"></div>
@@ -110,12 +112,17 @@
         <div class="row">
             <div class="form-group col-md-12">
                 <label for="Comments">Comments</label>
-                @(Html.TextArea("Comments", new { @style = "width: 100%; resize: none;", rows = "5", @class = "k-textarea", cols = "200" }))
+                @(Html.Kendo().TextArea()
+                      .Name("Comments")
+                      .Rows(5)
+                      .Cols(200)
+                      .HtmlAttributes( new { style = "width: 100%; resize: none;" })
+                  )
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button aria-label="Submit" class="k-button k-primary tx-send-button" type="submit">Send</button>
+                <button aria-label="Submit" class="k-button k-button-md k-button-rectangle k-rounded-md k-button-solid k-button-solid-primary" type="submit">Send</button>
             </div>
         </div>
     </form>
