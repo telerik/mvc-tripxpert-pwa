@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "outputFile": "Content/tripxpert.css",
     "inputFile": "Content/tripxpert.scss"
@@ -10,5 +10,9 @@
   {
     "outputFile": "Content/kendo-theme.css",
     "inputFile": "Content/kendo-theme.scss"
+  },
+  {
+    "outputFile": "Content/_search.css",
+    "inputFile": "Content/_search.scss"
   }
 ]

@@ -1,4 +1,4 @@
-﻿#wrapper {
+#wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column; }
@@ -132,6 +132,10 @@
     border-left-width: 1px; }
   .tx-searchbar span.tx-pricerange {
     border-left-width: 1px; }
+    .tx-searchbar .k-picker:focus-within {
+        box-shadow: none; }
+    .tx-searchbar .k-picker:focus {
+        box-shadow: none; }
 
 .k-popup#Destinations-list a {
   color: inherit;

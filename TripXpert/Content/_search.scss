@@ -21,14 +21,13 @@
     > div {
         padding: 0;
     }
+
     > div > .k-icon {
         margin: 0 10px;
         font-size: 32px;
         align-self: center;
         opacity: .5;
     }
-
-
     // Kendo controls
     .tx-search-button {
         padding-top: calc( 10px + #{$button-padding-y} );
@@ -50,16 +49,27 @@
             box-shadow: none;
         }
     }
+
     span.tx-searchbox {
         @extend %tx-dropdown;
     }
+
     span.tx-offertype {
         @extend %tx-dropdown;
         border-left-width: 1px;
     }
+
     span.tx-pricerange {
         @extend %tx-dropdown;
         border-left-width: 1px;
+    }
+
+    .k-picker:focus-within {
+        box-shadow: none;
+    }
+
+    .k-picker:focus {
+        box-shadow: none;
     }
 }
 
