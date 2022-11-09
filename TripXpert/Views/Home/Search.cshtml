@@ -79,10 +79,10 @@
                     @(Html.Kendo().ComboBox()
                         .Name("Destinations")
                         .Placeholder("Destinations")
-                        .DataTextField("Title")
+                        .DataTextField("Title") 
                         .DataValueField("DestinationID")
                         .Filter("contains")
-                        .HtmlAttributes(new { style = "width: 100%", @class = "tx-searchbox" })
+                        .HtmlAttributes(new { style = "width: 100%" })
                         .AutoBind(false)
                         .DataSource(source =>
                         {
@@ -104,9 +104,6 @@
                             "</div>"+
                           "<a>"
                         )
-                        .Popup( popup => {
-                            popup.AppendTo("#tx-searchbox-wrapper");
-                        })
                     )
                 </div>
                 <div class="col-md-2 mt-4 mt-md-0">

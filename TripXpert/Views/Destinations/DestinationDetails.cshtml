@@ -73,13 +73,16 @@
                                         .SelectDates(list)
                                         .Value(Model.TourInfos.First().StartDate)
                                         .Footer(false)
-                                        .HtmlAttributes(new { @class = "tx-calendar-destinations" })
+                                        .HtmlAttributes(new { @class = "tx-calendar-destinations", style = "width:100%" })
                     )
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<br />
+
 <div class="tx-destination-details bg-white k-flex">
     <div class="container">
         @(Html.Kendo().TabStrip()
