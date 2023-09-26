@@ -6,7 +6,7 @@ echo "Last release version is $LATEST_RELEASE"
 echo "Last Themes release version is $LATEST_THEMES_RELEASE"
 
 function getCurrentVersion {
-    for file in `find . -type f -name "*.cshtml"`  
+    for file in `find . -type f -name "_Layout.cshtml"`  
     do
         CURRENT_VERSION=$(grep -hnr "kendo.cdn" $file | head -2 | tail -1 | cut -d '/' -f 4)
         if [ ! -z "$CURRENT_VERSION" ]
@@ -17,7 +17,7 @@ function getCurrentVersion {
 }
 
 function getCurrentThemesVersion {
-    for file in `find . -type f -name "*.cshtml"`  
+    for file in `find . -type f -name "_Layout.cshtml"`  
     do
         CURRENT_THEMES_VERSION=$(grep -hnr "kendo.cdn" $file | head -1 | cut -d '/' -f 5)
         if [ ! -z "$CURRENT_THEMES_VERSION" ]
