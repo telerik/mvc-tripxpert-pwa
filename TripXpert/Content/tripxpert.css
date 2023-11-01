@@ -41,6 +41,11 @@
       left: 0;
       right: 0; }
 
+
+#listView {
+    border: none;
+}
+
 .jumbotron-splash {
   margin-top: -70px;
   height: 600px;
@@ -495,3 +500,5 @@
   height: 1em;
   display: inline-block;
   vertical-align: top; }
+
+
