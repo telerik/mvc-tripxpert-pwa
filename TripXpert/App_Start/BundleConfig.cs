@@ -9,7 +9,7 @@ namespace TripXpert
         {
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
-                "~/Scripts/jquery-3.6.0.min.js",
+                "~/Scripts/jquery-3.7.1.min.js",
                 "~/Scripts/tripxpert.js"
             ));
 
