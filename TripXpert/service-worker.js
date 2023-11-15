@@ -9,29 +9,6 @@ var cachedFiles = [
     path,
     path + "bundles/css?v=9bf_1hN1hPPO3xXNTcN-zh4IFDRFrfVrnaYTdddcBHQ1",
     path + "bundles/js?v=3NJpYh6kMRRulVfyFMXyChUMveyhk6-RqaWX_5pxkQY1",
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.core.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.badge.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.html.base.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.html.button.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.button.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.data.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.popup.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.html.icon.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.icons.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.list.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.combobox.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.dropdownlist.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.listview.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.toggleinputbase.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.html.input.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.radiobutton.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.userevents.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.draganddrop.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.slider.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.responsivepanel.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.menu.min.js',
-    'https://kendo.cdn.telerik.com/2023.3.1010/js/kendo.aspnetmvc.min.js'
-    ,
     path + 'Images/App/tripxpert_logo.svg',
     path + 'Home/GetDestinations',
     path + 'Home/GetSpecialDestinations',
@@ -77,8 +54,6 @@ self.addEventListener('install', function (e) {
         })
     );
 });
-
-
 
 self.addEventListener('activate', function (e) {
 
