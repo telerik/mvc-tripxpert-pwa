@@ -111,8 +111,7 @@
     text-shadow: 0 0 60px black; }
 
 .tx-searchbar {
-  margin: 0;
-  background-color: #ffffff; }
+  margin: 0;}
   .tx-searchbar > div {
     padding: 0; }
   .tx-searchbar > div > .k-icon {
