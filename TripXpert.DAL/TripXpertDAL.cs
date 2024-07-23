@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -164,13 +165,12 @@ namespace TripXpert.DAL
             }
         }
 
-        public static object GetAllDestinationImages(int id)
+        public static List<Image> GetAllDestinationImages(int id)
         {
             TripXpertEntities entity = new TripXpertEntities();
-            using (entity)
-            {                
-                return entity.Images.Where(x => x.DestinationID == id).ToList(); 
-            }
+
+                return entity.Images.Where(x => x.DestinationID == id)
+                    .ToList(); 
         }
 
         public static string GetDestinationDefaultImage(int id)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace TripXpert.Models
 {
     public class TourInfo
     {
+        [Key]
         public int InfoID { get; set; }
         public int DestinationID { get; set; }
         public DateTime? StartDate { get; set; }

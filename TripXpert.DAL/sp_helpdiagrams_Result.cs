@@ -10,11 +10,13 @@
 namespace TripXpert.DAL
 {
     using System;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class sp_helpdiagrams_Result
     {
         public string Database { get; set; }
         public string Name { get; set; }
+        [Key]
         public int ID { get; set; }
         public string Owner { get; set; }
         public int OwnerID { get; set; }

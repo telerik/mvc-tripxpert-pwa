@@ -11,9 +11,11 @@ namespace TripXpert.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Image
     {
+        [Key]
         public int ImageID { get; set; }
         public Nullable<int> AttractionID { get; set; }
         public int DestinationID { get; set; }
@@ -22,7 +24,7 @@ namespace TripXpert.DAL
         public string ImageURL { get; set; }
         public string Title { get; set; }
         public string FolderName { get; set; }
-    
+
         public virtual Attraction Attraction { get; set; }
         public virtual Destination Destination { get; set; }
     }
