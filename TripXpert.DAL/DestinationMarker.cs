@@ -11,9 +11,11 @@ namespace TripXpert.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DestinationMarker
     {
+        [Key]
         public int MarkerID { get; set; }
         public int DestinationID { get; set; }
         public decimal Latitude { get; set; }

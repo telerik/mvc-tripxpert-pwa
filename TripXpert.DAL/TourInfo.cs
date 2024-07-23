@@ -11,9 +11,11 @@ namespace TripXpert.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TourInfo
     {
+        [Key]
         public int InfoID { get; set; }
         public int DestinationID { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; }

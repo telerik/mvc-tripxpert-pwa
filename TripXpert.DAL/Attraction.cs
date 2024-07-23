@@ -11,7 +11,8 @@ namespace TripXpert.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Attraction
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,8 @@ namespace TripXpert.DAL
         {
             this.Images = new HashSet<Image>();
         }
-    
+
+        [Key]
         public int AttractionID { get; set; }
         public int DestinationID { get; set; }
         public string Title { get; set; }

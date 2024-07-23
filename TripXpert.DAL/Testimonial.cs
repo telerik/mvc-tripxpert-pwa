@@ -11,7 +11,8 @@ namespace TripXpert.DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Testimonial
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,8 @@ namespace TripXpert.DAL
         {
             this.Destinations = new HashSet<Destination>();
         }
-    
+
+        [Key]
         public int ID { get; set; }
         public string TestimonialContent { get; set; }
         public string Author { get; set; }

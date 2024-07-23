@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TripXpert.Models
 {
     public class Image
@@ -15,6 +17,7 @@ namespace TripXpert.Models
             this.FolderName = image.FolderName;
         }
 
+        [Key]
         public int ImageID { get; set; }
         public string Description { get; set; }
         public string Author { get; set; }

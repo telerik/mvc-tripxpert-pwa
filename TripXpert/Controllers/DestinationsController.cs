@@ -160,7 +160,9 @@ namespace TripXpert.Controllers
 
         public JsonResult GetDestinationImages(int destinationId)
         {
-            return Json((TripXpertDAL.GetAllDestinationImages(destinationId) as IEnumerable<object>), JsonRequestBehavior.AllowGet);
+            var data = TripXpertDAL.GetAllDestinationImages(destinationId);
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult PriceInfo_Read([DataSourceRequest] DataSourceRequest request)
